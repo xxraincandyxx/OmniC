@@ -1,0 +1,67 @@
+# Compiled object files
+*.o
+*.obj
+
+# Executables
+*.exe
+*.out
+*.elf
+a.out
+
+# Libraries
+*.so
+*.a
+*.lib
+*.dll
+
+# Debug information
+*.dwo
+*.dbg
+*.sym
+
+# Build directories
+build/
+bin/
+obj/
+tmp/
+
+# Editor/IDE specific files (examples, adjust as needed)
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.ncb
+*.aps
+*.pdb
+*.ilk
+*.idb
+*.opt
+*.exp
+*.lib
+*.sbr
+*.bsc
+*.vcproj.*.user
+*.vcxproj.filters
+*.vcxproj.user
+ipch/
+Debug/
+Release/
+x64/
+Win32/
+
+# VS Code
+.vscode/
+
+# Vim
+*.swp
+*.swo
+*.swn
+
+# Emacs
+*~
+#*#
+.#*
+
+# Other temporary files
+*.log
+*.bak
