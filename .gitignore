@@ -19,6 +19,9 @@ a.out
 *.dbg
 *.sym
 
+# Caches
+.cache
+
 # Build directories
 build/
 bin/
