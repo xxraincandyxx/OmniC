@@ -1,3 +1,5 @@
+// -*- mode: C; indent-tabs-mode: nil; c-basic-offset: 2; tab-width: 2; -*-
+
 #ifndef OMNIC_VECTOR_H
 #define OMNIC_VECTOR_H
 
@@ -7,7 +9,8 @@
  * @file vector.h
  * @brief A generic, dynamic array (vector) implementation.
  *
- * This API provides a type-safe way to manage a dynamic array of any element type.
+ * This API provides a type-safe way to
+ * manage a dynamic array of any element type.
  */
 
 // --- Opaque Pointer Declaration ---
@@ -18,7 +21,8 @@ typedef struct oc_vector oc_vector_t;
 /**
  * @brief Creates a new vector.
  *
- * @param element_size The size in bytes of a single element (e.g., sizeof(int)).
+ * @param element_size
+ *        The size in bytes of a single element (e.g., sizeof(int)).
  * @return A pointer to the newly created vector, or NULL on allocation failure.
  */
 oc_vector_t* oc_vector_create(size_t element_size);
@@ -26,7 +30,8 @@ oc_vector_t* oc_vector_create(size_t element_size);
 /**
  * @brief Destroys a vector and frees all associated memory.
  *
- * @param vec A pointer to the vector to be destroyed. If NULL, the function does nothing.
+ * @param vec A pointer to the vector to be destroyed.
+ *            If NULL, the function does nothing.
  */
 void oc_vector_destroy(oc_vector_t* vec);
 
@@ -46,8 +51,9 @@ oc_error_code_t oc_vector_push_back(oc_vector_t* vec, const void* element);
  *
  * @param vec A pointer to the vector.
  * @param index The index of the element to retrieve.
- * @return A constant pointer to the element. Returns NULL if the index is out of bounds.
- *         The returned pointer is only valid until the next vector modification.
+ * @return A constant pointer to the element. Returns NULL if the index is
+ *         out of bounds. The returned pointer is only valid until
+ *         the next vector modification.
  */
 const void* oc_vector_get(const oc_vector_t* vec, size_t index);
 

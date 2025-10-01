@@ -1,7 +1,9 @@
+// -*- mode: C; indent-tabs-mode: nil; c-basic-offset: 2; tab-width: 2; -*-
+
 #include <omnic/vector.h>
 #include <stdio.h>
 
-int main() {
+int main(void) {
     printf("--- OmniC Vector Example ---\n");
 
     // Create a vector to hold integers

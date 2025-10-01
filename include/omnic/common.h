@@ -1,3 +1,5 @@
+// -*- mode: C; indent-tabs-mode: nil; c-basic-offset: 2; tab-width: 2; -*-
+
 #ifndef OMNIC_COMMON_H
 #define OMNIC_COMMON_H
 

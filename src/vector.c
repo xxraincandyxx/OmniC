@@ -1,3 +1,5 @@
+// -*- mode: C; indent-tabs-mode: nil; c-basic-offset: 2; tab-width: 2; -*-
+
 #include <assert.h>  // For internal sanity checks
 #include <omnic/vector.h>
 #include <stdlib.h>  // For malloc, realloc, free
@@ -46,7 +48,8 @@ void oc_vector_destroy(oc_vector_t* vec) {
 // Internal helper function to handle resizing
 static oc_error_code_t oc_vector_resize(oc_vector_t* vec, size_t new_capacity) {
   if (new_capacity <= vec->capacity) {
-    return OC_SUCCESS;  // No need to resize down (for this simple implementation)
+    // No need to resize down (for this simple implementation)
+    return OC_SUCCESS;
   }
 
   char* new_data = realloc(vec->data, new_capacity * vec->element_size);
