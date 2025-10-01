@@ -21,20 +21,20 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 # file(GLOB omnic_SOURCES "src/*.c")
 # add_library(omnic STATIC ${omnic_SOURCES})
 add_library(omnic STATIC
-    src/vector.c
+  src/vector.c
 )
 
 # Tell CMake that the "omnic" target needs to look for headers in the "include" directory.
 # `PUBLIC` means that any target linking against "omnic" will also automatically inherit
 # this include directory. This is exactly what we want for our example program.
 target_include_directories(omnic PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 # --- Define the Example Executable ---
 # Add the example program as an executable target.
 add_executable(simple_vector_example
-    examples/vector.c
+  examples/vector.c
 )
 
 # Link the example program against our omnic library.
@@ -45,13 +45,13 @@ target_link_libraries(simple_vector_example PRIVATE omnic)
 # --- Optional: Compiler Warnings ---
 # It's good practice to enable warnings. This is similar to -Wall -Wextra in your Makefile.
 if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
-    target_compile_options(omnic PRIVATE -Wall -Wextra -Wpedantic)
-    target_compile_options(simple_vector_example PRIVATE -Wall -Wextra -Wpedantic)
+  target_compile_options(omnic PRIVATE -Wall -Wextra -Wpedantic)
+  target_compile_options(simple_vector_example PRIVATE -Wall -Wextra -Wpedantic)
 endif()
 
 # --- Define the Macro Vector Example Executable ---
 add_executable(macro_vector_example
-    examples/macro_vector.c
+  examples/macro_vector.c
 )
 
 # We still link against "omnic" because the include paths are configured there,
@@ -60,7 +60,7 @@ target_link_libraries(macro_vector_example PRIVATE omnic)
 
 # Optional: Add compiler warnings
 if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
-    target_compile_options(macro_vector_example PRIVATE -Wall -Wextra -Wpedantic)
+  target_compile_options(macro_vector_example PRIVATE -Wall -Wextra -Wpedantic)
 endif()
 
 # Print a message after configuration is done.
@@ -72,15 +72,15 @@ message(STATUS "OmniC project configured. Build with 'make' or your chosen gener
 find_package(Doxygen)
 
 if(DOXYGEN_FOUND)
-    # Define a custom target named "doc" to generate the documentation.
-    # It will run the 'doxygen' command using the Doxyfile in the project's root.
-    add_custom_target(doc
-        COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_SOURCE_DIR}/Doxyfile
-        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-        COMMENT "Generating API documentation with Doxygen..."
-        VERBATIM
-    )
-    message(STATUS "Doxygen found. You can build the 'doc' target to generate documentation.")
+  # Define a custom target named "doc" to generate the documentation.
+  # It will run the 'doxygen' command using the Doxyfile in the project's root.
+  add_custom_target(doc
+    COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_SOURCE_DIR}/Doxyfile
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    COMMENT "Generating API documentation with Doxygen..."
+    VERBATIM
+  )
+  message(STATUS "Doxygen found. You can build the 'doc' target to generate documentation.")
 else()
-    message(WARNING "Doxygen not found. The 'doc' target will not be available.")
+  message(WARNING "Doxygen not found. The 'doc' target will not be available.")
 endif()
