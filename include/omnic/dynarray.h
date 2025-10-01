@@ -11,6 +11,17 @@
 
 /* -------------------------------------------------------------------------- */
 
+#ifndef OMNIC_DISABLE_CONDENSED
+#define dalen oc_da_len
+#define dacap oc_da_cap
+#define dapush oc_da_push
+#define dapop oc_da_pop
+#define dalast oc_da_last
+#define dafree oc_da_free
+#endif
+
+/* -------------------------------------------------------------------------- */
+
 /**
  * @file dynarray.h
  * @brief A generic, type-safe, stb-style
