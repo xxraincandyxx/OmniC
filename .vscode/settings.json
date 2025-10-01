@@ -67,6 +67,13 @@
 
     // OmniC Project Specifications
     "OmniC",
+    // -- Dynarray --
+    "dalen",
+    "dacap",
+    "dapush",
+    "dapop",
+    "dalast",
+    "dafree",
 
     // C/C++ Style
     "CINC",
