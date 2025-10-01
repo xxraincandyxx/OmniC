@@ -50,5 +50,19 @@ if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
     target_compile_options(simple_vector_example PRIVATE -Wall -Wextra -Wpedantic)
 endif()
 
+# --- Define the Macro Vector Example Executable ---
+add_executable(macro_vector_example
+    examples/macro_vector.c
+)
+
+# We still link against "omnic" because the include paths are configured there,
+# and future examples might mix and match different OmniC components.
+target_link_libraries(macro_vector_example PRIVATE omnic)
+
+# Optional: Add compiler warnings
+if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
+    target_compile_options(macro_vector_example PRIVATE -Wall -Wextra -Wpedantic)
+endif()
+
 # Print a message after configuration is done.
 message(STATUS "OmniC project configured. Build with 'make' or your chosen generator.")

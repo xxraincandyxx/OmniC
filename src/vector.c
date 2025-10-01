@@ -16,6 +16,8 @@ struct oc_vector {
   size_t capacity;      // Number of elements the vector can hold
 };
 
+/* -------------------------------------------------------------------------- */
+
 oc_vector_t* oc_vector_create(size_t element_size) {
   if (element_size == 0) {
     return NULL;
@@ -70,7 +72,7 @@ oc_error_code_t oc_vector_push_back(oc_vector_t* vec, const void* element) {
   // Resize if necessary
   if (vec->size >= vec->capacity) {
     size_t new_capacity =
-        vec->capacity == 0 ? OC_VECTOR_INITIAL_CAPACITY : vec->capacity * 2;
+        vec->capacity == 0 ? OC_VECTOR_INITIAL_CAPACITY : vec->capacity << 1;
     oc_error_code_t err = oc_vector_resize(vec, new_capacity);
     if (err != OC_SUCCESS) {
       return err;
