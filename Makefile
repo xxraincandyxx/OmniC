@@ -1,14 +1,14 @@
 # Makefile
 
-.PHONY: style tidy check-style test clean gen-docs
-
 # Format all Python files recursively
 style:
 	@echo "Formatting C++ files with clang-format..."
 	@find src/. \( -name "*.c" -o -name "*.cc" -o -name "*.cpp" \
 		-o -name "*.h" -o -name "*.hpp" \) -exec clang-format -i -style=file {} +
-# 	@find tests/. \( -name "*.c" -o -name "*.cc" -o -name "*.cpp" \
-# 		-o -name "*.h" -o -name "*.hpp" \) -exec clang-format -i -style=file {} +
+	@find include/. \( -name "*.c" -o -name "*.cc" -o -name "*.cpp" \
+		-o -name "*.h" -o -name "*.hpp" \) -exec clang-format -i -style=file {} +
+	@find examples/. \( -name "*.c" -o -name "*.cc" -o -name "*.cpp" \
+		-o -name "*.h" -o -name "*.hpp" \) -exec clang-format -i -style=file {} +
 	@echo "C++ formatting complete."
 
 # Bugged: Clang-tidy currently not runnable
@@ -58,3 +58,5 @@ clean:
 	@find . -name 'workflow' -delete
 
 	@echo "Clean complete!"
+
+.PHONY: style tidy check-style clean
