@@ -101,17 +101,17 @@ static inline int _oc_vec_grow(void** v, size_t new_cap, size_t elem_size) {
  *          as the vector's memory block may be moved.
  * @param val The value to push (not a pointer to it).
  */
-#define oc_vec_push(v, val)                                               \
-  do {                                                                    \
-    size_t cap = oc_vec_cap(v);                                           \
-    size_t len = oc_vec_len(v);                                           \
-    if (cap <= len) {                                                     \
-      size_t new_cap = (cap == 0) ? OC_VECTOR_INITIAL_CAPACITY : cap * 2; \
-      int err = _oc_vec_grow((void**)&(v), new_cap, sizeof(*(v)));        \
-      assert(err == 0 && "Failed to grow vector");                        \
-    }                                                                     \
-    (v)[len] = (val);                                                     \
-    _oc_vec_header(v)->length++;                                          \
+#define oc_vec_push(v, val)                                                \
+  do {                                                                     \
+    size_t cap = oc_vec_cap(v);                                            \
+    size_t len = oc_vec_len(v);                                            \
+    if (cap <= len) {                                                      \
+      size_t new_cap = (cap == 0) ? OC_VECTOR_INITIAL_CAPACITY : cap << 1; \
+      int err = _oc_vec_grow((void**)&(v), new_cap, sizeof(*(v)));         \
+      assert(err == 0 && "Failed to grow vector");                         \
+    }                                                                      \
+    (v)[len] = (val);                                                      \
+    _oc_vec_header(v)->length++;                                           \
   } while (0)
 
 /**
