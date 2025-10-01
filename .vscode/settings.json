@@ -65,6 +65,9 @@
     "levelname",
     "pyproject",
 
+    // OmniC Project Specifications
+    "OmniC",
+
     // C/C++ Style
     "CINC",
     "CSRC",
