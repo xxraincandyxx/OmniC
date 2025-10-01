@@ -6,6 +6,8 @@
 #include <stdbool.h>  // For bool
 #include <stddef.h>   // For size_t
 
+/* -------------------------------------------------------------------------- */
+
 /**
  * @file common.h
  * @brief Common definitions, error codes, and types for the OmniC library.

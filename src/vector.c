@@ -7,6 +7,8 @@
 
 #define OC_VECTOR_INITIAL_CAPACITY 8
 
+/* -------------------------------------------------------------------------- */
+
 // --- Struct Definition ---
 // This is the actual implementation, hidden from the user.
 struct oc_vector {

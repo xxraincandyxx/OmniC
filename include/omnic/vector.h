@@ -5,6 +5,8 @@
 
 #include <omnic/common.h>
 
+/* -------------------------------------------------------------------------- */
+
 /**
  * @file vector.h
  * @brief A generic, dynamic array (vector) implementation.
@@ -17,6 +19,8 @@
 // The user knows this type exists, but not what's inside it.
 // This is the core of C-style encapsulation.
 typedef struct oc_vector oc_vector_t;
+
+/* -------------------------------------------------------------------------- */
 
 /**
  * @brief Creates a new vector.

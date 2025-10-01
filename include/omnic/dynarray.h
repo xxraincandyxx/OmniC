@@ -1,14 +1,16 @@
 // -*- mode: C; indent-tabs-mode: nil; c-basic-offset: 2; tab-width: 2; -*-
 
-#ifndef OMNIC_DS_VECTOR_H
-#define OMNIC_DS_VECTOR_H
+#ifndef OMNIC_DYNARRAY_H_
+#define OMNIC_DYNARRAY_H_
 
 #include <assert.h>  // For internal sanity checks
 #include <stddef.h>  // For size_t
 #include <stdlib.h>  // For realloc, free
 
+/* -------------------------------------------------------------------------- */
+
 /**
- * @file ds_vector.h
+ * @file dynarray.h
  * @brief A generic, type-safe, stb-style dynamic array (vector) implementation.
  *
  * This implementation uses macros and the "fat pointer" trick to provide a
@@ -133,4 +135,4 @@ static inline int _oc_vec_grow(void** v, size_t new_cap, size_t elem_size) {
  */
 #define oc_vec_last(v) (assert(oc_vec_len(v) > 0), (v)[oc_vec_len(v) - 1])
 
-#endif  // OMNIC_DS_VECTOR_H
+#endif  // OMNIC_DYNARRAY_H_

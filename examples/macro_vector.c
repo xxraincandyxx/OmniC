@@ -1,6 +1,6 @@
 // -*- mode: C; indent-tabs-mode: nil; c-basic-offset: 2; tab-width: 2; -*-
 
-#include <omnic/ds_vector.h>
+#include <omnic/dynarray.h>
 #include <stdio.h>
 
 typedef struct {
