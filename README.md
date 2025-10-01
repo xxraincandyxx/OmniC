@@ -1,2 +1,2 @@
 # OmniC
-Hyper Clib, featuring powerful C tools.
+Self-constrained C-lib, featuring powerful hyper C utilities.
