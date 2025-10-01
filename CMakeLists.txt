@@ -22,7 +22,6 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 # add_library(omnic STATIC ${omnic_SOURCES})
 add_library(omnic STATIC
     src/vector.c
-    # Add other .c files here as you create them, e.g., src/string.c
 )
 
 # Tell CMake that the "omnic" target needs to look for headers in the "include" directory.
@@ -35,7 +34,7 @@ target_include_directories(omnic PUBLIC
 # --- Define the Example Executable ---
 # Add the example program as an executable target.
 add_executable(simple_vector_example
-    examples/simple_vector.c
+    examples/vector.c
 )
 
 # Link the example program against our omnic library.
@@ -66,3 +65,22 @@ endif()
 
 # Print a message after configuration is done.
 message(STATUS "OmniC project configured. Build with 'make' or your chosen generator.")
+
+# --- Doxygen Documentation Target ---
+
+# Find the Doxygen executable and enable the CMake module.
+find_package(Doxygen)
+
+if(DOXYGEN_FOUND)
+    # Define a custom target named "doc" to generate the documentation.
+    # It will run the 'doxygen' command using the Doxyfile in the project's root.
+    add_custom_target(doc
+        COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_SOURCE_DIR}/Doxyfile
+        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+        COMMENT "Generating API documentation with Doxygen..."
+        VERBATIM
+    )
+    message(STATUS "Doxygen found. You can build the 'doc' target to generate documentation.")
+else()
+    message(WARNING "Doxygen not found. The 'doc' target will not be available.")
+endif()
