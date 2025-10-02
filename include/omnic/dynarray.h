@@ -3,22 +3,12 @@
 #ifndef OMNIC_DYNARRAY_H_
 #define OMNIC_DYNARRAY_H_
 
-#include <assert.h>  // For internal sanity checks
-#include <stddef.h>  // For size_t
-#include <stdlib.h>  // For realloc, free
-#include <string.h>  // For memcpy in complex implementations
-                     // (not used here, but good practice)
-
-/* -------------------------------------------------------------------------- */
-
-#ifndef OMNIC_DISABLE_CONDENSED
-#define dalen oc_da_len
-#define dacap oc_da_cap
-#define dapush oc_da_push
-#define dapop oc_da_pop
-#define dalast oc_da_last
-#define dafree oc_da_free
-#endif
+#include <assert.h>   // For internal sanity checks
+#include <stdbool.h>  // For boolean values
+#include <stddef.h>   // For size_t
+#include <stdlib.h>   // For realloc, free
+#include <string.h>   // For memcpy in complex implementations
+                      // (not used here, but good practice)
 
 /* -------------------------------------------------------------------------- */
 
@@ -35,15 +25,31 @@
  * oc_da_push(my_da, 10);
  * oc_da_push(my_da, 20);
  * for (size_t i = 0; i < oc_da_len(my_da); ++i) {
- * printf("%d\n", my_da[i]);
+ *   printf("%d\n", my_da[i]);
  * }
  * oc_da_free(my_da);
  */
+
+/* -------------------------------------------------------------------------- */
 
 // --- Internal Implementation Details ---
 // The user should not interact with these directly.
 
 #define OC_DYNARRAY_INITIAL_CAPACITY 8
+
+// clang-format off
+#ifndef OMNIC_DISABLE_CONDENSED
+#define dalen    oc_da_len
+#define dacap    oc_da_cap
+#define daempty  oc_da_empty
+#define dapush   oc_da_push
+#define dapop    oc_da_pop
+#define dalast   oc_da_last
+#define dafree   oc_da_free
+#endif
+// clang-format on
+
+/* -------------------------------------------------------------------------- */
 
 // The metadata header stored *before* the user's data pointer.
 typedef struct {
@@ -54,6 +60,8 @@ typedef struct {
 // Macro to get the header from the user's dynarray pointer.
 #define _oc_da_header(da) \
   ((oc_da_header_t*)((char*)(da) - sizeof(oc_da_header_t)))
+
+/* -------------------------------------------------------------------------- */
 
 // Internal function to handle the growth logic.
 // Takes a void** so it can modify the user's original pointer variable.
@@ -83,6 +91,8 @@ static inline int _oc_da_grow(void** da, size_t new_cap, size_t elem_size) {
   return 0;
 }
 
+/* -------------------------------------------------------------------------- */
+
 // --- Public API Macros ---
 
 /**
@@ -98,6 +108,15 @@ static inline int _oc_da_grow(void** da, size_t new_cap, size_t elem_size) {
  * @return The capacity.
  */
 #define oc_da_cap(da) ((da) ? _oc_da_header(da)->capacity : 0)
+
+/**
+ * @brief Checks the emptiness of provided dynarray
+ * @param da The dynarray. Can be NULL (returns true).
+ * @return Returns a boolean value which determines
+ * the emptiness of provided dynarray.
+ */
+#define oc_da_empty(da) \
+  ((da) ? (_oc_da_header(da)->length == 0 ? true : false) : true)
 
 /**
  * @brief Frees all memory used by the dynarray.
@@ -124,7 +143,7 @@ static inline int _oc_da_grow(void** da, size_t new_cap, size_t elem_size) {
     if (cap <= len) {                                                        \
       size_t new_cap = (cap == 0) ? OC_DYNARRAY_INITIAL_CAPACITY : cap << 1; \
       int err = _oc_da_grow((void**)&(da), new_cap, sizeof(*(da)));          \
-      assert(err == 0 && "Failed to grow dynarray");                         \
+      assert(err == 0 && "[Omnic][Dynarray] Failed to grow dynarray");       \
     }                                                                        \
     (da)[len] = (val);                                                       \
     _oc_da_header(da)->length++;                                             \
@@ -135,10 +154,10 @@ static inline int _oc_da_grow(void** da, size_t new_cap, size_t elem_size) {
  * Does not shrink the capacity. Asserts if the dynarray is empty.
  * @param da The dynarray.
  */
-#define oc_da_pop(da)                                       \
-  do {                                                      \
-    assert(oc_da_len(da) > 0 && "Pop from empty dynarray"); \
-    _oc_da_header(da)->length--;                            \
+#define oc_da_pop(da)                                                         \
+  do {                                                                        \
+    assert(oc_da_len(da) > 0 && "[Omnic][Dynarray] Pop from empty dynarray"); \
+    _oc_da_header(da)->length--;                                              \
   } while (0)
 
 /**
