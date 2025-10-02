@@ -22,6 +22,9 @@ a.out
 # Caches
 .cache
 
+# References
+refs/
+
 # Build directories
 build/
 bin/
