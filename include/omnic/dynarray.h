@@ -6,9 +6,9 @@
 #include <assert.h>   // For internal sanity checks
 #include <stdbool.h>  // For boolean values
 #include <stddef.h>   // For size_t
+#include <stdio.h>    // For fprintf in oc_da_dump
 #include <stdlib.h>   // For realloc, free
-#include <string.h>   // For memcpy in complex implementations
-                      // (not used here, but good practice)
+#include <string.h>   // For memmove
 
 /* -------------------------------------------------------------------------- */
 
@@ -36,16 +36,22 @@
 // The user should not interact with these directly.
 
 #define OC_DYNARRAY_INITIAL_CAPACITY 8
+#define OC_DYNARRAY_INDEX_NOT_FOUND ((size_t)-1)  // Maximum value of size_t
 
 // clang-format off
 #ifndef OMNIC_DISABLE_CONDENSED
-#define dalen    oc_da_len
-#define dacap    oc_da_cap
-#define daempty  oc_da_empty
-#define dapush   oc_da_push
-#define dapop    oc_da_pop
-#define dalast   oc_da_last
-#define dafree   oc_da_free
+#define dalen     oc_da_len
+#define dacap     oc_da_cap
+#define daempty   oc_da_empty
+#define dapush    oc_da_push
+#define dapop     oc_da_pop
+#define dalast    oc_da_last
+#define dafree    oc_da_free
+#define dainsert  oc_da_insert
+#define daemplace oc_da_emplace // Alias for insert
+#define daerase   oc_da_erase
+#define dafind    oc_da_find
+#define dadump    oc_da_dump
 #endif
 // clang-format on
 
@@ -115,8 +121,9 @@ static inline int _oc_da_grow(void** da, size_t new_cap, size_t elem_size) {
  * @return Returns a boolean value which determines
  * the emptiness of provided dynarray.
  */
-#define oc_da_empty(da) \
-  ((da) ? (_oc_da_header(da)->length == 0 ? true : false) : true)
+#define oc_da_empty(da) (oc_da_len(da) == 0)
+
+/* -------------------------------------------------------------------------- */
 
 /**
  * @brief Frees all memory used by the dynarray.
@@ -128,7 +135,7 @@ static inline int _oc_da_grow(void** da, size_t new_cap, size_t elem_size) {
       free(_oc_da_header(da)); \
       (da) = NULL;             \
     }                          \
-  } while (0)
+  } while ((void)0, 0)
 
 /**
  * @brief Appends an element to the end of the dynarray.
@@ -143,11 +150,11 @@ static inline int _oc_da_grow(void** da, size_t new_cap, size_t elem_size) {
     if (cap <= len) {                                                        \
       size_t new_cap = (cap == 0) ? OC_DYNARRAY_INITIAL_CAPACITY : cap << 1; \
       int err = _oc_da_grow((void**)&(da), new_cap, sizeof(*(da)));          \
-      assert(err == 0 && "[Omnic][Dynarray] Failed to grow dynarray");       \
+      assert(err == 0 && "[OmniC][Dynarray] Failed to grow dynarray");       \
     }                                                                        \
     (da)[len] = (val);                                                       \
     _oc_da_header(da)->length++;                                             \
-  } while (0)
+  } while ((void)0, 0)
 
 /**
  * @brief Removes and returns the last element of the dynarray.
@@ -156,9 +163,11 @@ static inline int _oc_da_grow(void** da, size_t new_cap, size_t elem_size) {
  */
 #define oc_da_pop(da)                                                         \
   do {                                                                        \
-    assert(oc_da_len(da) > 0 && "[Omnic][Dynarray] Pop from empty dynarray"); \
+    assert(oc_da_len(da) > 0 && "[OmniC][Dynarray] Pop from empty dynarray"); \
     _oc_da_header(da)->length--;                                              \
-  } while (0)
+  } while ((void)0, 0)
+
+/* -------------------------------------------------------------------------- */
 
 /**
  * @brief Returns a reference to the last element in the dynarray.
@@ -167,5 +176,87 @@ static inline int _oc_da_grow(void** da, size_t new_cap, size_t elem_size) {
  * @return A reference to the last element.
  */
 #define oc_da_last(da) (assert(oc_da_len(da) > 0), (da)[oc_da_len(da) - 1])
+
+/**
+ * @brief Inserts an element at a specific index, shifting subsequent elements.
+ * @param da The dynarray. Must be a re-assignable variable.
+ * @param index The index at which to insert the element. Asserts if out of
+ * bounds (must be <= length).
+ * @param val The value to insert.
+ */
+#define oc_da_insert(da, index, val)                                          \
+  do {                                                                        \
+    size_t len = oc_da_len(da);                                               \
+    assert((index) <= len && "[OmniC][Dynarray] Insert index out of bounds"); \
+    oc_da_push((da), (val)); /* Grow if needed and temporarily place val */   \
+    if ((index) < len) {                                                      \
+      memmove(&(da)[(index) + 1], &(da)[(index)],                             \
+              (len - (index)) * sizeof(*(da)));                               \
+      (da)[(index)] = (val);                                                  \
+    }                                                                         \
+  } while ((void)0, 0)
+
+/**
+ * @brief Alias for oc_da_insert, for users familiar with C++ STL 'emplace'.
+ */
+#define oc_da_emplace(da, index, val) oc_da_insert(da, index, val)
+
+/**
+ * @brief Erases an element at a specific index, shifting subsequent elements.
+ * @param da The dynarray.
+ * @param index The index of the element to erase. Asserts if out of bounds.
+ */
+#define oc_da_erase(da, index)                                              \
+  do {                                                                      \
+    size_t len = oc_da_len(da);                                             \
+    assert((index) < len && "[OmniC][Dynarray] Erase index out of bounds"); \
+    if ((index) < len - 1) {                                                \
+      memmove(&(da)[(index)], &(da)[(index) + 1],                           \
+              (len - 1 - (index)) * sizeof(*(da)));                         \
+    }                                                                       \
+    _oc_da_header(da)->length--;                                            \
+  } while ((void)0, 0)
+
+/**
+ * @brief Finds the first occurrence of a value in the dynarray.
+ * This macro uses the `==` operator for comparison. For complex types
+ * (like structs), you may need to write a custom loop.
+ * @param da The dynarray.
+ * @param val The value to find.
+ * @return The index of the first matching element, or
+ * OC_DYNARRAY_INDEX_NOT_FOUND if not found.
+ */
+#define oc_da_find(da, val)                                 \
+  ({                                                        \
+    size_t _oc_da_find_index = OC_DYNARRAY_INDEX_NOT_FOUND; \
+    for (size_t i = 0; i < oc_da_len(da); ++i) {            \
+      if ((da)[i] == (val)) {                               \
+        _oc_da_find_index = i;                              \
+        break;                                              \
+      }                                                     \
+    }                                                       \
+    _oc_da_find_index;                                      \
+  })
+
+/**
+ * @brief Prints the contents of the dynarray to a stream (C-style
+ * `operator<<`).
+ * @param da The dynarray.
+ * @param fmt A printf-style format specifier for one element (e.g., "%d",
+ * "%.2f").
+ * @param stream The output stream (e.g., stdout, stderr).
+ */
+#define oc_da_dump(da, fmt, stream)      \
+  do {                                   \
+    fprintf((stream), "[");              \
+    size_t len = oc_da_len(da);          \
+    for (size_t i = 0; i < len; ++i) {   \
+      fprintf((stream), (fmt), (da)[i]); \
+      if (i < len - 1) {                 \
+        fprintf((stream), ", ");         \
+      }                                  \
+    }                                    \
+    fprintf((stream), "]\n");            \
+  } while ((void)0, 0)
 
 #endif  // OMNIC_DYNARRAY_H_
