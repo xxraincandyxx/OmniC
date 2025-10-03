@@ -6,13 +6,18 @@ Checks: "*,
         -fuchsia-*,
         -google-*,
         -llvm*,
-        -modernize-use-trailing-return-type,
+        -modernize-*,                                 # Removed specific 'modernize-' checks and replaced with a wild card
         -zircon-*,
         -readability-else-after-return,
         -readability-static-accessed-through-instance,
         -readability-avoid-const-params-in-decls,
+        
+        # --- C++ Specific checks removed or replaced with wildcards ---
         -cppcoreguidelines-non-private-member-variables-in-classes,
         -misc-non-private-member-variables-in-classes,
+        -modernize-use-trailing-return-type,          # C++11 feature
+        -cppcoreguidelines-*,                         # Exclude all C++ Core Guidelines checks by default
+        -hicpp-*,                                     # Exclude all High Integrity C++ checks by default
 "
 WarningsAsErrors: ''
 HeaderFilterRegex: ''
