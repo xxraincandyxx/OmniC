@@ -17,7 +17,7 @@ flowchart LR
 
 %% 3. SUBGRAPHS FOR LOGICAL GROUPING
     subgraph S_META [Metadata & Status]
-        B0{Query Size/Capacity}:::metadata
+        B0{Capacity}:::metadata
         C_LEN("oc_da_len()"):::access
         C_CAP("oc_da_cap()"):::access
         C_EMPTY("oc_da_empty()"):::access
@@ -25,7 +25,7 @@ flowchart LR
     end
 
     subgraph S_MOD [Modifiers & Mutation]
-        B1{Mutators}:::modifier
+        B1{Modifiers}:::modifier
         C_PUSH("oc_da_push()"):::modifier
         C_POP("oc_da_pop()"):::modifier
         C_EMPLACE("oc_da_emplace()"):::modifier
@@ -54,10 +54,4 @@ flowchart LR
     A --> S_META
     A --> S_MOD
     A --> S_ACCESS
-
-%% 5. OPTIONAL: Apply classes to nodes/subgraphs
-    class A mainNode
-    class S_META metadata
-    class S_MOD modifier
-    class S_ACCESS access
 ```
