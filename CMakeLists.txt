@@ -31,40 +31,45 @@ target_include_directories(omnic PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
+# ---------------------------------------------------------------------------- #
+
 # --- Define the Example Executable ---
 # Add the example program as an executable target.
-add_executable(simple_vector_example
-  examples/vector.c
+add_executable(test_vector
+  examples/test_vector.c
 )
 
 # Link the example program against our omnic library.
 # This automatically handles both the linking step (-lomnic) and adds the necessary
 # include path (-Iinclude) because we marked it as PUBLIC above.
-target_link_libraries(simple_vector_example PRIVATE omnic)
+target_link_libraries(test_vector PRIVATE omnic)
 
-# --- Optional: Compiler Warnings ---
-# It's good practice to enable warnings. This is similar to -Wall -Wextra in your Makefile.
+# --- Compiler Warnings ---
 if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
   target_compile_options(omnic PRIVATE -Wall -Wextra -Wpedantic)
-  target_compile_options(simple_vector_example PRIVATE -Wall -Wextra -Wpedantic)
+  target_compile_options(test_vector PRIVATE -Wall -Wextra -Wpedantic)
 endif()
 
-# --- Define the Macro Vector Example Executable ---
-add_executable(macro_vector_example
-  examples/macro_vector.c
+# ---------------------------------------------------------------------------- #
+
+# --- Define the Dynarray Example Executable ---
+add_executable(test_dynarray
+  examples/test_dynarray.c
 )
 
 # We still link against "omnic" because the include paths are configured there,
 # and future examples might mix and match different OmniC components.
-target_link_libraries(macro_vector_example PRIVATE omnic)
+target_link_libraries(test_dynarray PRIVATE omnic)
 
-# Optional: Add compiler warnings
+# Add compiler warnings
 if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
-  target_compile_options(macro_vector_example PRIVATE -Wall -Wextra -Wpedantic)
+  target_compile_options(test_dynarray PRIVATE -Wall -Wextra -Wpedantic)
 endif()
 
 # Print a message after configuration is done.
 message(STATUS "OmniC project configured. Build with 'make' or your chosen generator.")
+
+# ---------------------------------------------------------------------------- #
 
 # --- Doxygen Documentation Target ---
 
