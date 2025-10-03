@@ -6,6 +6,8 @@
   "editor.insertSpaces": true,
   "editor.detectIndentation": false, // Prevents VS Code from auto-detecting
   "editor.formatOnSave": true,
+  // force markdown preview in light mode
+  "markdown-preview-github-styles.colorTheme": "light",
   // html style
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
