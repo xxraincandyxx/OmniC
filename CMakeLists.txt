@@ -39,9 +39,6 @@ add_executable(test_vector
   examples/test_vector.c
 )
 
-# Link the example program against our omnic library.
-# This automatically handles both the linking step (-lomnic) and adds the necessary
-# include path (-Iinclude) because we marked it as PUBLIC above.
 target_link_libraries(test_vector PRIVATE omnic)
 
 # --- Compiler Warnings ---
@@ -57,8 +54,6 @@ add_executable(test_dynarray
   examples/test_dynarray.c
 )
 
-# We still link against "omnic" because the include paths are configured there,
-# and future examples might mix and match different OmniC components.
 target_link_libraries(test_dynarray PRIVATE omnic)
 
 # Add compiler warnings
@@ -66,10 +61,24 @@ if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
   target_compile_options(test_dynarray PRIVATE -Wall -Wextra -Wpedantic)
 endif()
 
-# Print a message after configuration is done.
-message(STATUS "OmniC project configured. Build with 'make' or your chosen generator.")
+# ---------------------------------------------------------------------------- #
+
+# --- Define the List Example Executable ---
+add_executable(test_list
+  examples/test_list.c
+)
+
+target_link_libraries(test_list PRIVATE omnic)
+
+# Add compiler warnings
+if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
+  target_compile_options(test_list PRIVATE -Wall -Wextra -Wpedantic)
+endif()
 
 # ---------------------------------------------------------------------------- #
+
+# Print a message after configuration is done.
+message(STATUS "OmniC project configured. Build with 'make' or your chosen generator.")
 
 # --- Doxygen Documentation Target ---
 
