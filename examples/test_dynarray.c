@@ -4,8 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <omnic/macros.h>
 #include <omnic/dynarray.h>
+#include <omnic/macros.h>
 
 // --- Test Framework Setup ---
 
