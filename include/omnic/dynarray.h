@@ -40,16 +40,20 @@
 
 // clang-format off
 #ifndef OMNIC_DISABLE_CONDENSED
+#define dafree    oc_da_free
+// > Capacity
 #define dalen     oc_da_len
 #define dacap     oc_da_cap
 #define daempty   oc_da_empty
+// > Modifiers
 #define dapush    oc_da_push
 #define dapop     oc_da_pop
-#define dalast    oc_da_last
-#define dafree    oc_da_free
 #define dainsert  oc_da_insert
 #define daemplace oc_da_emplace // Alias for insert
 #define daerase   oc_da_erase
+// > Element Access
+#define daat      oc_da_at      // TODO
+#define dalast    oc_da_last
 #define dafind    oc_da_find
 #define dadump    oc_da_dump
 #endif
