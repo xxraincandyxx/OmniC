@@ -27,8 +27,11 @@ void test_initialization_and_free() {
   ASSERT(da == NULL, "Array should be NULL after freeing a NULL array");
 
   dapush(da, 100);
+  dadump(da, "%d", stdout);
+
   dafree(da);
   ASSERT(da == NULL, "Array pointer should be set to NULL after free");
+  printf("Array successfully freed.\n\n");
 }
 
 void test_push_pop_last() {
@@ -43,12 +46,16 @@ void test_push_pop_last() {
   ASSERT_EQ(da[0], 10, "%d", "First element should be 10");
   ASSERT(!daempty(da), "Array should not be empty");
 
+  dadump(da, "%d", stdout);
+
   // Push more elements
   dapush(da, 20);
   dapush(da, 30);
   ASSERT_EQ(dalen(da), (size_t)3, "%zu", "Length should be 3");
   ASSERT_EQ(da[1], 20, "%d", "Second element should be 20");
   ASSERT_EQ(da[2], 30, "%d", "Third element should be 30");
+
+  dadump(da, "%d", stdout);
 
   // Test `dalast`
   ASSERT_EQ(dalast(da), 30, "%d", "Last element should be 30");
@@ -58,12 +65,16 @@ void test_push_pop_last() {
   ASSERT_EQ(dalen(da), (size_t)2, "%zu", "Length should be 2 after pop");
   ASSERT_EQ(dalast(da), 20, "%d", "New last element should be 20");
 
+  dadump(da, "%d", stdout);
+
   // Pop all elements
   dapop(da);
   dapop(da);
   ASSERT_EQ(dalen(da), (size_t)0, "%zu",
             "Length should be 0 after popping all");
   ASSERT(daempty(da), "Array should be empty after popping all");
+
+  dadump(da, "%d", stdout);
 
   // Test resize logic
   for (int i = 0; i < OC_DYNARRAY_INITIAL_CAPACITY + 1; ++i) {
@@ -129,11 +140,17 @@ void test_find() {
   dapush(da, 30);
   dapush(da, 20);  // Add a duplicate
 
+  dadump(da, "%d", stdout);
+
+  // Push more elements
+
   ASSERT_EQ(dafind(da, 30), (size_t)2, "%zu", "Should find 30 at index 2");
   ASSERT_EQ(dafind(da, 20), (size_t)1, "%zu",
             "Should find first occurrence of 20 at index 1");
   ASSERT_EQ(dafind(da, 99), OC_DYNARRAY_INDEX_NOT_FOUND, "%zu",
             "Should not find non-existent value 99");
+
+  printf("--- found 20 at [%d]\n\n", dafind(da, 20));
 
   // Test on empty array
   dafree(da);

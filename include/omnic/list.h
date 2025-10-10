@@ -94,6 +94,10 @@ static inline void _oc_list_unlink_node(oc_list_node_t* node) {
   }
 }
 
+// Internal fuction to swap two providing nodes form the list.
+static inline void _oc_list_swap_node(oc_list_node_t* lhs_node,
+                                      oc_list_node_t* rhs_node) {}
+
 /* -------------------------------------------------------------------------- */
 
 // --- Public API Macros ---
@@ -239,6 +243,14 @@ static inline void _oc_list_unlink_node(oc_list_node_t* node) {
     }                                           \
     oc_list_init(list);                         \
   } while (0)
+
+/* --- Invert --- */
+/**
+ * @brief Invert all elements in the list, under time complexity O(n).
+ * @param list Pointer to the oc_list_t object.
+ * @param type The type of your structure.
+ * @param member The name of the oc_list_node_t member in your struct.
+ */
 
 /* --- Dump/Print --- */
 
