@@ -4,7 +4,7 @@
 %%{init: {'flowchart': {'htmlLabels': false}}}%%
 flowchart LR
 
-%% 1. STYLES DEFINITION
+%% STYLES DEFINITION
   classDef mainNode fill:#66BB6A,stroke:#388E3C,stroke-width:2px,color:#FFFFFF,rx:8px,ry:8px,font-weight:bold
   classDef metadata fill:#E57373,stroke:#D32F2F,color:#000,rx:5px,ry:5px
   classDef access fill:#4FC3F7,stroke:#0288D1,color:#000,rx:5px,ry:5px
@@ -12,10 +12,10 @@ flowchart LR
   classDef utility fill:#9575CD,stroke:#5E35B1,color:#FFFFFF
   classDef action fill:#00ACC1,stroke:#00838F,color:#FFFFFF
 
-%% 2. MAIN NODE
+%% MAIN NODE
   A[(OC List)]:::mainNode
 
-%% 3. SUBGRAPHS FOR LOGICAL GROUPING
+%% SUBGRAPHS FOR LOGICAL GROUPING
   subgraph S_META [User Defined Struct: Metadata & Status]
     B0{Customized Struct}:::metadata
     C_ID("ID"):::access
@@ -37,31 +37,33 @@ flowchart LR
 
   subgraph S_MOD [Modifiers & Mutation]
     B1{Modifiers}:::modifier
-    C_PUSH("oc_da_push()"):::modifier
-    C_POP("oc_da_pop()"):::modifier
-    C_EMPLACE("oc_da_emplace()"):::modifier
-    C_ERASE("oc_da_erase()"):::modifier
-    D_GROW(["oc_da_grow()"]):::action
+    C_FRONT("Emplace Front"):::modifier
+    C_BACK("Emplace Back"):::modifier
+    C_ERASE("Erase List"):::utility
+    C_FREE("Free List"):::utility
+    C_ENTRY(["Entry"]):::action
 
-    B1 --> C_PUSH & C_POP & C_EMPLACE & C_ERASE
-    
-    C_PUSH --> D_GROW
-    C_EMPLACE --> C_PUSH
-    C_EMPLACE --> D_GROW
+    B1 --> C_FRONT & C_BACK & C_ERASE & C_FREE
+
+    C_ERASE --> C_ENTRY
+    C_FREE --> C_ENTRY
   end
 
   subgraph S_ACCESS [Element Access & Utility]
     B2{Element Access}:::access
-    C_OP_BRACKET("operator[]"):::access
-    C_AT("oc_da_at()"):::access
-    C_LAST("oc_da_last()"):::access
-    C_FIND("oc_da_find()"):::access
-    C_DUMP("oc_da_dump()"):::utility
+    C_ITER("Iteration"):::access
+    C_SAFE_ITER("Safe Iteration"):::access
+    C_DUMP("Dumping"):::utility
 
-    B2 --> C_OP_BRACKET & C_AT & C_LAST & C_FIND & C_DUMP
+    C_ENTRY_(["Entry"]):::action
+
+    B2 --> C_ITER & C_SAFE_ITER & C_DUMP
+    C_ITER --> C_ENTRY_
+    C_SAFE_ITER --> C_ENTRY_
+    C_DUMP --> C_ENTRY_
   end
 
-%% 4. CONNECTIONS TO MAIN NODE
+%% CONNECTIONS TO MAIN NODE
   A --> S_META
   A --> S_MOD
   A --> S_ACCESS
