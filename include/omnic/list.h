@@ -95,6 +95,7 @@ static inline void _oc_list_unlink_node(oc_list_node_t* node) {
 }
 
 // Internal fuction to swap two providing nodes form the list.
+// TODO: Complete this macro function.
 static inline void _oc_list_swap_node(oc_list_node_t* lhs_node,
                                       oc_list_node_t* rhs_node) {}
 
@@ -205,6 +206,26 @@ static inline void _oc_list_swap_node(oc_list_node_t* lhs_node,
        _node && (_next_node = _node->next,                             \
                 (cursor) = _oc_list_entry(_node, type, member), 1);    \
        _node = _next_node)
+
+/* --- Invert --- */
+
+// Designed for Singly Linked List (SLL),
+// while also compatible with Doubly Linked List (DLL).
+#define oc_list_invert(list, type, member) \
+  do {                                     \
+    oc_list_node_t* prev = NULL;           \
+    oc_list_node_t* curr = (list)->head;   \
+    oc_list_node_t* next = NULL;           \
+    (list)->tail = (list)->head;           \
+    while (curr) {                         \
+      next = curr->next;                   \
+      curr->prev = next;                   \
+      curr->next = prev;                   \
+      prev = curr;                         \
+      curr = next;                         \
+    }                                      \
+    (list)->head = prev;                   \
+  } while (0)
 
 /* --- Erase and Destroy --- */
 

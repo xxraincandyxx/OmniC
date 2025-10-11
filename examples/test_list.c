@@ -41,6 +41,14 @@ int main(void) {
   oc_list_dump(&my_list, user_data_t, link, print_user_data, stdout);
   printf("Current size: %zu\n\n", oc_list_size(&my_list));
 
+  // Invert the list.
+  printf("Inverting list...\n");
+  oc_list_invert(&my_list, user_data_t, link);
+
+  printf("List after inversion:\n");
+  oc_list_dump(&my_list, user_data_t, link, print_user_data, stdout);
+  printf("Current size: %zu\n\n", oc_list_size(&my_list));
+
   // Find an element.
   // This is done by manually iterating with the for_each macro.
   printf("Finding user with ID 101...\n");
