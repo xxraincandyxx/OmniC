@@ -1,5 +1,4 @@
 # --- Project Definition ---
-# Set the minimum required version of CMake and define the project name.
 cmake_minimum_required(VERSION 3.10)
 project(OmniC C)
 
