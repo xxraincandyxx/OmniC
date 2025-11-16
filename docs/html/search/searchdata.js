@@ -1,9 +1,9 @@
 var indexSectionsWithContent =
 {
-  0: "cdlmov",
+  0: "_bcdlmov",
   1: "o",
-  2: "cdlmv",
-  3: "o",
+  2: "bcdlmv",
+  3: "_o",
   4: "o",
   5: "o",
   6: "o",

@@ -1,0 +1,405 @@
+\doxysection{include/omnic/binarytree.h File Reference}
+\hypertarget{binarytree_8h}{}\label{binarytree_8h}\index{include/omnic/binarytree.h@{include/omnic/binarytree.h}}
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+Include dependency graph for binarytree.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=271pt]{binarytree_8h__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structoc__bintree__node}{oc\+\_\+bintree\+\_\+node}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{binarytree_8h_aec235b5e0b0649fad98e0eef9f01288f}\label{binarytree_8h_aec235b5e0b0649fad98e0eef9f01288f} 
+\#define {\bfseries OC\+\_\+\+BINTREE\+\_\+\+PREORDER}~\mbox{\hyperlink{binarytree_8h_ae03742b8ebecae5df809cae2ba14043d}{\+\_\+oc\+\_\+bintree\+\_\+traverse\+\_\+preorder}}
+\item 
+\Hypertarget{binarytree_8h_aeaf11ebda451059638ed23f1dbdc2844}\label{binarytree_8h_aeaf11ebda451059638ed23f1dbdc2844} 
+\#define {\bfseries OC\+\_\+\+BINTREE\+\_\+\+INORDER}~\mbox{\hyperlink{binarytree_8h_ab812fe360d0d7422ee61be9ad17a8627}{\+\_\+oc\+\_\+bintree\+\_\+traverse\+\_\+inorder}}
+\item 
+\Hypertarget{binarytree_8h_a3065ca39c429ba86de3949756fdcafc0}\label{binarytree_8h_a3065ca39c429ba86de3949756fdcafc0} 
+\#define {\bfseries OC\+\_\+\+BINTREE\+\_\+\+POSTORDER}~\mbox{\hyperlink{binarytree_8h_a1cac8742245e1b0af58423178e575dfc}{\+\_\+oc\+\_\+bintree\+\_\+traverse\+\_\+postorder}}
+\item 
+\#define \mbox{\hyperlink{binarytree_8h_a33c0ce73c51bbe5a54f69e346679556c}{oc\+\_\+bintree\+\_\+traverse}}(root,  TRAVERSE\+\_\+\+TYPE,  traverser)
+\item 
+\#define \mbox{\hyperlink{binarytree_8h_a89c9704e5c93db444a6d93c7915b6889}{oc\+\_\+bintree\+\_\+size}}(root)
+\item 
+\#define \mbox{\hyperlink{binarytree_8h_aa00fa1b4b96eef9c162cf63768e17372}{oc\+\_\+bintree\+\_\+leaves}}(root)
+\item 
+\#define \mbox{\hyperlink{binarytree_8h_abdd95b90fffca28102ecb01037f97adc}{oc\+\_\+bintree\+\_\+height}}(root)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}\label{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464} 
+typedef struct \mbox{\hyperlink{structoc__bintree__node}{oc\+\_\+bintree\+\_\+node}} {\bfseries oc\+\_\+bintree\+\_\+node\+\_\+t}
+\item 
+typedef void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{binarytree_8h_a525bb085e4425a866c67e7c6ac163e26}{oc\+\_\+bintree\+\_\+data\+\_\+dtor\+\_\+t}}) (void \texorpdfstring{$\ast$}{*}data)
+\item 
+typedef void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{binarytree_8h_ab81adf1e1d162748b9c58034f17754b3}{oc\+\_\+bintree\+\_\+traverser\+\_\+t}}) (const void \texorpdfstring{$\ast$}{*}data)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\+\_\+bintree\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{binarytree_8h_acba078fac66acb1d9a9c8f998e4d695d}{oc\+\_\+bintree\+\_\+create\+\_\+node}} (void \texorpdfstring{$\ast$}{*}data)
+\item 
+void \mbox{\hyperlink{binarytree_8h_ae2c9eb114e6805845e3d97fb466bfc8a}{oc\+\_\+bintree\+\_\+destroy}} (\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\+\_\+bintree\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*}root, \mbox{\hyperlink{binarytree_8h_a525bb085e4425a866c67e7c6ac163e26}{oc\+\_\+bintree\+\_\+data\+\_\+dtor\+\_\+t}} dtor)
+\item 
+void \mbox{\hyperlink{binarytree_8h_adeda3e19cbd7c80b8cbd294a31d21280}{oc\+\_\+bintree\+\_\+set\+\_\+left}} (\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\+\_\+bintree\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*}parent, \mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\+\_\+bintree\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*}child)
+\item 
+void \mbox{\hyperlink{binarytree_8h_a8a82b3681c272fdf3d3ff6dcd710f341}{oc\+\_\+bintree\+\_\+set\+\_\+right}} (\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\+\_\+bintree\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*}parent, \mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\+\_\+bintree\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*}child)
+\item 
+\Hypertarget{binarytree_8h_ae03742b8ebecae5df809cae2ba14043d}\label{binarytree_8h_ae03742b8ebecae5df809cae2ba14043d} 
+void {\bfseries \+\_\+oc\+\_\+bintree\+\_\+traverse\+\_\+preorder} (\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\+\_\+bintree\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*}node, \mbox{\hyperlink{binarytree_8h_ab81adf1e1d162748b9c58034f17754b3}{oc\+\_\+bintree\+\_\+traverser\+\_\+t}} traverser)
+\item 
+\Hypertarget{binarytree_8h_ab812fe360d0d7422ee61be9ad17a8627}\label{binarytree_8h_ab812fe360d0d7422ee61be9ad17a8627} 
+void {\bfseries \+\_\+oc\+\_\+bintree\+\_\+traverse\+\_\+inorder} (\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\+\_\+bintree\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*}node, \mbox{\hyperlink{binarytree_8h_ab81adf1e1d162748b9c58034f17754b3}{oc\+\_\+bintree\+\_\+traverser\+\_\+t}} traverser)
+\item 
+\Hypertarget{binarytree_8h_a1cac8742245e1b0af58423178e575dfc}\label{binarytree_8h_a1cac8742245e1b0af58423178e575dfc} 
+void {\bfseries \+\_\+oc\+\_\+bintree\+\_\+traverse\+\_\+postorder} (\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\+\_\+bintree\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*}node, \mbox{\hyperlink{binarytree_8h_ab81adf1e1d162748b9c58034f17754b3}{oc\+\_\+bintree\+\_\+traverser\+\_\+t}} traverser)
+\item 
+size\+\_\+t \mbox{\hyperlink{binarytree_8h_a791521c9a330d161b9da1727fad9c102}{\+\_\+oc\+\_\+bintree\+\_\+count\+\_\+nodes}} (\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\+\_\+bintree\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*}node)
+\item 
+size\+\_\+t \mbox{\hyperlink{binarytree_8h_a23a65118bb14f18701d61d581196c385}{\+\_\+oc\+\_\+bintree\+\_\+count\+\_\+leaves}} (\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\+\_\+bintree\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*}node)
+\item 
+size\+\_\+t \mbox{\hyperlink{binarytree_8h_a6f5f68c510f08766db247041b988734a}{\+\_\+oc\+\_\+bintree\+\_\+get\+\_\+height}} (\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\+\_\+bintree\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*}node)
+\item 
+void \mbox{\hyperlink{binarytree_8h_a39cf8cf34dc07eb319198df837fae66f}{oc\+\_\+bintree\+\_\+mirror}} (\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\+\_\+bintree\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*}root)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A generic, macro-\/based non-\/intrusive Binary Tree implementation. 
+
+This implementation uses an opaque node structure and generic functions to handle data of any type (via void pointers).
+
+{\bfseries{USAGE\+:}} // Define a print function for your data type (e.\+g., int) void print\+\_\+int(const void\texorpdfstring{$\ast$}{*} data) \{ printf("{}\%d "{}, {\itshape (const int})data); \}
+
+// Create nodes (assuming data pointers point to heap-\/allocated data) oc\+\_\+bintree\+\_\+node\+\_\+t\texorpdfstring{$\ast$}{*} root = oc\+\_\+bintree\+\_\+create\+\_\+node(malloc(sizeof(int))); {\itshape (int})root-\/\texorpdfstring{$>$}{>}data = 50;
+
+// Traverse the tree \doxylink{binarytree_8h_a33c0ce73c51bbe5a54f69e346679556c}{oc\+\_\+bintree\+\_\+traverse(root, OC\+\_\+\+BINTREE\+\_\+\+INORDER, print\+\_\+int)};
+
+// Clean up (requires separate function to free node data) oc\+\_\+bintree\+\_\+destroy(root, NULL); // Using NULL dtor for simplicity here 
+
+\label{doc-define-members}
+\Hypertarget{binarytree_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{binarytree_8h_abdd95b90fffca28102ecb01037f97adc}\index{binarytree.h@{binarytree.h}!oc\_bintree\_height@{oc\_bintree\_height}}
+\index{oc\_bintree\_height@{oc\_bintree\_height}!binarytree.h@{binarytree.h}}
+\doxysubsubsection{\texorpdfstring{oc\_bintree\_height}{oc\_bintree\_height}}
+{\footnotesize\ttfamily \label{binarytree_8h_abdd95b90fffca28102ecb01037f97adc} 
+\#define oc\+\_\+bintree\+\_\+height(\begin{DoxyParamCaption}\item[{}]{root}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{binarytree_8h_a6f5f68c510f08766db247041b988734a}{\_oc\_bintree\_get\_height}}(root)}
+
+\end{DoxyCode}
+
+
+Calculates the height (max depth) of the tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em root} & The root node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The height. 
+\end{DoxyReturn}
+\Hypertarget{binarytree_8h_aa00fa1b4b96eef9c162cf63768e17372}\index{binarytree.h@{binarytree.h}!oc\_bintree\_leaves@{oc\_bintree\_leaves}}
+\index{oc\_bintree\_leaves@{oc\_bintree\_leaves}!binarytree.h@{binarytree.h}}
+\doxysubsubsection{\texorpdfstring{oc\_bintree\_leaves}{oc\_bintree\_leaves}}
+{\footnotesize\ttfamily \label{binarytree_8h_aa00fa1b4b96eef9c162cf63768e17372} 
+\#define oc\+\_\+bintree\+\_\+leaves(\begin{DoxyParamCaption}\item[{}]{root}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{binarytree_8h_a23a65118bb14f18701d61d581196c385}{\_oc\_bintree\_count\_leaves}}(root)}
+
+\end{DoxyCode}
+
+
+Calculates the total number of leaf nodes in the tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em root} & The root node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of leaves. 
+\end{DoxyReturn}
+\Hypertarget{binarytree_8h_a89c9704e5c93db444a6d93c7915b6889}\index{binarytree.h@{binarytree.h}!oc\_bintree\_size@{oc\_bintree\_size}}
+\index{oc\_bintree\_size@{oc\_bintree\_size}!binarytree.h@{binarytree.h}}
+\doxysubsubsection{\texorpdfstring{oc\_bintree\_size}{oc\_bintree\_size}}
+{\footnotesize\ttfamily \label{binarytree_8h_a89c9704e5c93db444a6d93c7915b6889} 
+\#define oc\+\_\+bintree\+\_\+size(\begin{DoxyParamCaption}\item[{}]{root}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{binarytree_8h_a791521c9a330d161b9da1727fad9c102}{\_oc\_bintree\_count\_nodes}}(root)}
+
+\end{DoxyCode}
+
+
+Calculates the total number of nodes in the tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em root} & The root node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of nodes. 
+\end{DoxyReturn}
+\Hypertarget{binarytree_8h_a33c0ce73c51bbe5a54f69e346679556c}\index{binarytree.h@{binarytree.h}!oc\_bintree\_traverse@{oc\_bintree\_traverse}}
+\index{oc\_bintree\_traverse@{oc\_bintree\_traverse}!binarytree.h@{binarytree.h}}
+\doxysubsubsection{\texorpdfstring{oc\_bintree\_traverse}{oc\_bintree\_traverse}}
+{\footnotesize\ttfamily \label{binarytree_8h_a33c0ce73c51bbe5a54f69e346679556c} 
+\#define oc\+\_\+bintree\+\_\+traverse(\begin{DoxyParamCaption}\item[{}]{root}{, }\item[{}]{TRAVERSE\+\_\+\+TYPE}{, }\item[{}]{traverser}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ TRAVERSE\_TYPE(root,\ traverser)}
+
+\end{DoxyCode}
+
+
+Performs a specified traversal on the tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em root} & The root node of the tree. \\
+\hline
+{\em TRAVERSE\+\_\+\+TYPE} & One of OC\+\_\+\+BINTREE\+\_\+\+PREORDER, OC\+\_\+\+BINTREE\+\_\+\+INORDER, or OC\+\_\+\+BINTREE\+\_\+\+POSTORDER. \\
+\hline
+{\em traverser} & The callback function to execute on each node\textquotesingle{}s data. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-typedef-members}
+\Hypertarget{binarytree_8h_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{binarytree_8h_a525bb085e4425a866c67e7c6ac163e26}\index{binarytree.h@{binarytree.h}!oc\_bintree\_data\_dtor\_t@{oc\_bintree\_data\_dtor\_t}}
+\index{oc\_bintree\_data\_dtor\_t@{oc\_bintree\_data\_dtor\_t}!binarytree.h@{binarytree.h}}
+\doxysubsubsection{\texorpdfstring{oc\_bintree\_data\_dtor\_t}{oc\_bintree\_data\_dtor\_t}}
+{\footnotesize\ttfamily \label{binarytree_8h_a525bb085e4425a866c67e7c6ac163e26} 
+typedef void(\texorpdfstring{$\ast$}{*} oc\+\_\+bintree\+\_\+data\+\_\+dtor\+\_\+t) (void \texorpdfstring{$\ast$}{*}data)}
+
+
+
+Function pointer for a data destructor (freeing element data). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & A pointer to the element\textquotesingle{}s data to be freed. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{binarytree_8h_ab81adf1e1d162748b9c58034f17754b3}\index{binarytree.h@{binarytree.h}!oc\_bintree\_traverser\_t@{oc\_bintree\_traverser\_t}}
+\index{oc\_bintree\_traverser\_t@{oc\_bintree\_traverser\_t}!binarytree.h@{binarytree.h}}
+\doxysubsubsection{\texorpdfstring{oc\_bintree\_traverser\_t}{oc\_bintree\_traverser\_t}}
+{\footnotesize\ttfamily \label{binarytree_8h_ab81adf1e1d162748b9c58034f17754b3} 
+typedef void(\texorpdfstring{$\ast$}{*} oc\+\_\+bintree\+\_\+traverser\+\_\+t) (const void \texorpdfstring{$\ast$}{*}data)}
+
+
+
+Function pointer for a traversal callback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & A pointer to the node\textquotesingle{}s data. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{binarytree_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{binarytree_8h_a23a65118bb14f18701d61d581196c385}\index{binarytree.h@{binarytree.h}!\_oc\_bintree\_count\_leaves@{\_oc\_bintree\_count\_leaves}}
+\index{\_oc\_bintree\_count\_leaves@{\_oc\_bintree\_count\_leaves}!binarytree.h@{binarytree.h}}
+\doxysubsubsection{\texorpdfstring{\_oc\_bintree\_count\_leaves()}{\_oc\_bintree\_count\_leaves()}}
+{\footnotesize\ttfamily \label{binarytree_8h_a23a65118bb14f18701d61d581196c385} 
+size\+\_\+t \+\_\+oc\+\_\+bintree\+\_\+count\+\_\+leaves (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\+\_\+bintree\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Internal function to count the number of leaf nodes in a tree. 
+
+\begin{DoxyReturn}{Returns}
+The number of leaf nodes (size\+\_\+t). 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{binarytree_8h_a23a65118bb14f18701d61d581196c385_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{binarytree_8h_a791521c9a330d161b9da1727fad9c102}\index{binarytree.h@{binarytree.h}!\_oc\_bintree\_count\_nodes@{\_oc\_bintree\_count\_nodes}}
+\index{\_oc\_bintree\_count\_nodes@{\_oc\_bintree\_count\_nodes}!binarytree.h@{binarytree.h}}
+\doxysubsubsection{\texorpdfstring{\_oc\_bintree\_count\_nodes()}{\_oc\_bintree\_count\_nodes()}}
+{\footnotesize\ttfamily \label{binarytree_8h_a791521c9a330d161b9da1727fad9c102} 
+size\+\_\+t \+\_\+oc\+\_\+bintree\+\_\+count\+\_\+nodes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\+\_\+bintree\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Internal function to count the total number of nodes in a tree. 
+
+\begin{DoxyReturn}{Returns}
+The total count of nodes (size\+\_\+t). 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=207pt]{binarytree_8h_a791521c9a330d161b9da1727fad9c102_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{binarytree_8h_a6f5f68c510f08766db247041b988734a}\index{binarytree.h@{binarytree.h}!\_oc\_bintree\_get\_height@{\_oc\_bintree\_get\_height}}
+\index{\_oc\_bintree\_get\_height@{\_oc\_bintree\_get\_height}!binarytree.h@{binarytree.h}}
+\doxysubsubsection{\texorpdfstring{\_oc\_bintree\_get\_height()}{\_oc\_bintree\_get\_height()}}
+{\footnotesize\ttfamily \label{binarytree_8h_a6f5f68c510f08766db247041b988734a} 
+size\+\_\+t \+\_\+oc\+\_\+bintree\+\_\+get\+\_\+height (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\+\_\+bintree\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Internal function to calculate the height of the tree. 
+
+\begin{DoxyReturn}{Returns}
+The height of the tree (0 for a NULL tree, 1 for a single node). 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{binarytree_8h_a6f5f68c510f08766db247041b988734a_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{binarytree_8h_acba078fac66acb1d9a9c8f998e4d695d}\index{binarytree.h@{binarytree.h}!oc\_bintree\_create\_node@{oc\_bintree\_create\_node}}
+\index{oc\_bintree\_create\_node@{oc\_bintree\_create\_node}!binarytree.h@{binarytree.h}}
+\doxysubsubsection{\texorpdfstring{oc\_bintree\_create\_node()}{oc\_bintree\_create\_node()}}
+{\footnotesize\ttfamily \label{binarytree_8h_acba078fac66acb1d9a9c8f998e4d695d} 
+\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\+\_\+bintree\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*} oc\+\_\+bintree\+\_\+create\+\_\+node (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{data}{}\end{DoxyParamCaption})}
+
+
+
+Allocates and initializes a new binary tree node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & A pointer to the data this node will hold. The tree does not manage this data\textquotesingle{}s memory, only the node structure. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the newly created node, or NULL on allocation failure. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{binarytree_8h_acba078fac66acb1d9a9c8f998e4d695d_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{binarytree_8h_ae2c9eb114e6805845e3d97fb466bfc8a}\index{binarytree.h@{binarytree.h}!oc\_bintree\_destroy@{oc\_bintree\_destroy}}
+\index{oc\_bintree\_destroy@{oc\_bintree\_destroy}!binarytree.h@{binarytree.h}}
+\doxysubsubsection{\texorpdfstring{oc\_bintree\_destroy()}{oc\_bintree\_destroy()}}
+{\footnotesize\ttfamily \label{binarytree_8h_ae2c9eb114e6805845e3d97fb466bfc8a} 
+void oc\+\_\+bintree\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\+\_\+bintree\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{root}{, }\item[{\mbox{\hyperlink{binarytree_8h_a525bb085e4425a866c67e7c6ac163e26}{oc\+\_\+bintree\+\_\+data\+\_\+dtor\+\_\+t}}}]{dtor}{}\end{DoxyParamCaption})}
+
+
+
+Destroys the entire tree starting from the given root, freeing all node structures. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em root} & The root node of the tree or subtree to destroy. \\
+\hline
+{\em dtor} & An optional destructor function to free the data payload of each node. Can be NULL if the node data should not be freed. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=179pt]{binarytree_8h_ae2c9eb114e6805845e3d97fb466bfc8a_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{binarytree_8h_a39cf8cf34dc07eb319198df837fae66f}\index{binarytree.h@{binarytree.h}!oc\_bintree\_mirror@{oc\_bintree\_mirror}}
+\index{oc\_bintree\_mirror@{oc\_bintree\_mirror}!binarytree.h@{binarytree.h}}
+\doxysubsubsection{\texorpdfstring{oc\_bintree\_mirror()}{oc\_bintree\_mirror()}}
+{\footnotesize\ttfamily \label{binarytree_8h_a39cf8cf34dc07eb319198df837fae66f} 
+void oc\+\_\+bintree\+\_\+mirror (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\+\_\+bintree\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{root}{}\end{DoxyParamCaption})}
+
+
+
+Swaps the left and right children recursively (mirrors the tree). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em root} & The root of the tree or subtree to mirror. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=171pt]{binarytree_8h_a39cf8cf34dc07eb319198df837fae66f_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{binarytree_8h_adeda3e19cbd7c80b8cbd294a31d21280}\index{binarytree.h@{binarytree.h}!oc\_bintree\_set\_left@{oc\_bintree\_set\_left}}
+\index{oc\_bintree\_set\_left@{oc\_bintree\_set\_left}!binarytree.h@{binarytree.h}}
+\doxysubsubsection{\texorpdfstring{oc\_bintree\_set\_left()}{oc\_bintree\_set\_left()}}
+{\footnotesize\ttfamily \label{binarytree_8h_adeda3e19cbd7c80b8cbd294a31d21280} 
+void oc\+\_\+bintree\+\_\+set\+\_\+left (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\+\_\+bintree\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\+\_\+bintree\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{child}{}\end{DoxyParamCaption})}
+
+
+
+Sets the left child of a parent node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & The parent node. \\
+\hline
+{\em child} & The node to set as the left child (can be NULL). \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=179pt]{binarytree_8h_adeda3e19cbd7c80b8cbd294a31d21280_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{binarytree_8h_a8a82b3681c272fdf3d3ff6dcd710f341}\index{binarytree.h@{binarytree.h}!oc\_bintree\_set\_right@{oc\_bintree\_set\_right}}
+\index{oc\_bintree\_set\_right@{oc\_bintree\_set\_right}!binarytree.h@{binarytree.h}}
+\doxysubsubsection{\texorpdfstring{oc\_bintree\_set\_right()}{oc\_bintree\_set\_right()}}
+{\footnotesize\ttfamily \label{binarytree_8h_a8a82b3681c272fdf3d3ff6dcd710f341} 
+void oc\+\_\+bintree\+\_\+set\+\_\+right (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\+\_\+bintree\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\+\_\+bintree\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{child}{}\end{DoxyParamCaption})}
+
+
+
+Sets the right child of a parent node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & The parent node. \\
+\hline
+{\em child} & The node to set as the right child (can be NULL). \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{binarytree_8h_a8a82b3681c272fdf3d3ff6dcd710f341_cgraph}
+\end{center}
+\end{figure}

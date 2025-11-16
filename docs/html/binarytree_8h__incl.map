@@ -1,0 +1,9 @@
+<map id="include/omnic/binarytree.h" name="include/omnic/binarytree.h">
+<area shape="rect" id="Node000001" title="A generic, macro&#45;based non&#45;intrusive Binary Tree implementation." alt="" coords="52,5,225,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,80,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,34,72,72,69,68,121,29"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="104,79,173,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="141,31,141,63,136,63,136,31"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="196,79,260,105"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="155,29,203,67,199,71,152,34"/>
+</map>

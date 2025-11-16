@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['oc_5fvector_5fcapacity_0',['oc_vector_capacity',['../vector_8h.html#a114dc8cb77d6eaa128d43b65eeb3bca2',1,'vector.c']]],
-  ['oc_5fvector_5fcreate_1',['oc_vector_create',['../vector_8h.html#a5f024ea8945c6746c548c79e508c4e39',1,'vector.c']]],
-  ['oc_5fvector_5fdestroy_2',['oc_vector_destroy',['../vector_8h.html#a77429a0231ce29940b66522d7743c79f',1,'vector.c']]],
-  ['oc_5fvector_5fget_3',['oc_vector_get',['../vector_8h.html#a881926f6f6987dc4dbeef01e6638ea5d',1,'vector.c']]],
-  ['oc_5fvector_5fpush_5fback_4',['oc_vector_push_back',['../vector_8h.html#a19f5a7f5db1b40b0e83e092b8fa6c82d',1,'vector.c']]],
-  ['oc_5fvector_5fsize_5',['oc_vector_size',['../vector_8h.html#aa0cc9d3c78304b7d48fe3e6c421568d8',1,'vector.c']]]
+  ['_5foc_5fbintree_5fcount_5fleaves_0',['_oc_bintree_count_leaves',['../binarytree_8h.html#a23a65118bb14f18701d61d581196c385',1,'binarytree.c']]],
+  ['_5foc_5fbintree_5fcount_5fnodes_1',['_oc_bintree_count_nodes',['../binarytree_8h.html#a791521c9a330d161b9da1727fad9c102',1,'binarytree.c']]],
+  ['_5foc_5fbintree_5fget_5fheight_2',['_oc_bintree_get_height',['../binarytree_8h.html#a6f5f68c510f08766db247041b988734a',1,'binarytree.c']]],
+  ['_5foc_5fbintree_5ftraverse_5finorder_3',['_oc_bintree_traverse_inorder',['../binarytree_8h.html#ab812fe360d0d7422ee61be9ad17a8627',1,'binarytree.c']]],
+  ['_5foc_5fbintree_5ftraverse_5fpostorder_4',['_oc_bintree_traverse_postorder',['../binarytree_8h.html#a1cac8742245e1b0af58423178e575dfc',1,'binarytree.c']]],
+  ['_5foc_5fbintree_5ftraverse_5fpreorder_5',['_oc_bintree_traverse_preorder',['../binarytree_8h.html#ae03742b8ebecae5df809cae2ba14043d',1,'binarytree.c']]]
 ];

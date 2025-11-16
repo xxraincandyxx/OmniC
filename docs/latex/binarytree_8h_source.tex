@@ -1,0 +1,85 @@
+\doxysection{binarytree.\+h}
+\hypertarget{binarytree_8h_source}{}\label{binarytree_8h_source}\index{include/omnic/binarytree.h@{include/omnic/binarytree.h}}
+\mbox{\hyperlink{binarytree_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ -\/*-\/\ mode:\ C;\ indent-\/tabs-\/mode:\ nil;\ c-\/basic-\/offset:\ 2;\ tab-\/width:\ 2;\ -\/*-\/}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ OMNIC\_BINARYTREE\_H}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ OMNIC\_BINARYTREE\_H}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stdbool.h>}\ \ \textcolor{comment}{//\ For\ boolean\ values}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <stddef.h>}\ \ \ \textcolor{comment}{//\ For\ size\_t}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <stdlib.h>}\ \ \ \textcolor{comment}{//\ For\ malloc,\ free}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{comment}{//\ -\/-\/-\/\ Type\ Definitions\ -\/-\/-\/}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structoc__bintree__node}{oc\_bintree\_node}}\ \{}
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{void}*\ data;}
+\DoxyCodeLine{00039\ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structoc__bintree__node}{oc\_bintree\_node}}*\ left;}
+\DoxyCodeLine{00040\ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structoc__bintree__node}{oc\_bintree\_node}}*\ right;}
+\DoxyCodeLine{00041\ \}\ \mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\_bintree\_node\_t}};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{typedef}\ void\ (*\mbox{\hyperlink{binarytree_8h_a525bb085e4425a866c67e7c6ac163e26}{oc\_bintree\_data\_dtor\_t}})(\textcolor{keywordtype}{void}*\ data);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00049\ \textcolor{keyword}{typedef}\ void\ (*\mbox{\hyperlink{binarytree_8h_ab81adf1e1d162748b9c58034f17754b3}{oc\_bintree\_traverser\_t}})(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ data);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{comment}{//\ -\/-\/-\/\ Core\ API\ Functions\ -\/-\/-\/}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00059\ \mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\_bintree\_node\_t}}*\ \mbox{\hyperlink{binarytree_8h_acba078fac66acb1d9a9c8f998e4d695d}{oc\_bintree\_create\_node}}(\textcolor{keywordtype}{void}*\ data);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00066\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{binarytree_8h_ae2c9eb114e6805845e3d97fb466bfc8a}{oc\_bintree\_destroy}}(\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\_bintree\_node\_t}}*\ root,\ \mbox{\hyperlink{binarytree_8h_a525bb085e4425a866c67e7c6ac163e26}{oc\_bintree\_data\_dtor\_t}}\ dtor);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00071\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{binarytree_8h_adeda3e19cbd7c80b8cbd294a31d21280}{oc\_bintree\_set\_left}}(\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\_bintree\_node\_t}}*\ parent,\ \mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\_bintree\_node\_t}}*\ child);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00076\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{binarytree_8h_a8a82b3681c272fdf3d3ff6dcd710f341}{oc\_bintree\_set\_right}}(\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\_bintree\_node\_t}}*\ parent,\ \mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\_bintree\_node\_t}}*\ child);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{comment}{//\ -\/-\/-\/\ Traversal\ and\ Utility\ Functions\ (Internal)\ -\/-\/-\/}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00083\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{binarytree_8h_ae03742b8ebecae5df809cae2ba14043d}{\_oc\_bintree\_traverse\_preorder}}(\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\_bintree\_node\_t}}*\ node,}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{binarytree_8h_ab81adf1e1d162748b9c58034f17754b3}{oc\_bintree\_traverser\_t}}\ traverser);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00087\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{binarytree_8h_ab812fe360d0d7422ee61be9ad17a8627}{\_oc\_bintree\_traverse\_inorder}}(\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\_bintree\_node\_t}}*\ node,}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{binarytree_8h_ab81adf1e1d162748b9c58034f17754b3}{oc\_bintree\_traverser\_t}}\ traverser);}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00091\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{binarytree_8h_a1cac8742245e1b0af58423178e575dfc}{\_oc\_bintree\_traverse\_postorder}}(\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\_bintree\_node\_t}}*\ node,}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{binarytree_8h_ab81adf1e1d162748b9c58034f17754b3}{oc\_bintree\_traverser\_t}}\ traverser);}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00096\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{binarytree_8h_a791521c9a330d161b9da1727fad9c102}{\_oc\_bintree\_count\_nodes}}(\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\_bintree\_node\_t}}*\ node);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00100\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{binarytree_8h_a23a65118bb14f18701d61d581196c385}{\_oc\_bintree\_count\_leaves}}(\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\_bintree\_node\_t}}*\ node);}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00104\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{binarytree_8h_a6f5f68c510f08766db247041b988734a}{\_oc\_bintree\_get\_height}}(\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\_bintree\_node\_t}}*\ node);}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00108\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{binarytree_8h_a39cf8cf34dc07eb319198df837fae66f}{oc\_bintree\_mirror}}(\mbox{\hyperlink{binarytree_8h_a3d3cf01ebca7ee55f46b477a85bf4464}{oc\_bintree\_node\_t}}*\ root);}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \textcolor{comment}{//\ -\/-\/-\/\ Public\ API\ Macros\ (Generic\ Usage)\ -\/-\/-\/}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00115\ \textcolor{comment}{//\ clang-\/format\ off}}
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#define\ OC\_BINTREE\_PREORDER\ \ \ \_oc\_bintree\_traverse\_preorder}}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#define\ OC\_BINTREE\_INORDER\ \ \ \ \_oc\_bintree\_traverse\_inorder}}
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#define\ OC\_BINTREE\_POSTORDER\ \ \_oc\_bintree\_traverse\_postorder}}
+\DoxyCodeLine{00119\ \textcolor{comment}{//\ clang-\/format\ on}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#define\ oc\_bintree\_traverse(root,\ TRAVERSE\_TYPE,\ traverser)\ \(\backslash\)}}
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\ \ TRAVERSE\_TYPE(root,\ traverser)}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\#define\ oc\_bintree\_size(root)\ \_oc\_bintree\_count\_nodes(root)}}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#define\ oc\_bintree\_leaves(root)\ \_oc\_bintree\_count\_leaves(root)}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\#define\ oc\_bintree\_height(root)\ \_oc\_bintree\_get\_height(root)}}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ OMNIC\_BINARYTREE\_H}}
+
+\end{DoxyCode}
