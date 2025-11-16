@@ -15,16 +15,13 @@
   // This tells the C/C++ extension where to find the compilation information.
   // Clangd will automatically use this path.
   "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json",
-
   // This helps the CMake Tools extension find your files.
   "cmake.sourceDirectory": "${workspaceFolder}",
   "cmake.buildDirectory": "${workspaceFolder}/build",
-
   // Optional: Make "build" the default build target when you press the build button.
   "cmake.defaultBuildTarget": "all",
   // cpp path configuration
-  "C_Cpp.default.includePath": [
-  ],
+  "C_Cpp.default.includePath": [],
   // terminal session
   "terminal.integrated.defaultProfile.osx": "zsh",
   // python path configuration
@@ -43,7 +40,9 @@
   // Disable other formatters (e.g., Black, autopep8)
   "python.formatting.provider": "none",
   // Custom Ruff settings (if not using pyproject.toml)
-  "ruff.path": ["./pyproject.toml"],
+  "ruff.path": [
+    "./pyproject.toml"
+  ],
   "ruff.importStrategy": "fromEnvironment",
   /* YAPF FROMATTER CACHE
    "python.formatting.provider": "yapf",
@@ -55,8 +54,8 @@
     "editor.defaultFormatter": "ms-python.python"
   },
   "[cpp]": {
-  "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
-  "editor.formatOnSave": true
+    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
+    "editor.formatOnSave": true
   },
   // spell checkers
   "cSpell.ignoreWords": [
@@ -66,7 +65,6 @@
     "pycache",
     "levelname",
     "pyproject",
-
     // OmniC Project Specifications
     "OmniC",
     // -- Dynarray --
@@ -76,13 +74,11 @@
     "dapop",
     "dalast",
     "dafree",
-
     // C/C++ Style
     "CINC",
     "CSRC",
     "CRUN",
     "CTST",
-
     // torch Syle
     "randn",
     "matmul",
@@ -91,7 +87,6 @@
     "unsqueeze",
     "unsqueezed",
     "dataloaders",
-
     // DL
     "CUDA",
     "sdpa",
@@ -99,22 +94,17 @@
     "layernorm",
     "hyperparamerter",
     "hyperparamerters",
-
     // datasets names
     "cifar",
     "imagenet",
-
     // cv2
     "imshow",
     "imread",
-
     // plotly
     "plotly",
     "showlegend",
-
     // numpy
     "ndarray",
-
     // frontend
     "onclick",
     "stylesheet"
@@ -198,5 +188,8 @@
   },
   "[cmake]": {
     "editor.defaultFormatter": "KylinIdeTeam.cmake-intellisence"
+  },
+  "[c]": {
+    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
   }
 }
