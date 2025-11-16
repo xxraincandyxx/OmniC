@@ -1,0 +1,36 @@
+\doxysection{vector.\+h}
+\hypertarget{vector_8h_source}{}\label{vector_8h_source}\index{include/omnic/vector.h@{include/omnic/vector.h}}
+\mbox{\hyperlink{vector_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ -\/*-\/\ mode:\ C;\ indent-\/tabs-\/mode:\ nil;\ c-\/basic-\/offset:\ 2;\ tab-\/width:\ 2;\ -\/*-\/}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ OMNIC\_VECTOR\_H}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ OMNIC\_VECTOR\_H}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{common_8h}{omnic/common.h}}>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ -\/-\/-\/\ Opaque\ Pointer\ Declaration\ -\/-\/-\/}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ The\ user\ knows\ this\ type\ exists,\ but\ not\ what's\ inside\ it.}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ This\ is\ the\ core\ of\ C-\/style\ encapsulation.}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structoc__vector}{oc\_vector}}\ oc\_vector\_t;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00028\ oc\_vector\_t*\ \mbox{\hyperlink{vector_8h_a5f024ea8945c6746c548c79e508c4e39}{oc\_vector\_create}}(\textcolor{keywordtype}{size\_t}\ element\_size);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{vector_8h_a77429a0231ce29940b66522d7743c79f}{oc\_vector\_destroy}}(oc\_vector\_t*\ vec);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00043\ \mbox{\hyperlink{common_8h_a37f0a6991e4fa0c2a75714ab8a65abfb}{oc\_error\_code\_t}}\ \mbox{\hyperlink{vector_8h_a19f5a7f5db1b40b0e83e092b8fa6c82d}{oc\_vector\_push\_back}}(oc\_vector\_t*\ vec,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00052\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{vector_8h_a881926f6f6987dc4dbeef01e6638ea5d}{oc\_vector\_get}}(\textcolor{keyword}{const}\ oc\_vector\_t*\ vec,\ \textcolor{keywordtype}{size\_t}\ index);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00058\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{vector_8h_aa0cc9d3c78304b7d48fe3e6c421568d8}{oc\_vector\_size}}(\textcolor{keyword}{const}\ oc\_vector\_t*\ vec);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00064\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{vector_8h_a114dc8cb77d6eaa128d43b65eeb3bca2}{oc\_vector\_capacity}}(\textcolor{keyword}{const}\ oc\_vector\_t*\ vec);}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ OMNIC\_VECTOR\_H}}
+
+\end{DoxyCode}

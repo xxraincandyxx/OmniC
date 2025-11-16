@@ -1,0 +1,13 @@
+<map id="include/omnic/list.h" name="include/omnic/list.h">
+<area shape="rect" id="Node000001" title="A generic, type&#45;safe, macro&#45;based intrusive doubly&#45;linked list." alt="" coords="165,5,298,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,74,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="200,34,87,76,85,71,198,29"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="98,79,173,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="217,34,165,72,162,68,214,29"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="197,79,266,105"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="234,31,234,63,229,63,229,31"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="289,79,350,105"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="248,29,295,67,291,71,245,34"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="373,79,436,105"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="262,29,362,70,360,75,260,34"/>
+</map>

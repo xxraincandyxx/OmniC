@@ -1,0 +1,201 @@
+\doxysection{include/omnic/vector.h File Reference}
+\hypertarget{vector_8h}{}\label{vector_8h}\index{include/omnic/vector.h@{include/omnic/vector.h}}
+{\ttfamily \#include $<$omnic/common.\+h$>$}\newline
+Include dependency graph for vector.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=206pt]{vector_8h__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{vector_8h_af4cca8677bc595fa1a87798a30458185}\label{vector_8h_af4cca8677bc595fa1a87798a30458185} 
+typedef struct \mbox{\hyperlink{structoc__vector}{oc\+\_\+vector}} {\bfseries oc\+\_\+vector\+\_\+t}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+oc\+\_\+vector\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{vector_8h_a5f024ea8945c6746c548c79e508c4e39}{oc\+\_\+vector\+\_\+create}} (size\+\_\+t element\+\_\+size)
+\item 
+void \mbox{\hyperlink{vector_8h_a77429a0231ce29940b66522d7743c79f}{oc\+\_\+vector\+\_\+destroy}} (oc\+\_\+vector\+\_\+t \texorpdfstring{$\ast$}{*}vec)
+\item 
+\mbox{\hyperlink{common_8h_a37f0a6991e4fa0c2a75714ab8a65abfb}{oc\+\_\+error\+\_\+code\+\_\+t}} \mbox{\hyperlink{vector_8h_a19f5a7f5db1b40b0e83e092b8fa6c82d}{oc\+\_\+vector\+\_\+push\+\_\+back}} (oc\+\_\+vector\+\_\+t \texorpdfstring{$\ast$}{*}vec, const void \texorpdfstring{$\ast$}{*}element)
+\item 
+const void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{vector_8h_a881926f6f6987dc4dbeef01e6638ea5d}{oc\+\_\+vector\+\_\+get}} (const oc\+\_\+vector\+\_\+t \texorpdfstring{$\ast$}{*}vec, size\+\_\+t index)
+\item 
+size\+\_\+t \mbox{\hyperlink{vector_8h_aa0cc9d3c78304b7d48fe3e6c421568d8}{oc\+\_\+vector\+\_\+size}} (const oc\+\_\+vector\+\_\+t \texorpdfstring{$\ast$}{*}vec)
+\item 
+size\+\_\+t \mbox{\hyperlink{vector_8h_a114dc8cb77d6eaa128d43b65eeb3bca2}{oc\+\_\+vector\+\_\+capacity}} (const oc\+\_\+vector\+\_\+t \texorpdfstring{$\ast$}{*}vec)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A generic, dynamic array (vector) implementation. 
+
+This API provides a type-\/safe way to manage a dynamic array of any element type. 
+
+\label{doc-func-members}
+\Hypertarget{vector_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{vector_8h_a114dc8cb77d6eaa128d43b65eeb3bca2}\index{vector.h@{vector.h}!oc\_vector\_capacity@{oc\_vector\_capacity}}
+\index{oc\_vector\_capacity@{oc\_vector\_capacity}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{oc\_vector\_capacity()}{oc\_vector\_capacity()}}
+{\footnotesize\ttfamily \label{vector_8h_a114dc8cb77d6eaa128d43b65eeb3bca2} 
+size\+\_\+t oc\+\_\+vector\+\_\+capacity (\begin{DoxyParamCaption}\item[{const oc\+\_\+vector\+\_\+t \texorpdfstring{$\ast$}{*}}]{vec}{}\end{DoxyParamCaption})}
+
+
+
+Gets the total number of elements the vector can hold before resizing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & A pointer to the vector. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The current capacity. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{vector_8h_a114dc8cb77d6eaa128d43b65eeb3bca2_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{vector_8h_a5f024ea8945c6746c548c79e508c4e39}\index{vector.h@{vector.h}!oc\_vector\_create@{oc\_vector\_create}}
+\index{oc\_vector\_create@{oc\_vector\_create}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{oc\_vector\_create()}{oc\_vector\_create()}}
+{\footnotesize\ttfamily \label{vector_8h_a5f024ea8945c6746c548c79e508c4e39} 
+oc\+\_\+vector\+\_\+t \texorpdfstring{$\ast$}{*} oc\+\_\+vector\+\_\+create (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{element\+\_\+size}{}\end{DoxyParamCaption})}
+
+
+
+Creates a new vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em element\+\_\+size} & The size in bytes of a single element (e.\+g., sizeof(int)). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the newly created vector, or NULL on allocation failure. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=171pt]{vector_8h_a5f024ea8945c6746c548c79e508c4e39_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{vector_8h_a77429a0231ce29940b66522d7743c79f}\index{vector.h@{vector.h}!oc\_vector\_destroy@{oc\_vector\_destroy}}
+\index{oc\_vector\_destroy@{oc\_vector\_destroy}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{oc\_vector\_destroy()}{oc\_vector\_destroy()}}
+{\footnotesize\ttfamily \label{vector_8h_a77429a0231ce29940b66522d7743c79f} 
+void oc\+\_\+vector\+\_\+destroy (\begin{DoxyParamCaption}\item[{oc\+\_\+vector\+\_\+t \texorpdfstring{$\ast$}{*}}]{vec}{}\end{DoxyParamCaption})}
+
+
+
+Destroys a vector and frees all associated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & A pointer to the vector to be destroyed. If NULL, the function does nothing. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{vector_8h_a77429a0231ce29940b66522d7743c79f_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{vector_8h_a881926f6f6987dc4dbeef01e6638ea5d}\index{vector.h@{vector.h}!oc\_vector\_get@{oc\_vector\_get}}
+\index{oc\_vector\_get@{oc\_vector\_get}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{oc\_vector\_get()}{oc\_vector\_get()}}
+{\footnotesize\ttfamily \label{vector_8h_a881926f6f6987dc4dbeef01e6638ea5d} 
+const void \texorpdfstring{$\ast$}{*} oc\+\_\+vector\+\_\+get (\begin{DoxyParamCaption}\item[{const oc\+\_\+vector\+\_\+t \texorpdfstring{$\ast$}{*}}]{vec}{, }\item[{size\+\_\+t}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves a pointer to the element at a specific index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & A pointer to the vector. \\
+\hline
+{\em index} & The index of the element to retrieve. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A constant pointer to the element. Returns NULL if the index is out of bounds. The returned pointer is only valid until the next vector modification. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=158pt]{vector_8h_a881926f6f6987dc4dbeef01e6638ea5d_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{vector_8h_a19f5a7f5db1b40b0e83e092b8fa6c82d}\index{vector.h@{vector.h}!oc\_vector\_push\_back@{oc\_vector\_push\_back}}
+\index{oc\_vector\_push\_back@{oc\_vector\_push\_back}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{oc\_vector\_push\_back()}{oc\_vector\_push\_back()}}
+{\footnotesize\ttfamily \label{vector_8h_a19f5a7f5db1b40b0e83e092b8fa6c82d} 
+\mbox{\hyperlink{common_8h_a37f0a6991e4fa0c2a75714ab8a65abfb}{oc\+\_\+error\+\_\+code\+\_\+t}} oc\+\_\+vector\+\_\+push\+\_\+back (\begin{DoxyParamCaption}\item[{oc\+\_\+vector\+\_\+t \texorpdfstring{$\ast$}{*}}]{vec}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{element}{}\end{DoxyParamCaption})}
+
+
+
+Appends an element to the end of the vector. 
+
+The vector will automatically resize if its capacity is exceeded.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & A pointer to the vector. \\
+\hline
+{\em element} & A pointer to the element to be copied into the vector. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OC\+\_\+\+SUCCESS on success, or an error code on failure. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=191pt]{vector_8h_a19f5a7f5db1b40b0e83e092b8fa6c82d_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{vector_8h_aa0cc9d3c78304b7d48fe3e6c421568d8}\index{vector.h@{vector.h}!oc\_vector\_size@{oc\_vector\_size}}
+\index{oc\_vector\_size@{oc\_vector\_size}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{oc\_vector\_size()}{oc\_vector\_size()}}
+{\footnotesize\ttfamily \label{vector_8h_aa0cc9d3c78304b7d48fe3e6c421568d8} 
+size\+\_\+t oc\+\_\+vector\+\_\+size (\begin{DoxyParamCaption}\item[{const oc\+\_\+vector\+\_\+t \texorpdfstring{$\ast$}{*}}]{vec}{}\end{DoxyParamCaption})}
+
+
+
+Gets the number of elements currently in the vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & A pointer to the vector. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of elements. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=162pt]{vector_8h_aa0cc9d3c78304b7d48fe3e6c421568d8_cgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,67 @@
+\doxysection{include/omnic/common.h File Reference}
+\hypertarget{common_8h}{}\label{common_8h}\index{include/omnic/common.h@{include/omnic/common.h}}
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+Include dependency graph for common.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=206pt]{common_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{common_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{common_8h_a37f0a6991e4fa0c2a75714ab8a65abfb}{oc\+\_\+error\+\_\+code\+\_\+t}} \{ \mbox{\hyperlink{common_8h_a37f0a6991e4fa0c2a75714ab8a65abfba441fb619a2ae37024041a78a225ad704}{OC\+\_\+\+SUCCESS}} = 0
+, \mbox{\hyperlink{common_8h_a37f0a6991e4fa0c2a75714ab8a65abfba0144a0cc338800b2afae0d217382e91d}{OC\+\_\+\+ERROR\+\_\+\+ALLOC}} = -\/1
+, \mbox{\hyperlink{common_8h_a37f0a6991e4fa0c2a75714ab8a65abfba608af399dd1a6a0141c27e431ff82986}{OC\+\_\+\+ERROR\+\_\+\+INVALID\+\_\+\+ARG}} = -\/2
+, \mbox{\hyperlink{common_8h_a37f0a6991e4fa0c2a75714ab8a65abfbab4429de227bba7a6c530cc87b483355a}{OC\+\_\+\+ERROR\+\_\+\+OUT\+\_\+\+OF\+\_\+\+BOUNDS}} = -\/3
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Common definitions, error codes, and types for the OmniC library. 
+
+
+
+\label{doc-enum-members}
+\Hypertarget{common_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{common_8h_a37f0a6991e4fa0c2a75714ab8a65abfb}\index{common.h@{common.h}!oc\_error\_code\_t@{oc\_error\_code\_t}}
+\index{oc\_error\_code\_t@{oc\_error\_code\_t}!common.h@{common.h}}
+\doxysubsubsection{\texorpdfstring{oc\_error\_code\_t}{oc\_error\_code\_t}}
+{\footnotesize\ttfamily \label{common_8h_a37f0a6991e4fa0c2a75714ab8a65abfb} 
+enum \mbox{\hyperlink{common_8h_a37f0a6991e4fa0c2a75714ab8a65abfb}{oc\+\_\+error\+\_\+code\+\_\+t}}}
+
+
+
+Universal error codes for OmniC operations. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OC\_SUCCESS@{OC\_SUCCESS}!common.h@{common.h}}\index{common.h@{common.h}!OC\_SUCCESS@{OC\_SUCCESS}}}\Hypertarget{common_8h_a37f0a6991e4fa0c2a75714ab8a65abfba441fb619a2ae37024041a78a225ad704}\label{common_8h_a37f0a6991e4fa0c2a75714ab8a65abfba441fb619a2ae37024041a78a225ad704} 
+OC\+\_\+\+SUCCESS&Operation was successful. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OC\_ERROR\_ALLOC@{OC\_ERROR\_ALLOC}!common.h@{common.h}}\index{common.h@{common.h}!OC\_ERROR\_ALLOC@{OC\_ERROR\_ALLOC}}}\Hypertarget{common_8h_a37f0a6991e4fa0c2a75714ab8a65abfba0144a0cc338800b2afae0d217382e91d}\label{common_8h_a37f0a6991e4fa0c2a75714ab8a65abfba0144a0cc338800b2afae0d217382e91d} 
+OC\+\_\+\+ERROR\+\_\+\+ALLOC&Failed to allocate memory. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OC\_ERROR\_INVALID\_ARG@{OC\_ERROR\_INVALID\_ARG}!common.h@{common.h}}\index{common.h@{common.h}!OC\_ERROR\_INVALID\_ARG@{OC\_ERROR\_INVALID\_ARG}}}\Hypertarget{common_8h_a37f0a6991e4fa0c2a75714ab8a65abfba608af399dd1a6a0141c27e431ff82986}\label{common_8h_a37f0a6991e4fa0c2a75714ab8a65abfba608af399dd1a6a0141c27e431ff82986} 
+OC\+\_\+\+ERROR\+\_\+\+INVALID\+\_\+\+ARG&An invalid argument was provided. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OC\_ERROR\_OUT\_OF\_BOUNDS@{OC\_ERROR\_OUT\_OF\_BOUNDS}!common.h@{common.h}}\index{common.h@{common.h}!OC\_ERROR\_OUT\_OF\_BOUNDS@{OC\_ERROR\_OUT\_OF\_BOUNDS}}}\Hypertarget{common_8h_a37f0a6991e4fa0c2a75714ab8a65abfbab4429de227bba7a6c530cc87b483355a}\label{common_8h_a37f0a6991e4fa0c2a75714ab8a65abfbab4429de227bba7a6c530cc87b483355a} 
+OC\+\_\+\+ERROR\+\_\+\+OUT\+\_\+\+OF\+\_\+\+BOUNDS&Index or access was out of bounds. \\
+\hline
+
+\end{DoxyEnumFields}

@@ -1,0 +1,186 @@
+\doxysection{dynarray.\+h}
+\hypertarget{dynarray_8h_source}{}\label{dynarray_8h_source}\index{include/omnic/dynarray.h@{include/omnic/dynarray.h}}
+\mbox{\hyperlink{dynarray_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ -\/*-\/\ mode:\ C;\ indent-\/tabs-\/mode:\ nil;\ c-\/basic-\/offset:\ 2;\ tab-\/width:\ 2;\ -\/*-\/}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ OMNIC\_DYNARRAY\_H\_}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ OMNIC\_DYNARRAY\_H\_}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <assert.h>}\ \ \ \textcolor{comment}{//\ For\ internal\ sanity\ checks}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <stdbool.h>}\ \ \textcolor{comment}{//\ For\ boolean\ values}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <stddef.h>}\ \ \ \textcolor{comment}{//\ For\ size\_t}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <stdio.h>}\ \ \ \ \textcolor{comment}{//\ For\ fprintf\ in\ oc\_da\_dump}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <stdlib.h>}\ \ \ \textcolor{comment}{//\ For\ realloc,\ free}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <string.h>}\ \ \ \textcolor{comment}{//\ For\ memmove}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{comment}{//\ -\/-\/-\/\ Internal\ Implementation\ Details\ -\/-\/-\/}}
+\DoxyCodeLine{00033\ \textcolor{comment}{//\ The\ user\ should\ not\ interact\ with\ these\ directly.}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ OC\_DYNARRAY\_INITIAL\_CAPACITY\ 8}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ OC\_DYNARRAY\_INDEX\_NOT\_FOUND\ ((size\_t)-\/1)\ \ }\textcolor{comment}{//\ Maximum\ value\ of\ size\_t}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{comment}{//\ clang-\/format\ off}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#ifndef\ OMNIC\_DISABLE\_CONDENSED}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ dafree\ \ \ \ oc\_da\_free}}
+\DoxyCodeLine{00041\ \textcolor{comment}{//\ >\ Capacity}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ dalen\ \ \ \ \ oc\_da\_len}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ dacap\ \ \ \ \ oc\_da\_cap}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ daempty\ \ \ oc\_da\_empty}}
+\DoxyCodeLine{00045\ \textcolor{comment}{//\ >\ Modifiers}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ dapush\ \ \ \ oc\_da\_push}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ dapop\ \ \ \ \ oc\_da\_pop}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ dainsert\ \ oc\_da\_insert}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ daemplace\ oc\_da\_emplace\ }\textcolor{comment}{//\ Alias\ for\ insert}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ daerase\ \ \ oc\_da\_erase}}
+\DoxyCodeLine{00051\ \textcolor{comment}{//\ >\ Element\ Access}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ daat\ \ \ \ \ \ oc\_da\_at\ \ \ \ \ \ }\textcolor{comment}{//\ TODO}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ dalast\ \ \ \ oc\_da\_last}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ dafind\ \ \ \ oc\_da\_find}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ dadump\ \ \ \ oc\_da\_dump}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00057\ \textcolor{comment}{//\ clang-\/format\ on}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{comment}{//\ The\ metadata\ header\ stored\ *before*\ the\ user's\ data\ pointer.}}
+\DoxyCodeLine{00062\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00063\ \ \ \textcolor{keywordtype}{size\_t}\ capacity;}
+\DoxyCodeLine{00064\ \ \ \textcolor{keywordtype}{size\_t}\ length;}
+\DoxyCodeLine{00065\ \}\ \mbox{\hyperlink{structoc__da__header__t}{oc\_da\_header\_t}};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{comment}{//\ Macro\ to\ get\ the\ header\ from\ the\ user's\ dynarray\ pointer.}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#define\ \_oc\_da\_header(da)\ \(\backslash\)}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\ \ ((oc\_da\_header\_t*)((char*)(da)\ -\/\ sizeof(oc\_da\_header\_t)))}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{comment}{//\ Internal\ function\ to\ handle\ the\ growth\ logic.}}
+\DoxyCodeLine{00074\ \textcolor{comment}{//\ Takes\ a\ void**\ so\ it\ can\ modify\ the\ user's\ original\ pointer\ variable.}}
+\DoxyCodeLine{00075\ \textcolor{comment}{//\ Returns\ 0\ on\ success,\ -\/1\ on\ allocation\ failure.}}
+\DoxyCodeLine{00076\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ \_oc\_da\_grow(\textcolor{keywordtype}{void}**\ da,\ \textcolor{keywordtype}{size\_t}\ new\_cap,\ \textcolor{keywordtype}{size\_t}\ elem\_size)\ \{}
+\DoxyCodeLine{00077\ \ \ \textcolor{comment}{//\ ...\ (function\ body\ remains\ unchanged)}}
+\DoxyCodeLine{00078\ \ \ \textcolor{keywordtype}{size\_t}\ new\_block\_size\ =\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structoc__da__header__t}{oc\_da\_header\_t}})\ +\ (new\_cap\ *\ elem\_size);}
+\DoxyCodeLine{00079\ \ \ \mbox{\hyperlink{structoc__da__header__t}{oc\_da\_header\_t}}*\ new\_header\ =\ NULL;}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \textcolor{keywordflow}{if}\ (*da\ ==\ NULL)\ \{}
+\DoxyCodeLine{00082\ \ \ \ \ new\_header\ =\ (\mbox{\hyperlink{structoc__da__header__t}{oc\_da\_header\_t}}*)malloc(new\_block\_size);}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordflow}{if}\ (!new\_header)\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00085\ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ new\_header-\/>length\ =\ 0;}
+\DoxyCodeLine{00087\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \mbox{\hyperlink{structoc__da__header__t}{oc\_da\_header\_t}}*\ old\_header\ =\ \_oc\_da\_header(*da);}
+\DoxyCodeLine{00089\ \ \ \ \ new\_header\ =\ (\mbox{\hyperlink{structoc__da__header__t}{oc\_da\_header\_t}}*)realloc(old\_header,\ new\_block\_size);}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordflow}{if}\ (!new\_header)\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00092\ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \ \ \}}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ new\_header-\/>capacity\ =\ new\_cap;}
+\DoxyCodeLine{00096\ \ \ \textcolor{comment}{//\ Point\ the\ user's\ dynarray\ pointer\ to\ the\ data\ section.}}
+\DoxyCodeLine{00097\ \ \ *da\ =\ (\textcolor{keywordtype}{void}*)((\textcolor{keywordtype}{char}*)new\_header\ +\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structoc__da__header__t}{oc\_da\_header\_t}}));}
+\DoxyCodeLine{00098\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00099\ \}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \textcolor{comment}{//\ -\/-\/-\/\ Public\ API\ Macros\ -\/-\/-\/}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\#define\ oc\_da\_len(da)\ ((da)\ ?\ \_oc\_da\_header(da)-\/>length\ :\ 0)}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#define\ oc\_da\_cap(da)\ ((da)\ ?\ \_oc\_da\_header(da)-\/>capacity\ :\ 0)}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#define\ oc\_da\_empty(da)\ (oc\_da\_len(da)\ ==\ 0)}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\#define\ oc\_da\_free(da)\ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\ \ do\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\ \ \ \ if\ (da)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00128\ \textcolor{preprocessor}{\ \ \ \ \ \ free(\_oc\_da\_header(da));\ \(\backslash\)}}
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\ \ \ \ \ \ (da)\ =\ NULL;\ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00130\ \textcolor{preprocessor}{\ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00131\ \textcolor{preprocessor}{\ \ \}\ while\ ((void)0,\ 0)}}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#define\ oc\_da\_push(da,\ val)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\ \ do\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\ \ \ \ size\_t\ cap\ =\ oc\_da\_cap(da);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\ \ \ \ size\_t\ len\ =\ oc\_da\_len(da);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00141\ \textcolor{preprocessor}{\ \ \ \ if\ (cap\ <=\ len)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\ \ \ \ \ \ size\_t\ new\_cap\ =\ (cap\ ==\ 0)\ ?\ OC\_DYNARRAY\_INITIAL\_CAPACITY\ :\ cap\ <<\ 1;\ \(\backslash\)}}
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\ \ \ \ \ \ int\ err\ =\ \_oc\_da\_grow((void**)\&(da),\ new\_cap,\ sizeof(*(da)));\ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\ \ \ \ \ \ assert(err\ ==\ 0\ \&\&\ "{}[OmniC][Dynarray]\ Failed\ to\ grow\ dynarray"{});\ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\ \ \ \ (da)[len]\ =\ (val);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\ \ \ \ \_oc\_da\_header(da)-\/>length++;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\ \ \}\ while\ ((void)0,\ 0)}}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\#define\ oc\_da\_pop(da)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00154\ \textcolor{preprocessor}{\ \ do\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00155\ \textcolor{preprocessor}{\ \ \ \ assert(oc\_da\_len(da)\ >\ 0\ \&\&\ "{}[OmniC][Dynarray]\ Pop\ from\ empty\ dynarray"{});\ \(\backslash\)}}
+\DoxyCodeLine{00156\ \textcolor{preprocessor}{\ \ \ \ \_oc\_da\_header(da)-\/>length-\/-\/;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00157\ \textcolor{preprocessor}{\ \ \}\ while\ ((void)0,\ 0)}}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00165\ \textcolor{preprocessor}{\#define\ oc\_da\_last(da)\ (assert(oc\_da\_len(da)\ >\ 0),\ (da)[oc\_da\_len(da)\ -\/\ 1])}}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00172\ \textcolor{preprocessor}{\#define\ oc\_da\_insert(da,\ index,\ val)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00173\ \textcolor{preprocessor}{\ \ do\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00174\ \textcolor{preprocessor}{\ \ \ \ size\_t\ len\ =\ oc\_da\_len(da);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00175\ \textcolor{preprocessor}{\ \ \ \ assert((index)\ <=\ len\ \&\&\ "{}[OmniC][Dynarray]\ Insert\ index\ out\ of\ bounds"{});\ \(\backslash\)}}
+\DoxyCodeLine{00176\ \textcolor{preprocessor}{\ \ \ \ oc\_da\_push((da),\ (val));\ }\textcolor{comment}{/*\ Grow\ if\ needed\ and\ temporarily\ place\ val\ */}\textcolor{preprocessor}{\ \ \ \(\backslash\)}}
+\DoxyCodeLine{00177\ \textcolor{preprocessor}{\ \ \ \ if\ ((index)\ <\ len)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00178\ \textcolor{preprocessor}{\ \ \ \ \ \ memmove(\&(da)[(index)\ +\ 1],\ \&(da)[(index)],\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00179\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ (len\ -\/\ (index))\ *\ sizeof(*(da)));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00180\ \textcolor{preprocessor}{\ \ \ \ \ \ (da)[(index)]\ =\ (val);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00181\ \textcolor{preprocessor}{\ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00182\ \textcolor{preprocessor}{\ \ \}\ while\ ((void)0,\ 0)}}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00185\ \textcolor{preprocessor}{\#define\ oc\_da\_emplace(da,\ index,\ val)\ oc\_da\_insert(da,\ index,\ val)}}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00190\ \textcolor{preprocessor}{\#define\ oc\_da\_erase(da,\ index)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00191\ \textcolor{preprocessor}{\ \ do\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00192\ \textcolor{preprocessor}{\ \ \ \ size\_t\ len\ =\ oc\_da\_len(da);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00193\ \textcolor{preprocessor}{\ \ \ \ assert((index)\ <\ len\ \&\&\ "{}[OmniC][Dynarray]\ Erase\ index\ out\ of\ bounds"{});\ \(\backslash\)}}
+\DoxyCodeLine{00194\ \textcolor{preprocessor}{\ \ \ \ if\ ((index)\ <\ len\ -\/\ 1)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00195\ \textcolor{preprocessor}{\ \ \ \ \ \ memmove(\&(da)[(index)],\ \&(da)[(index)\ +\ 1],\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00196\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ (len\ -\/\ 1\ -\/\ (index))\ *\ sizeof(*(da)));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00197\ \textcolor{preprocessor}{\ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00198\ \textcolor{preprocessor}{\ \ \ \ \_oc\_da\_header(da)-\/>length-\/-\/;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00199\ \textcolor{preprocessor}{\ \ \}\ while\ ((void)0,\ 0)}}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00208\ \textcolor{preprocessor}{\#define\ oc\_da\_find(da,\ val)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00209\ \textcolor{preprocessor}{\ \ (\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00210\ \textcolor{preprocessor}{\ \ \ \ size\_t\ \_oc\_da\_find\_index\ =\ OC\_DYNARRAY\_INDEX\_NOT\_FOUND;\ \(\backslash\)}}
+\DoxyCodeLine{00211\ \textcolor{preprocessor}{\ \ \ \ for\ (size\_t\ i\ =\ 0;\ i\ <\ oc\_da\_len(da);\ ++i)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00212\ \textcolor{preprocessor}{\ \ \ \ \ \ if\ ((da)[i]\ ==\ (val))\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00213\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \_oc\_da\_find\_index\ =\ i;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00214\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ break;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00215\ \textcolor{preprocessor}{\ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00216\ \textcolor{preprocessor}{\ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00217\ \textcolor{preprocessor}{\ \ \ \ \_oc\_da\_find\_index;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00218\ \textcolor{preprocessor}{\ \ \})}}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00226\ \textcolor{preprocessor}{\#define\ oc\_da\_dump(da,\ fmt,\ stream)\ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00227\ \textcolor{preprocessor}{\ \ do\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00228\ \textcolor{preprocessor}{\ \ \ \ fprintf((stream),\ "{}["{});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00229\ \textcolor{preprocessor}{\ \ \ \ size\_t\ len\ =\ oc\_da\_len(da);\ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00230\ \textcolor{preprocessor}{\ \ \ \ for\ (size\_t\ i\ =\ 0;\ i\ <\ len;\ ++i)\ \{\ \ \ \(\backslash\)}}
+\DoxyCodeLine{00231\ \textcolor{preprocessor}{\ \ \ \ \ \ fprintf((stream),\ (fmt),\ (da)[i]);\ \(\backslash\)}}
+\DoxyCodeLine{00232\ \textcolor{preprocessor}{\ \ \ \ \ \ if\ (i\ <\ len\ -\/\ 1)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00233\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ fprintf((stream),\ "{},\ "{});\ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00234\ \textcolor{preprocessor}{\ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00235\ \textcolor{preprocessor}{\ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00236\ \textcolor{preprocessor}{\ \ \ \ fprintf((stream),\ "{}]\(\backslash\)n"{});\ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00237\ \textcolor{preprocessor}{\ \ \}\ while\ ((void)0,\ 0)}}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00239\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ OMNIC\_DYNARRAY\_H\_}}
+
+\end{DoxyCode}

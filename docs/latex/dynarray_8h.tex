@@ -1,0 +1,442 @@
+\doxysection{include/omnic/dynarray.h File Reference}
+\hypertarget{dynarray_8h}{}\label{dynarray_8h}\index{include/omnic/dynarray.h@{include/omnic/dynarray.h}}
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+Include dependency graph for dynarray.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dynarray_8h__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structoc__da__header__t}{oc\+\_\+da\+\_\+header\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{dynarray_8h_aa8f0c2bfeb06fc414e8fa1a4244cb25c}\label{dynarray_8h_aa8f0c2bfeb06fc414e8fa1a4244cb25c} 
+\#define {\bfseries OC\+\_\+\+DYNARRAY\+\_\+\+INITIAL\+\_\+\+CAPACITY}~8
+\item 
+\Hypertarget{dynarray_8h_a888120182837d2532d4aa861179e492a}\label{dynarray_8h_a888120182837d2532d4aa861179e492a} 
+\#define {\bfseries OC\+\_\+\+DYNARRAY\+\_\+\+INDEX\+\_\+\+NOT\+\_\+\+FOUND}~((size\+\_\+t)-\/1)
+\item 
+\Hypertarget{dynarray_8h_a4ee1f1e230bf2781eac78a189108b69d}\label{dynarray_8h_a4ee1f1e230bf2781eac78a189108b69d} 
+\#define {\bfseries dafree}~\mbox{\hyperlink{dynarray_8h_af781380573a348c3ee60515549205624}{oc\+\_\+da\+\_\+free}}
+\item 
+\Hypertarget{dynarray_8h_a2ec99f4b0c43f4091f8fa75d4b90400f}\label{dynarray_8h_a2ec99f4b0c43f4091f8fa75d4b90400f} 
+\#define {\bfseries dalen}~\mbox{\hyperlink{dynarray_8h_a207cc514f952433b1cca44e60b46b412}{oc\+\_\+da\+\_\+len}}
+\item 
+\Hypertarget{dynarray_8h_aa8633282896d9d76f6934620d0a4d284}\label{dynarray_8h_aa8633282896d9d76f6934620d0a4d284} 
+\#define {\bfseries dacap}~\mbox{\hyperlink{dynarray_8h_a08574e417a77e281e754dcb88576dc80}{oc\+\_\+da\+\_\+cap}}
+\item 
+\Hypertarget{dynarray_8h_a8ca608dd8963f1d8ad59c9ea4ad8b63c}\label{dynarray_8h_a8ca608dd8963f1d8ad59c9ea4ad8b63c} 
+\#define {\bfseries daempty}~\mbox{\hyperlink{dynarray_8h_adfc22d910fde311fb9a6f8e7d9a22b69}{oc\+\_\+da\+\_\+empty}}
+\item 
+\Hypertarget{dynarray_8h_a19ee55058b000abe5ec1bf5df8cf7190}\label{dynarray_8h_a19ee55058b000abe5ec1bf5df8cf7190} 
+\#define {\bfseries dapush}~\mbox{\hyperlink{dynarray_8h_a803b069513c5f698167bb9df24d55617}{oc\+\_\+da\+\_\+push}}
+\item 
+\Hypertarget{dynarray_8h_a862de0d982a787a60080f963f3864479}\label{dynarray_8h_a862de0d982a787a60080f963f3864479} 
+\#define {\bfseries dapop}~\mbox{\hyperlink{dynarray_8h_a6474ef9cc8dcd5015149f948f9104820}{oc\+\_\+da\+\_\+pop}}
+\item 
+\Hypertarget{dynarray_8h_a56234412b803ee31384a0b0af917270e}\label{dynarray_8h_a56234412b803ee31384a0b0af917270e} 
+\#define {\bfseries dainsert}~\mbox{\hyperlink{dynarray_8h_a4f35def9262a5fd0e62af5fb7fe1c6bf}{oc\+\_\+da\+\_\+insert}}
+\item 
+\Hypertarget{dynarray_8h_aec615e60dd07d38b87289e24f725360e}\label{dynarray_8h_aec615e60dd07d38b87289e24f725360e} 
+\#define {\bfseries daemplace}~\mbox{\hyperlink{dynarray_8h_a6db0c31ce10f93b882005ef44a1ca8f8}{oc\+\_\+da\+\_\+emplace}}
+\item 
+\Hypertarget{dynarray_8h_a58f9bf65128ee8a10faba0af9474891b}\label{dynarray_8h_a58f9bf65128ee8a10faba0af9474891b} 
+\#define {\bfseries daerase}~\mbox{\hyperlink{dynarray_8h_a520108d2a4dfb02f1ae46b5efd9c206a}{oc\+\_\+da\+\_\+erase}}
+\item 
+\Hypertarget{dynarray_8h_afefc20cb654f2b7a34c6a9b84b0ceb56}\label{dynarray_8h_afefc20cb654f2b7a34c6a9b84b0ceb56} 
+\#define {\bfseries daat}~oc\+\_\+da\+\_\+at
+\item 
+\Hypertarget{dynarray_8h_adfedf838a5021fb57bcfd087cb0c99f5}\label{dynarray_8h_adfedf838a5021fb57bcfd087cb0c99f5} 
+\#define {\bfseries dalast}~\mbox{\hyperlink{dynarray_8h_a2d55c172ed01e197dfbab6aa43603cb1}{oc\+\_\+da\+\_\+last}}
+\item 
+\Hypertarget{dynarray_8h_aa478abb8c683e5a0854505c1e8204a1f}\label{dynarray_8h_aa478abb8c683e5a0854505c1e8204a1f} 
+\#define {\bfseries dafind}~\mbox{\hyperlink{dynarray_8h_a54f0d67e8281de8a6a281e826652f5b4}{oc\+\_\+da\+\_\+find}}
+\item 
+\Hypertarget{dynarray_8h_ace167cd4ca511d1efc6cc535d62b2025}\label{dynarray_8h_ace167cd4ca511d1efc6cc535d62b2025} 
+\#define {\bfseries dadump}~\mbox{\hyperlink{dynarray_8h_a4ed47f46a96bcfc32396aa04afa9fcd8}{oc\+\_\+da\+\_\+dump}}
+\item 
+\#define \mbox{\hyperlink{dynarray_8h_aa3ec1c60085dd65a1e78ba06030ba9fc}{\+\_\+oc\+\_\+da\+\_\+header}}(da)
+\item 
+\#define \mbox{\hyperlink{dynarray_8h_a207cc514f952433b1cca44e60b46b412}{oc\+\_\+da\+\_\+len}}(da)
+\item 
+\#define \mbox{\hyperlink{dynarray_8h_a08574e417a77e281e754dcb88576dc80}{oc\+\_\+da\+\_\+cap}}(da)
+\item 
+\#define \mbox{\hyperlink{dynarray_8h_adfc22d910fde311fb9a6f8e7d9a22b69}{oc\+\_\+da\+\_\+empty}}(da)
+\item 
+\#define \mbox{\hyperlink{dynarray_8h_af781380573a348c3ee60515549205624}{oc\+\_\+da\+\_\+free}}(da)
+\item 
+\#define \mbox{\hyperlink{dynarray_8h_a803b069513c5f698167bb9df24d55617}{oc\+\_\+da\+\_\+push}}(da,  val)
+\item 
+\#define \mbox{\hyperlink{dynarray_8h_a6474ef9cc8dcd5015149f948f9104820}{oc\+\_\+da\+\_\+pop}}(da)
+\item 
+\#define \mbox{\hyperlink{dynarray_8h_a2d55c172ed01e197dfbab6aa43603cb1}{oc\+\_\+da\+\_\+last}}(da)
+\item 
+\#define \mbox{\hyperlink{dynarray_8h_a4f35def9262a5fd0e62af5fb7fe1c6bf}{oc\+\_\+da\+\_\+insert}}(da,  index,  val)
+\item 
+\#define \mbox{\hyperlink{dynarray_8h_a6db0c31ce10f93b882005ef44a1ca8f8}{oc\+\_\+da\+\_\+emplace}}(da,  index,  val)
+\item 
+\#define \mbox{\hyperlink{dynarray_8h_a520108d2a4dfb02f1ae46b5efd9c206a}{oc\+\_\+da\+\_\+erase}}(da,  index)
+\item 
+\#define \mbox{\hyperlink{dynarray_8h_a54f0d67e8281de8a6a281e826652f5b4}{oc\+\_\+da\+\_\+find}}(da,  val)
+\item 
+\#define \mbox{\hyperlink{dynarray_8h_a4ed47f46a96bcfc32396aa04afa9fcd8}{oc\+\_\+da\+\_\+dump}}(da,  fmt,  stream)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{dynarray_8h_ad9b7e7239aace22884f113ee36b46134}\label{dynarray_8h_ad9b7e7239aace22884f113ee36b46134} 
+static int {\bfseries \+\_\+oc\+\_\+da\+\_\+grow} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}da, size\+\_\+t new\+\_\+cap, size\+\_\+t elem\+\_\+size)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A generic, type-\/safe, stb-\/style dynamic array (dynarray) implementation. 
+
+This implementation uses macros and the "{}fat pointer"{} trick to provide a type-\/safe and convenient API that feels like a language extension.
+
+USAGE\+: int\texorpdfstring{$\ast$}{*} my\+\_\+da = NULL; \doxylink{dynarray_8h_a803b069513c5f698167bb9df24d55617}{oc\+\_\+da\+\_\+push(my\+\_\+da, 10)}; \doxylink{dynarray_8h_a803b069513c5f698167bb9df24d55617}{oc\+\_\+da\+\_\+push(my\+\_\+da, 20)}; for (size\+\_\+t i = 0; i \texorpdfstring{$<$}{<} \doxylink{dynarray_8h_a207cc514f952433b1cca44e60b46b412}{oc\+\_\+da\+\_\+len(my\+\_\+da)}; ++i) \{ printf("{}\%d\textbackslash{}n"{}, my\+\_\+da\mbox{[}i\mbox{]}); \} \doxylink{dynarray_8h_af781380573a348c3ee60515549205624}{oc\+\_\+da\+\_\+free(my\+\_\+da)}; 
+
+\label{doc-define-members}
+\Hypertarget{dynarray_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{dynarray_8h_aa3ec1c60085dd65a1e78ba06030ba9fc}\index{dynarray.h@{dynarray.h}!\_oc\_da\_header@{\_oc\_da\_header}}
+\index{\_oc\_da\_header@{\_oc\_da\_header}!dynarray.h@{dynarray.h}}
+\doxysubsubsection{\texorpdfstring{\_oc\_da\_header}{\_oc\_da\_header}}
+{\footnotesize\ttfamily \label{dynarray_8h_aa3ec1c60085dd65a1e78ba06030ba9fc} 
+\#define \+\_\+oc\+\_\+da\+\_\+header(\begin{DoxyParamCaption}\item[{}]{da}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((\mbox{\hyperlink{structoc__da__header__t}{oc\_da\_header\_t}}*)((\textcolor{keywordtype}{char}*)(da)\ -\/\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structoc__da__header__t}{oc\_da\_header\_t}})))}
+
+\end{DoxyCode}
+\Hypertarget{dynarray_8h_a08574e417a77e281e754dcb88576dc80}\index{dynarray.h@{dynarray.h}!oc\_da\_cap@{oc\_da\_cap}}
+\index{oc\_da\_cap@{oc\_da\_cap}!dynarray.h@{dynarray.h}}
+\doxysubsubsection{\texorpdfstring{oc\_da\_cap}{oc\_da\_cap}}
+{\footnotesize\ttfamily \label{dynarray_8h_a08574e417a77e281e754dcb88576dc80} 
+\#define oc\+\_\+da\+\_\+cap(\begin{DoxyParamCaption}\item[{}]{da}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((da)\ ?\ \_oc\_da\_header(da)-\/>capacity\ :\ 0)}
+
+\end{DoxyCode}
+
+
+Gets the current allocated capacity of the dynarray. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em da} & The dynarray. Can be NULL (returns 0). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The capacity. 
+\end{DoxyReturn}
+\Hypertarget{dynarray_8h_a4ed47f46a96bcfc32396aa04afa9fcd8}\index{dynarray.h@{dynarray.h}!oc\_da\_dump@{oc\_da\_dump}}
+\index{oc\_da\_dump@{oc\_da\_dump}!dynarray.h@{dynarray.h}}
+\doxysubsubsection{\texorpdfstring{oc\_da\_dump}{oc\_da\_dump}}
+{\footnotesize\ttfamily \label{dynarray_8h_a4ed47f46a96bcfc32396aa04afa9fcd8} 
+\#define oc\+\_\+da\+\_\+dump(\begin{DoxyParamCaption}\item[{}]{da}{, }\item[{}]{fmt}{, }\item[{}]{stream}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{do}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ fprintf((stream),\ \textcolor{stringliteral}{"{}["{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{size\_t}\ len\ =\ \mbox{\hyperlink{dynarray_8h_a207cc514f952433b1cca44e60b46b412}{oc\_da\_len}}(da);\ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ for\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ len;\ ++i)\ \{\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ fprintf((stream),\ (fmt),\ (da)[i]);\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ if\ (i\ <\ len\ -\/\ 1)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fprintf((stream),\ \textcolor{stringliteral}{"{},\ "{}});\ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ fprintf((stream),\ \textcolor{stringliteral}{"{}]\(\backslash\)n"{}});\ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \}\ \textcolor{keywordflow}{while}\ ((\textcolor{keywordtype}{void})0,\ 0)}
+
+\end{DoxyCode}
+
+
+Prints the contents of the dynarray to a stream (C-\/style {\ttfamily operator\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em da} & The dynarray. \\
+\hline
+{\em fmt} & A printf-\/style format specifier for one element (e.\+g., "{}\%d"{}, "{}\%.\+2f"{}). \\
+\hline
+{\em stream} & The output stream (e.\+g., stdout, stderr). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{dynarray_8h_a6db0c31ce10f93b882005ef44a1ca8f8}\index{dynarray.h@{dynarray.h}!oc\_da\_emplace@{oc\_da\_emplace}}
+\index{oc\_da\_emplace@{oc\_da\_emplace}!dynarray.h@{dynarray.h}}
+\doxysubsubsection{\texorpdfstring{oc\_da\_emplace}{oc\_da\_emplace}}
+{\footnotesize\ttfamily \label{dynarray_8h_a6db0c31ce10f93b882005ef44a1ca8f8} 
+\#define oc\+\_\+da\+\_\+emplace(\begin{DoxyParamCaption}\item[{}]{da}{, }\item[{}]{index}{, }\item[{}]{val}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{dynarray_8h_a4f35def9262a5fd0e62af5fb7fe1c6bf}{oc\_da\_insert}}(da,\ index,\ val)}
+
+\end{DoxyCode}
+
+
+Alias for oc\+\_\+da\+\_\+insert, for users familiar with C++ STL \textquotesingle{}emplace\textquotesingle{}. 
+
+\Hypertarget{dynarray_8h_adfc22d910fde311fb9a6f8e7d9a22b69}\index{dynarray.h@{dynarray.h}!oc\_da\_empty@{oc\_da\_empty}}
+\index{oc\_da\_empty@{oc\_da\_empty}!dynarray.h@{dynarray.h}}
+\doxysubsubsection{\texorpdfstring{oc\_da\_empty}{oc\_da\_empty}}
+{\footnotesize\ttfamily \label{dynarray_8h_adfc22d910fde311fb9a6f8e7d9a22b69} 
+\#define oc\+\_\+da\+\_\+empty(\begin{DoxyParamCaption}\item[{}]{da}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(\mbox{\hyperlink{dynarray_8h_a207cc514f952433b1cca44e60b46b412}{oc\_da\_len}}(da)\ ==\ 0)}
+
+\end{DoxyCode}
+
+
+Checks the emptiness of provided dynarray. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em da} & The dynarray. Can be NULL (returns true). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a boolean value which determines the emptiness of provided dynarray. 
+\end{DoxyReturn}
+\Hypertarget{dynarray_8h_a520108d2a4dfb02f1ae46b5efd9c206a}\index{dynarray.h@{dynarray.h}!oc\_da\_erase@{oc\_da\_erase}}
+\index{oc\_da\_erase@{oc\_da\_erase}!dynarray.h@{dynarray.h}}
+\doxysubsubsection{\texorpdfstring{oc\_da\_erase}{oc\_da\_erase}}
+{\footnotesize\ttfamily \label{dynarray_8h_a520108d2a4dfb02f1ae46b5efd9c206a} 
+\#define oc\+\_\+da\+\_\+erase(\begin{DoxyParamCaption}\item[{}]{da}{, }\item[{}]{index}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{do}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{size\_t}\ len\ =\ \mbox{\hyperlink{dynarray_8h_a207cc514f952433b1cca44e60b46b412}{oc\_da\_len}}(da);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ assert((index)\ <\ len\ \&\&\ \textcolor{stringliteral}{"{}[OmniC][Dynarray]\ Erase\ index\ out\ of\ bounds"{}});\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ if\ ((index)\ <\ len\ -\/\ 1)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ memmove(\&(da)[(index)],\ \&(da)[(index)\ +\ 1],\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ (len\ -\/\ 1\ -\/\ (index))\ *\ \textcolor{keyword}{sizeof}(*(da)));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \_oc\_da\_header(da)-\/>length-\/-\/;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \}\ \textcolor{keywordflow}{while}\ ((\textcolor{keywordtype}{void})0,\ 0)}
+
+\end{DoxyCode}
+
+
+Erases an element at a specific index, shifting subsequent elements. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em da} & The dynarray. \\
+\hline
+{\em index} & The index of the element to erase. Asserts if out of bounds. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{dynarray_8h_a54f0d67e8281de8a6a281e826652f5b4}\index{dynarray.h@{dynarray.h}!oc\_da\_find@{oc\_da\_find}}
+\index{oc\_da\_find@{oc\_da\_find}!dynarray.h@{dynarray.h}}
+\doxysubsubsection{\texorpdfstring{oc\_da\_find}{oc\_da\_find}}
+{\footnotesize\ttfamily \label{dynarray_8h_a54f0d67e8281de8a6a281e826652f5b4} 
+\#define oc\+\_\+da\+\_\+find(\begin{DoxyParamCaption}\item[{}]{da}{, }\item[{}]{val}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ (\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{size\_t}\ \_oc\_da\_find\_index\ =\ OC\_DYNARRAY\_INDEX\_NOT\_FOUND;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ for\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{dynarray_8h_a207cc514f952433b1cca44e60b46b412}{oc\_da\_len}}(da);\ ++i)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ if\ ((da)[i]\ ==\ (val))\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \_oc\_da\_find\_index\ =\ i;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \_oc\_da\_find\_index;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \})}
+
+\end{DoxyCode}
+
+
+Finds the first occurrence of a value in the dynarray. This macro uses the {\ttfamily ==} operator for comparison. For complex types (like structs), you may need to write a custom loop. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em da} & The dynarray. \\
+\hline
+{\em val} & The value to find. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The index of the first matching element, or OC\+\_\+\+DYNARRAY\+\_\+\+INDEX\+\_\+\+NOT\+\_\+\+FOUND if not found. 
+\end{DoxyReturn}
+\Hypertarget{dynarray_8h_af781380573a348c3ee60515549205624}\index{dynarray.h@{dynarray.h}!oc\_da\_free@{oc\_da\_free}}
+\index{oc\_da\_free@{oc\_da\_free}!dynarray.h@{dynarray.h}}
+\doxysubsubsection{\texorpdfstring{oc\_da\_free}{oc\_da\_free}}
+{\footnotesize\ttfamily \label{dynarray_8h_af781380573a348c3ee60515549205624} 
+\#define oc\+\_\+da\+\_\+free(\begin{DoxyParamCaption}\item[{}]{da}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{do}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ if\ (da)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ free(\_oc\_da\_header(da));\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ (da)\ =\ NULL;\ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \}\ \textcolor{keywordflow}{while}\ ((\textcolor{keywordtype}{void})0,\ 0)}
+
+\end{DoxyCode}
+
+
+Frees all memory used by the dynarray. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em da} & The dynarray. Can be NULL. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{dynarray_8h_a4f35def9262a5fd0e62af5fb7fe1c6bf}\index{dynarray.h@{dynarray.h}!oc\_da\_insert@{oc\_da\_insert}}
+\index{oc\_da\_insert@{oc\_da\_insert}!dynarray.h@{dynarray.h}}
+\doxysubsubsection{\texorpdfstring{oc\_da\_insert}{oc\_da\_insert}}
+{\footnotesize\ttfamily \label{dynarray_8h_a4f35def9262a5fd0e62af5fb7fe1c6bf} 
+\#define oc\+\_\+da\+\_\+insert(\begin{DoxyParamCaption}\item[{}]{da}{, }\item[{}]{index}{, }\item[{}]{val}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{do}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{size\_t}\ len\ =\ \mbox{\hyperlink{dynarray_8h_a207cc514f952433b1cca44e60b46b412}{oc\_da\_len}}(da);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ assert((index)\ <=\ len\ \&\&\ \textcolor{stringliteral}{"{}[OmniC][Dynarray]\ Insert\ index\ out\ of\ bounds"{}});\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ oc\_da\_push((da),\ (val));\ \textcolor{comment}{/*\ Grow\ if\ needed\ and\ temporarily\ place\ val\ */}\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ if\ ((index)\ <\ len)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ memmove(\&(da)[(index)\ +\ 1],\ \&(da)[(index)],\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ (len\ -\/\ (index))\ *\ \textcolor{keyword}{sizeof}(*(da)));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ (da)[(index)]\ =\ (val);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \}\ \textcolor{keywordflow}{while}\ ((\textcolor{keywordtype}{void})0,\ 0)}
+
+\end{DoxyCode}
+
+
+Inserts an element at a specific index, shifting subsequent elements. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em da} & The dynarray. Must be a re-\/assignable variable. \\
+\hline
+{\em index} & The index at which to insert the element. Asserts if out of bounds (must be \texorpdfstring{$<$}{<}= length). \\
+\hline
+{\em val} & The value to insert. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{dynarray_8h_a2d55c172ed01e197dfbab6aa43603cb1}\index{dynarray.h@{dynarray.h}!oc\_da\_last@{oc\_da\_last}}
+\index{oc\_da\_last@{oc\_da\_last}!dynarray.h@{dynarray.h}}
+\doxysubsubsection{\texorpdfstring{oc\_da\_last}{oc\_da\_last}}
+{\footnotesize\ttfamily \label{dynarray_8h_a2d55c172ed01e197dfbab6aa43603cb1} 
+\#define oc\+\_\+da\+\_\+last(\begin{DoxyParamCaption}\item[{}]{da}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(assert(\mbox{\hyperlink{dynarray_8h_a207cc514f952433b1cca44e60b46b412}{oc\_da\_len}}(da)\ >\ 0),\ (da)[\mbox{\hyperlink{dynarray_8h_a207cc514f952433b1cca44e60b46b412}{oc\_da\_len}}(da)\ -\/\ 1])}
+
+\end{DoxyCode}
+
+
+Returns a reference to the last element in the dynarray. Asserts if the dynarray is empty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em da} & The dynarray. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the last element. 
+\end{DoxyReturn}
+\Hypertarget{dynarray_8h_a207cc514f952433b1cca44e60b46b412}\index{dynarray.h@{dynarray.h}!oc\_da\_len@{oc\_da\_len}}
+\index{oc\_da\_len@{oc\_da\_len}!dynarray.h@{dynarray.h}}
+\doxysubsubsection{\texorpdfstring{oc\_da\_len}{oc\_da\_len}}
+{\footnotesize\ttfamily \label{dynarray_8h_a207cc514f952433b1cca44e60b46b412} 
+\#define oc\+\_\+da\+\_\+len(\begin{DoxyParamCaption}\item[{}]{da}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((da)\ ?\ \_oc\_da\_header(da)-\/>length\ :\ 0)}
+
+\end{DoxyCode}
+
+
+Gets the number of elements in the dynarray. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em da} & The dynarray. Can be NULL (returns 0). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of elements. 
+\end{DoxyReturn}
+\Hypertarget{dynarray_8h_a6474ef9cc8dcd5015149f948f9104820}\index{dynarray.h@{dynarray.h}!oc\_da\_pop@{oc\_da\_pop}}
+\index{oc\_da\_pop@{oc\_da\_pop}!dynarray.h@{dynarray.h}}
+\doxysubsubsection{\texorpdfstring{oc\_da\_pop}{oc\_da\_pop}}
+{\footnotesize\ttfamily \label{dynarray_8h_a6474ef9cc8dcd5015149f948f9104820} 
+\#define oc\+\_\+da\+\_\+pop(\begin{DoxyParamCaption}\item[{}]{da}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{do}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ assert(\mbox{\hyperlink{dynarray_8h_a207cc514f952433b1cca44e60b46b412}{oc\_da\_len}}(da)\ >\ 0\ \&\&\ \textcolor{stringliteral}{"{}[OmniC][Dynarray]\ Pop\ from\ empty\ dynarray"{}});\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \_oc\_da\_header(da)-\/>length-\/-\/;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \}\ \textcolor{keywordflow}{while}\ ((\textcolor{keywordtype}{void})0,\ 0)}
+
+\end{DoxyCode}
+
+
+Removes and returns the last element of the dynarray. Does not shrink the capacity. Asserts if the dynarray is empty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em da} & The dynarray. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{dynarray_8h_a803b069513c5f698167bb9df24d55617}\index{dynarray.h@{dynarray.h}!oc\_da\_push@{oc\_da\_push}}
+\index{oc\_da\_push@{oc\_da\_push}!dynarray.h@{dynarray.h}}
+\doxysubsubsection{\texorpdfstring{oc\_da\_push}{oc\_da\_push}}
+{\footnotesize\ttfamily \label{dynarray_8h_a803b069513c5f698167bb9df24d55617} 
+\#define oc\+\_\+da\+\_\+push(\begin{DoxyParamCaption}\item[{}]{da}{, }\item[{}]{val}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{do}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{size\_t}\ cap\ =\ \mbox{\hyperlink{dynarray_8h_a08574e417a77e281e754dcb88576dc80}{oc\_da\_cap}}(da);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{size\_t}\ len\ =\ \mbox{\hyperlink{dynarray_8h_a207cc514f952433b1cca44e60b46b412}{oc\_da\_len}}(da);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ if\ (cap\ <=\ len)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ new\_cap\ =\ (cap\ ==\ 0)\ ?\ OC\_DYNARRAY\_INITIAL\_CAPACITY\ :\ cap\ <<\ 1;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{keywordtype}{int}\ err\ =\ \_oc\_da\_grow((\textcolor{keywordtype}{void}**)\&(da),\ new\_cap,\ \textcolor{keyword}{sizeof}(*(da)));\ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ assert(err\ ==\ 0\ \&\&\ \textcolor{stringliteral}{"{}[OmniC][Dynarray]\ Failed\ to\ grow\ dynarray"{}});\ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ (da)[len]\ =\ (val);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \_oc\_da\_header(da)-\/>length++;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \}\ \textcolor{keywordflow}{while}\ ((\textcolor{keywordtype}{void})0,\ 0)}
+
+\end{DoxyCode}
+
+
+Appends an element to the end of the dynarray. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em da} & The dynarray. {\bfseries{IMPORTANT\+:}} This must be a variable that can be reassigned, as the dynarray\textquotesingle{}s memory block may be moved. \\
+\hline
+{\em val} & The value to push (not a pointer to it). \\
+\hline
+\end{DoxyParams}

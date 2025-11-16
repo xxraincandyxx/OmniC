@@ -1,0 +1,55 @@
+\doxysection{include/omnic/macros.h File Reference}
+\hypertarget{macros_8h}{}\label{macros_8h}\index{include/omnic/macros.h@{include/omnic/macros.h}}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{macros_8h_aa06eedd6f738a415870e97a375337d51}{ASSERT}}(condition,  message)
+\item 
+\#define \mbox{\hyperlink{macros_8h_a813ec5fb4508d40c21e9090d82846d83}{ASSERT\+\_\+\+EQ}}(a,  b,  fmt,  message)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header for macro utilities. 
+
+
+
+\label{doc-define-members}
+\Hypertarget{macros_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{macros_8h_aa06eedd6f738a415870e97a375337d51}\index{macros.h@{macros.h}!ASSERT@{ASSERT}}
+\index{ASSERT@{ASSERT}!macros.h@{macros.h}}
+\doxysubsubsection{\texorpdfstring{ASSERT}{ASSERT}}
+{\footnotesize\ttfamily \label{macros_8h_aa06eedd6f738a415870e97a375337d51} 
+\#define ASSERT(\begin{DoxyParamCaption}\item[{}]{condition}{, }\item[{}]{message}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{do}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ if\ (!(condition))\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ (void)fprintf(stderr,\ \textcolor{stringliteral}{"{}FAIL:\ \%s:\%d:\ \%s\(\backslash\)n"{}},\ \_\_FILE\_\_,\ \_\_LINE\_\_,\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (message));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ g\_test\_failures++;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \}\ \textcolor{keywordflow}{while}\ ((\textcolor{keywordtype}{void})0,\ 0)}
+
+\end{DoxyCode}
+\Hypertarget{macros_8h_a813ec5fb4508d40c21e9090d82846d83}\index{macros.h@{macros.h}!ASSERT\_EQ@{ASSERT\_EQ}}
+\index{ASSERT\_EQ@{ASSERT\_EQ}!macros.h@{macros.h}}
+\doxysubsubsection{\texorpdfstring{ASSERT\_EQ}{ASSERT\_EQ}}
+{\footnotesize\ttfamily \label{macros_8h_a813ec5fb4508d40c21e9090d82846d83} 
+\#define ASSERT\+\_\+\+EQ(\begin{DoxyParamCaption}\item[{}]{a}{, }\item[{}]{b}{, }\item[{}]{fmt}{, }\item[{}]{message}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{do}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ if\ ((a)\ !=\ (b))\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ (void)fprintf(stderr,\ \textcolor{stringliteral}{"{}FAIL:\ \%s:\%d:\ \%s\(\backslash\)n"{}},\ \_\_FILE\_\_,\ \_\_LINE\_\_,\ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (message));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ (void)fprintf(stderr,\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ Expected:\ "{}}\ fmt\ \textcolor{stringliteral}{"{},\ Got:\ "{}}\ fmt\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}},\ (b),\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (a));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ g\_test\_failures++;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \}\ \textcolor{keywordflow}{while}\ ((\textcolor{keywordtype}{void})0,\ 0)}
+
+\end{DoxyCode}

@@ -1,0 +1,463 @@
+\doxysection{include/omnic/list.h File Reference}
+\hypertarget{list_8h}{}\label{list_8h}\index{include/omnic/list.h@{include/omnic/list.h}}
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+Include dependency graph for list.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{list_8h__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structoc__list__node__t}{oc\+\_\+list\+\_\+node\+\_\+t}}
+\item 
+struct \mbox{\hyperlink{structoc__list__t}{oc\+\_\+list\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{list_8h_a3eb70865cd09c408a0c61454fbd93ba7}{\+\_\+oc\+\_\+list\+\_\+entry}}(ptr,  type,  member)
+\item 
+\#define \mbox{\hyperlink{list_8h_a963175ac7dd0f5b3288f7ae69b5452e6}{oc\+\_\+list\+\_\+init}}(list)
+\item 
+\#define \mbox{\hyperlink{list_8h_a805839a544e80bf98d1631f140bdefd2}{oc\+\_\+list\+\_\+size}}(list)
+\item 
+\#define \mbox{\hyperlink{list_8h_a7d9d3f59657eebeab9a49b70668d501b}{oc\+\_\+list\+\_\+empty}}(list)
+\item 
+\#define \mbox{\hyperlink{list_8h_a4c2674543542c7f293c4071c133d1b59}{oc\+\_\+list\+\_\+emplace\+\_\+front}}(list,  type,  member, ...)
+\item 
+\#define \mbox{\hyperlink{list_8h_a89152d1d25a84395552835ecaec7be5d}{oc\+\_\+list\+\_\+emplace\+\_\+back}}(list,  type,  member, ...)
+\item 
+\#define \mbox{\hyperlink{list_8h_a3ebea3df505bbd4723e97691c2ab1d53}{oc\+\_\+list\+\_\+for\+\_\+each}}(cursor,  list,  type,  member)
+\item 
+\#define \mbox{\hyperlink{list_8h_ae2e56c5bb275f73fb66054405cdb8e2e}{oc\+\_\+list\+\_\+for\+\_\+each\+\_\+safe}}(cursor,  safe\+\_\+cursor,  list,  type,  member)
+\item 
+\#define \mbox{\hyperlink{list_8h_ac12792554f0fb6855d6226dbdc125c14}{oc\+\_\+list\+\_\+invert}}(list,  type,  member)
+\item 
+\#define \mbox{\hyperlink{list_8h_a4eb26b2c0c93650bce135fde824023fd}{oc\+\_\+list\+\_\+erase}}(list,  entry,  member)
+\item 
+\#define \mbox{\hyperlink{list_8h_a750b4089e91f7efb236b40fb9d02d81d}{oc\+\_\+list\+\_\+destroy}}(list,  type,  member)
+\item 
+\#define \mbox{\hyperlink{list_8h_a07ab0c16644ba43109e69bbc3f9ff489}{oc\+\_\+list\+\_\+dump}}(list,  type,  member,  dumper,  stream)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{list_8h_aa90eced435b9b18e50857d04bda4ea51}\label{list_8h_aa90eced435b9b18e50857d04bda4ea51} 
+typedef struct oc\+\_\+list\+\_\+node\+\_\+t {\bfseries oc\+\_\+list\+\_\+node\+\_\+t}
+\item 
+typedef void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{list_8h_a345d5e9746eda99aee8a39e36fdfb25b}{oc\+\_\+list\+\_\+item\+\_\+dumper\+\_\+t}}) (const void \texorpdfstring{$\ast$}{*}entry, FILE \texorpdfstring{$\ast$}{*}stream)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{list_8h_ac2b6519799fc7430c16b3433018fea81}\label{list_8h_ac2b6519799fc7430c16b3433018fea81} 
+static void {\bfseries \+\_\+oc\+\_\+list\+\_\+link\+\_\+node} (\mbox{\hyperlink{structoc__list__node__t}{oc\+\_\+list\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*}prev, \mbox{\hyperlink{structoc__list__node__t}{oc\+\_\+list\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*}next, \mbox{\hyperlink{structoc__list__node__t}{oc\+\_\+list\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*}new\+\_\+node)
+\item 
+\Hypertarget{list_8h_ae67bfe76bc4a7e1b6f315baecb21a9f6}\label{list_8h_ae67bfe76bc4a7e1b6f315baecb21a9f6} 
+static void {\bfseries \+\_\+oc\+\_\+list\+\_\+unlink\+\_\+node} (\mbox{\hyperlink{structoc__list__node__t}{oc\+\_\+list\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*}node)
+\item 
+\Hypertarget{list_8h_a9c1d6f263077f4b549ad53acae113339}\label{list_8h_a9c1d6f263077f4b549ad53acae113339} 
+static void {\bfseries \+\_\+oc\+\_\+list\+\_\+swap\+\_\+node} (\mbox{\hyperlink{structoc__list__node__t}{oc\+\_\+list\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*}lhs\+\_\+node, \mbox{\hyperlink{structoc__list__node__t}{oc\+\_\+list\+\_\+node\+\_\+t}} \texorpdfstring{$\ast$}{*}rhs\+\_\+node)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A generic, type-\/safe, macro-\/based intrusive doubly-\/linked list. 
+
+This implementation uses an {\bfseries{"{}intrusive"{}}} design. This means you must embed an {\ttfamily \doxylink{structoc__list__node__t}{oc\+\_\+list\+\_\+node\+\_\+t}} member directly into the structure you wish to link. This approach is highly memory-\/efficient as it avoids separate allocations for list nodes.
+
+{\bfseries{USAGE\+:}}
+
+// 1. Define your data structure with an \doxylink{structoc__list__node__t}{oc\+\_\+list\+\_\+node\+\_\+t} member. typedef struct \{ int id; \doxylink{structoc__list__node__t}{oc\+\_\+list\+\_\+node\+\_\+t} link; // The intrusive node \} my\+\_\+item\+\_\+t;
+
+// 2. Declare and initialize a list head. \doxylink{structoc__list__t}{oc\+\_\+list\+\_\+t} my\+\_\+list; \doxylink{list_8h_a963175ac7dd0f5b3288f7ae69b5452e6}{oc\+\_\+list\+\_\+init(\&my\+\_\+list)};
+
+// 3. Add items to the list. oc\+\_\+list\+\_\+emplace\+\_\+back(\&my\+\_\+list, my\+\_\+item\+\_\+t, link, .id = 10); oc\+\_\+list\+\_\+emplace\+\_\+front(\&my\+\_\+list, my\+\_\+item\+\_\+t, link, .id = 5);
+
+// 4. Iterate and use the list. my\+\_\+item\+\_\+t\texorpdfstring{$\ast$}{*} item = NULL; \doxylink{list_8h_a3ebea3df505bbd4723e97691c2ab1d53}{oc\+\_\+list\+\_\+for\+\_\+each(item, \&my\+\_\+list, my\+\_\+item\+\_\+t, link)} \{ printf("{}\+Item ID\+: \%d\textbackslash{}n"{}, item-\/\texorpdfstring{$>$}{>}id); \}
+
+// 5. Clean up. \doxylink{list_8h_a750b4089e91f7efb236b40fb9d02d81d}{oc\+\_\+list\+\_\+destroy(\&my\+\_\+list, my\+\_\+item\+\_\+t, link)}; 
+
+\label{doc-define-members}
+\Hypertarget{list_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{list_8h_a3eb70865cd09c408a0c61454fbd93ba7}\index{list.h@{list.h}!\_oc\_list\_entry@{\_oc\_list\_entry}}
+\index{\_oc\_list\_entry@{\_oc\_list\_entry}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{\_oc\_list\_entry}{\_oc\_list\_entry}}
+{\footnotesize\ttfamily \label{list_8h_a3eb70865cd09c408a0c61454fbd93ba7} 
+\#define \+\_\+oc\+\_\+list\+\_\+entry(\begin{DoxyParamCaption}\item[{}]{ptr}{, }\item[{}]{type}{, }\item[{}]{member}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ ((type*)((\textcolor{keywordtype}{char}*)(ptr)\ -\/\ offsetof(type,\ member)))}
+
+\end{DoxyCode}
+\Hypertarget{list_8h_a750b4089e91f7efb236b40fb9d02d81d}\index{list.h@{list.h}!oc\_list\_destroy@{oc\_list\_destroy}}
+\index{oc\_list\_destroy@{oc\_list\_destroy}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{oc\_list\_destroy}{oc\_list\_destroy}}
+{\footnotesize\ttfamily \label{list_8h_a750b4089e91f7efb236b40fb9d02d81d} 
+\#define oc\+\_\+list\+\_\+destroy(\begin{DoxyParamCaption}\item[{}]{list}{, }\item[{}]{type}{, }\item[{}]{member}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{do}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{structoc__list__node__t}{oc\_list\_node\_t}}*\ curr\ =\ (list)-\/>head;\ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ while\ (curr)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{structoc__list__node__t}{oc\_list\_node\_t}}*\ next\ =\ curr-\/>next;\ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ free(\_oc\_list\_entry(curr,\ type,\ member));\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ curr\ =\ next;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ oc\_list\_init(list);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \}\ \textcolor{keywordflow}{while}\ (0)}
+
+\end{DoxyCode}
+
+
+Frees all elements in the list and resets the list head. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Pointer to the \doxylink{structoc__list__t}{oc\+\_\+list\+\_\+t} object. \\
+\hline
+{\em type} & The type of your structure. \\
+\hline
+{\em member} & The name of the \doxylink{structoc__list__node__t}{oc\+\_\+list\+\_\+node\+\_\+t} member in your struct. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{list_8h_a07ab0c16644ba43109e69bbc3f9ff489}\index{list.h@{list.h}!oc\_list\_dump@{oc\_list\_dump}}
+\index{oc\_list\_dump@{oc\_list\_dump}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{oc\_list\_dump}{oc\_list\_dump}}
+{\footnotesize\ttfamily \label{list_8h_a07ab0c16644ba43109e69bbc3f9ff489} 
+\#define oc\+\_\+list\+\_\+dump(\begin{DoxyParamCaption}\item[{}]{list}{, }\item[{}]{type}{, }\item[{}]{member}{, }\item[{}]{dumper}{, }\item[{}]{stream}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{do}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ fprintf((stream),\ \textcolor{stringliteral}{"{}oc\_list\_t\ (size:\ \%zu)\ \{\(\backslash\)n"{}},\ \mbox{\hyperlink{list_8h_a805839a544e80bf98d1631f140bdefd2}{oc\_list\_size}}(list));\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ type*\ \_entry;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ oc\_list\_for\_each(\_entry,\ list,\ type,\ member)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ fprintf((stream),\ \textcolor{stringliteral}{"{}\ \ "{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ (dumper)(\_entry,\ stream);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ fprintf((stream),\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ fprintf((stream),\ \textcolor{stringliteral}{"{}\}\(\backslash\)n"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \}\ \textcolor{keywordflow}{while}\ (0)}
+
+\end{DoxyCode}
+
+
+Dumps the contents of the list to a stream for debugging. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Pointer to the \doxylink{structoc__list__t}{oc\+\_\+list\+\_\+t} object. \\
+\hline
+{\em type} & The type of your structure. \\
+\hline
+{\em member} & The name of the \doxylink{structoc__list__node__t}{oc\+\_\+list\+\_\+node\+\_\+t} member in your struct. \\
+\hline
+{\em dumper} & The function that prints a single element. \\
+\hline
+{\em stream} & The output stream (e.\+g., stdout). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{list_8h_a89152d1d25a84395552835ecaec7be5d}\index{list.h@{list.h}!oc\_list\_emplace\_back@{oc\_list\_emplace\_back}}
+\index{oc\_list\_emplace\_back@{oc\_list\_emplace\_back}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{oc\_list\_emplace\_back}{oc\_list\_emplace\_back}}
+{\footnotesize\ttfamily \label{list_8h_a89152d1d25a84395552835ecaec7be5d} 
+\#define oc\+\_\+list\+\_\+emplace\+\_\+back(\begin{DoxyParamCaption}\item[{}]{list}{, }\item[{}]{type}{, }\item[{}]{member}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ (\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ type*\ new\_entry\ =\ (type*)malloc(\textcolor{keyword}{sizeof}(type));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ if\ (new\_entry)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ *new\_entry\ =\ (type)\{\_\_VA\_ARGS\_\_\};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \_oc\_list\_link\_node((list)-\/>tail,\ NULL,\ \&new\_entry-\/>member);\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ if\ (\mbox{\hyperlink{list_8h_a7d9d3f59657eebeab9a49b70668d501b}{oc\_list\_empty}}(list))\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (list)-\/>head\ =\ \&new\_entry-\/>member;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ (list)-\/>tail\ =\ \&new\_entry-\/>member;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ (list)-\/>size++;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ new\_entry;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \})}
+
+\end{DoxyCode}
+
+
+Allocates and inserts a new element at the back of the list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Pointer to the \doxylink{structoc__list__t}{oc\+\_\+list\+\_\+t} object. \\
+\hline
+{\em type} & The type of your structure (e.\+g., my\+\_\+item\+\_\+t). \\
+\hline
+{\em member} & The name of the \doxylink{structoc__list__node__t}{oc\+\_\+list\+\_\+node\+\_\+t} member in your struct. \\
+\hline
+{\em ...} & Designated initializers for your struct (e.\+g., .id = 10). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the newly created element, or NULL on allocation failure. 
+\end{DoxyReturn}
+\Hypertarget{list_8h_a4c2674543542c7f293c4071c133d1b59}\index{list.h@{list.h}!oc\_list\_emplace\_front@{oc\_list\_emplace\_front}}
+\index{oc\_list\_emplace\_front@{oc\_list\_emplace\_front}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{oc\_list\_emplace\_front}{oc\_list\_emplace\_front}}
+{\footnotesize\ttfamily \label{list_8h_a4c2674543542c7f293c4071c133d1b59} 
+\#define oc\+\_\+list\+\_\+emplace\+\_\+front(\begin{DoxyParamCaption}\item[{}]{list}{, }\item[{}]{type}{, }\item[{}]{member}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ (\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ type*\ new\_entry\ =\ (type*)malloc(\textcolor{keyword}{sizeof}(type));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ if\ (new\_entry)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ *new\_entry\ =\ (type)\{\_\_VA\_ARGS\_\_\};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \_oc\_list\_link\_node(NULL,\ (list)-\/>head,\ \&new\_entry-\/>member);\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ if\ (\mbox{\hyperlink{list_8h_a7d9d3f59657eebeab9a49b70668d501b}{oc\_list\_empty}}(list))\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (list)-\/>tail\ =\ \&new\_entry-\/>member;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ (list)-\/>head\ =\ \&new\_entry-\/>member;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ (list)-\/>size++;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ new\_entry;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \})}
+
+\end{DoxyCode}
+
+
+Allocates and inserts a new element at the front of the list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Pointer to the \doxylink{structoc__list__t}{oc\+\_\+list\+\_\+t} object. \\
+\hline
+{\em type} & The type of your structure (e.\+g., my\+\_\+item\+\_\+t). \\
+\hline
+{\em member} & The name of the \doxylink{structoc__list__node__t}{oc\+\_\+list\+\_\+node\+\_\+t} member in your struct. \\
+\hline
+{\em ...} & Designated initializers for your struct (e.\+g., .id = 10). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the newly created element, or NULL on allocation failure. 
+\end{DoxyReturn}
+\Hypertarget{list_8h_a7d9d3f59657eebeab9a49b70668d501b}\index{list.h@{list.h}!oc\_list\_empty@{oc\_list\_empty}}
+\index{oc\_list\_empty@{oc\_list\_empty}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{oc\_list\_empty}{oc\_list\_empty}}
+{\footnotesize\ttfamily \label{list_8h_a7d9d3f59657eebeab9a49b70668d501b} 
+\#define oc\+\_\+list\+\_\+empty(\begin{DoxyParamCaption}\item[{}]{list}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(\mbox{\hyperlink{list_8h_a805839a544e80bf98d1631f140bdefd2}{oc\_list\_size}}(list)\ ==\ 0)}
+
+\end{DoxyCode}
+
+
+Checks if the list is empty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Pointer to the \doxylink{structoc__list__t}{oc\+\_\+list\+\_\+t} object. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{list_8h_a4eb26b2c0c93650bce135fde824023fd}\index{list.h@{list.h}!oc\_list\_erase@{oc\_list\_erase}}
+\index{oc\_list\_erase@{oc\_list\_erase}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{oc\_list\_erase}{oc\_list\_erase}}
+{\footnotesize\ttfamily \label{list_8h_a4eb26b2c0c93650bce135fde824023fd} 
+\#define oc\+\_\+list\+\_\+erase(\begin{DoxyParamCaption}\item[{}]{list}{, }\item[{}]{entry}{, }\item[{}]{member}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{do}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ assert((entry)\ !=\ NULL\ \&\&\ \textcolor{stringliteral}{"{}[OmniC][List]\ Cannot\ erase\ a\ NULL\ entry"{}});\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{structoc__list__node__t}{oc\_list\_node\_t}}*\ node\ =\ \&(entry)-\/>member;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ if\ (node\ ==\ (list)-\/>head)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ (list)-\/>head\ =\ node-\/>next;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ if\ (node\ ==\ (list)-\/>tail)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ (list)-\/>tail\ =\ node-\/>prev;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \_oc\_list\_unlink\_node(node);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ (list)-\/>size-\/-\/;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ free(entry);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \}\ \textcolor{keywordflow}{while}\ (0)}
+
+\end{DoxyCode}
+
+
+Removes an element from the list and frees its memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Pointer to the \doxylink{structoc__list__t}{oc\+\_\+list\+\_\+t} object. \\
+\hline
+{\em entry} & A pointer to the element to erase (e.\+g., my\+\_\+item\+\_\+t\texorpdfstring{$\ast$}{*}). \\
+\hline
+{\em member} & The name of the \doxylink{structoc__list__node__t}{oc\+\_\+list\+\_\+node\+\_\+t} member in the struct. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{list_8h_a3ebea3df505bbd4723e97691c2ab1d53}\index{list.h@{list.h}!oc\_list\_for\_each@{oc\_list\_for\_each}}
+\index{oc\_list\_for\_each@{oc\_list\_for\_each}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{oc\_list\_for\_each}{oc\_list\_for\_each}}
+{\footnotesize\ttfamily \label{list_8h_a3ebea3df505bbd4723e97691c2ab1d53} 
+\#define oc\+\_\+list\+\_\+for\+\_\+each(\begin{DoxyParamCaption}\item[{}]{cursor}{, }\item[{}]{list}{, }\item[{}]{type}{, }\item[{}]{member}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{structoc__list__node__t}{oc\_list\_node\_t}}*\ \_node\ =\ (list)-\/>head;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \_node\ \&\&\ ((cursor)\ =\ \_oc\_list\_entry(\_node,\ type,\ member),\ 1);\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \_node\ =\ \_node-\/>next)}
+
+\end{DoxyCode}
+
+
+Provides a standard for-\/loop to iterate over the list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cursor} & A pointer variable of your struct\textquotesingle{}s type (e.\+g., my\+\_\+item\+\_\+t\texorpdfstring{$\ast$}{*}). It will be assigned to each element in the list. \\
+\hline
+{\em list} & Pointer to the \doxylink{structoc__list__t}{oc\+\_\+list\+\_\+t} object. \\
+\hline
+{\em type} & The type of your structure. \\
+\hline
+{\em member} & The name of the \doxylink{structoc__list__node__t}{oc\+\_\+list\+\_\+node\+\_\+t} member in your struct.\\
+\hline
+\end{DoxyParams}
+{\bfseries{Example\+:}} my\+\_\+item\+\_\+t\texorpdfstring{$\ast$}{*} item; \doxylink{list_8h_a3ebea3df505bbd4723e97691c2ab1d53}{oc\+\_\+list\+\_\+for\+\_\+each(item, \&my\+\_\+list, my\+\_\+item\+\_\+t, link)} \{ ... \} \Hypertarget{list_8h_ae2e56c5bb275f73fb66054405cdb8e2e}\index{list.h@{list.h}!oc\_list\_for\_each\_safe@{oc\_list\_for\_each\_safe}}
+\index{oc\_list\_for\_each\_safe@{oc\_list\_for\_each\_safe}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{oc\_list\_for\_each\_safe}{oc\_list\_for\_each\_safe}}
+{\footnotesize\ttfamily \label{list_8h_ae2e56c5bb275f73fb66054405cdb8e2e} 
+\#define oc\+\_\+list\+\_\+for\+\_\+each\+\_\+safe(\begin{DoxyParamCaption}\item[{}]{cursor}{, }\item[{}]{safe\+\_\+cursor}{, }\item[{}]{list}{, }\item[{}]{type}{, }\item[{}]{member}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{structoc__list__node__t}{oc\_list\_node\_t}}*\ \_node\ =\ (list)-\/>head,\ *\_next\_node\ =\ NULL;\ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \_node\ \&\&\ (\_next\_node\ =\ \_node-\/>next,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (cursor)\ =\ \_oc\_list\_entry(\_node,\ type,\ member),\ 1);\ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \_node\ =\ \_next\_node)}
+
+\end{DoxyCode}
+
+
+Provides a safe for-\/loop for iterating when elements might be erased. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cursor} & A pointer variable of your struct\textquotesingle{}s type. \\
+\hline
+{\em safe\+\_\+cursor} & A temporary pointer variable of the same type. \\
+\hline
+{\em list} & Pointer to the \doxylink{structoc__list__t}{oc\+\_\+list\+\_\+t} object. \\
+\hline
+{\em type} & The type of your structure. \\
+\hline
+{\em member} & The name of the \doxylink{structoc__list__node__t}{oc\+\_\+list\+\_\+node\+\_\+t} member in your struct. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{list_8h_a963175ac7dd0f5b3288f7ae69b5452e6}\index{list.h@{list.h}!oc\_list\_init@{oc\_list\_init}}
+\index{oc\_list\_init@{oc\_list\_init}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{oc\_list\_init}{oc\_list\_init}}
+{\footnotesize\ttfamily \label{list_8h_a963175ac7dd0f5b3288f7ae69b5452e6} 
+\#define oc\+\_\+list\+\_\+init(\begin{DoxyParamCaption}\item[{}]{list}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{do}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ (list)-\/>head\ =\ NULL;\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ (list)-\/>tail\ =\ NULL;\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ (list)-\/>size\ =\ 0;\ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \}\ \textcolor{keywordflow}{while}\ (0)}
+
+\end{DoxyCode}
+
+
+Initializes a list head to a safe, empty state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Pointer to the \doxylink{structoc__list__t}{oc\+\_\+list\+\_\+t} object. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{list_8h_ac12792554f0fb6855d6226dbdc125c14}\index{list.h@{list.h}!oc\_list\_invert@{oc\_list\_invert}}
+\index{oc\_list\_invert@{oc\_list\_invert}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{oc\_list\_invert}{oc\_list\_invert}}
+{\footnotesize\ttfamily \label{list_8h_ac12792554f0fb6855d6226dbdc125c14} 
+\#define oc\+\_\+list\+\_\+invert(\begin{DoxyParamCaption}\item[{}]{list}{, }\item[{}]{type}{, }\item[{}]{member}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{do}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{structoc__list__node__t}{oc\_list\_node\_t}}*\ prev\ =\ NULL;\ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{structoc__list__node__t}{oc\_list\_node\_t}}*\ curr\ =\ (list)-\/>head;\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{structoc__list__node__t}{oc\_list\_node\_t}}*\ next\ =\ NULL;\ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ (list)-\/>tail\ =\ (list)-\/>head;\ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ while\ (curr)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ next\ =\ curr-\/>next;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ curr-\/>prev\ =\ next;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ curr-\/>next\ =\ prev;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ prev\ =\ curr;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ curr\ =\ next;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ (list)-\/>head\ =\ prev;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \}\ \textcolor{keywordflow}{while}\ (0)}
+
+\end{DoxyCode}
+\Hypertarget{list_8h_a805839a544e80bf98d1631f140bdefd2}\index{list.h@{list.h}!oc\_list\_size@{oc\_list\_size}}
+\index{oc\_list\_size@{oc\_list\_size}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{oc\_list\_size}{oc\_list\_size}}
+{\footnotesize\ttfamily \label{list_8h_a805839a544e80bf98d1631f140bdefd2} 
+\#define oc\+\_\+list\+\_\+size(\begin{DoxyParamCaption}\item[{}]{list}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((list)-\/>size)}
+
+\end{DoxyCode}
+
+
+Gets the number of elements in the list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Pointer to the \doxylink{structoc__list__t}{oc\+\_\+list\+\_\+t} object. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-typedef-members}
+\Hypertarget{list_8h_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{list_8h_a345d5e9746eda99aee8a39e36fdfb25b}\index{list.h@{list.h}!oc\_list\_item\_dumper\_t@{oc\_list\_item\_dumper\_t}}
+\index{oc\_list\_item\_dumper\_t@{oc\_list\_item\_dumper\_t}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{oc\_list\_item\_dumper\_t}{oc\_list\_item\_dumper\_t}}
+{\footnotesize\ttfamily \label{list_8h_a345d5e9746eda99aee8a39e36fdfb25b} 
+typedef void(\texorpdfstring{$\ast$}{*} oc\+\_\+list\+\_\+item\+\_\+dumper\+\_\+t) (const void \texorpdfstring{$\ast$}{*}entry, FILE \texorpdfstring{$\ast$}{*}stream)}
+
+
+
+Invert all elements in the list, under time complexity O(n). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Pointer to the \doxylink{structoc__list__t}{oc\+\_\+list\+\_\+t} object. \\
+\hline
+{\em type} & The type of your structure. \\
+\hline
+{\em member} & The name of the \doxylink{structoc__list__node__t}{oc\+\_\+list\+\_\+node\+\_\+t} member in your struct.\\
+\hline
+\end{DoxyParams}
+A type for a function that knows how to print one list element. 
+\begin{DoxyParams}{Parameters}
+{\em entry} & A void pointer to the user\textquotesingle{}s struct instance. \\
+\hline
+{\em stream} & The file stream to print to. \\
+\hline
+\end{DoxyParams}
