@@ -1,0 +1,62 @@
+\doxysection{huffmantree.\+h}
+\hypertarget{huffmantree_8h_source}{}\label{huffmantree_8h_source}\index{include/omnic/huffmantree.h@{include/omnic/huffmantree.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ -\/*-\/\ mode:\ C;\ indent-\/tabs-\/mode:\ nil;\ c-\/basic-\/offset:\ 2;\ tab-\/width:\ 2;\ -\/*-\/}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ OMNIC\_HUFFMAN\_H}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ OMNIC\_HUFFMAN\_H}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <stdlib.h>}\ \ \textcolor{comment}{//\ For\ malloc,\ free}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ HUFFMAN\_CODE\_TABLE\_SIZE\ 256}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{comment}{//\ -\/-\/-\/\ Type\ Definitions\ -\/-\/-\/}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structhuffman__node}{huffman\_node}}\ \{}
+\DoxyCodeLine{00031\ \ \ uint8\_t\ \mbox{\hyperlink{structhuffman__node_af76afeeba42f62a52931fb06c21aa586}{symbol}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structhuffman__node_a2822872cd81232ac20077b03cdaf4c0a}{frequency}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structhuffman__node}{huffman\_node}}*\ \mbox{\hyperlink{structhuffman__node_afe05b200af15234900e503d6355920ff}{left}};\ \ \ }
+\DoxyCodeLine{00034\ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structhuffman__node}{huffman\_node}}*\ \mbox{\hyperlink{structhuffman__node_a5814d9054c14706feca20d6d187b5bb6}{right}};\ \ }
+\DoxyCodeLine{00035\ \}\ huffman\_node\_t;}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structhuffman__code}{huffman\_code}}\ \{}
+\DoxyCodeLine{00040\ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structhuffman__code_a485516822f7d4e44ef8080c12eb4a589}{bits}}[HUFFMAN\_CODE\_TABLE\_SIZE];}
+\DoxyCodeLine{00042\ \ \ \textcolor{keywordtype}{size\_t}\ length;}
+\DoxyCodeLine{00043\ \}\ huffman\_code\_t;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{typedef}\ huffman\_code\_t\ huffman\_code\_table\_t[HUFFMAN\_CODE\_TABLE\_SIZE];}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{comment}{//\ -\/-\/-\/\ Core\ API\ Functions\ -\/-\/-\/}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00057\ huffman\_node\_t*\ oc\_huffman\_build\_tree(}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ frequencies[HUFFMAN\_CODE\_TABLE\_SIZE]);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00062\ \textcolor{keywordtype}{void}\ oc\_huffman\_destroy\_tree(huffman\_node\_t*\ root);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00067\ \textcolor{keywordtype}{void}\ oc\_huffman\_build\_code\_table(\textcolor{keyword}{const}\ huffman\_node\_t*\ root,}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ huffman\_code\_table\_t\ code\_table);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00078\ \textcolor{keywordtype}{size\_t}\ oc\_huffman\_encode(\textcolor{keyword}{const}\ uint8\_t*\ input,\ \textcolor{keywordtype}{size\_t}\ input\_len,}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ huffman\_code\_table\_t\ code\_table,}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t**\ output,\ \textcolor{keywordtype}{size\_t}*\ output\_len);}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00090\ \textcolor{keywordtype}{bool}\ oc\_huffman\_decode(\textcolor{keyword}{const}\ uint8\_t*\ input,\ \textcolor{keywordtype}{size\_t}\ input\_bits\_len,}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ huffman\_node\_t*\ tree\_root,\ uint8\_t**\ output,}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}*\ output\_len);}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ OMNIC\_HUFFMAN\_H}}
+
+\end{DoxyCode}

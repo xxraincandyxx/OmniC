@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['macros_2eh_0',['macros.h',['../macros_8h.html',1,'']]]
+  ['huffman_5fcode_0',['huffman_code',['../structhuffman__code.html',1,'']]],
+  ['huffman_5fnode_1',['huffman_node',['../structhuffman__node.html',1,'']]]
 ];
