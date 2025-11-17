@@ -23,6 +23,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 add_library(omnic STATIC
   src/vector.c
   src/binarytree.c
+  src/huffmantree.c
 )
 
 # Tell CMake that the "omnic" target needs to look for headers in the "include"
@@ -103,6 +104,20 @@ target_link_libraries(test_btree PRIVATE omnic)
 # Add compiler warnings
 if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
   target_compile_options(test_btree PRIVATE -Wall -Wextra -Wpedantic)
+endif()
+
+# ---------------------------------------------------------------------------- #
+
+# --- Define the Huffman Tree Example Executable ---
+add_executable(test_htree
+  examples/test_huffmantree.c
+)
+
+target_link_libraries(test_htree PRIVATE omnic)
+
+# Add compiler warnings
+if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
+  target_compile_options(test_htree PRIVATE -Wall -Wextra -Wpedantic)
 endif()
 
 # ---------------------------------------------------------------------------- #
