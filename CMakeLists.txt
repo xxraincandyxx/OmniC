@@ -122,6 +122,20 @@ endif()
 
 # ---------------------------------------------------------------------------- #
 
+# --- Define the Graph Example Executable ---
+add_executable(test_graph
+  examples/test_graph.c
+)
+
+target_link_libraries(test_graph PRIVATE omnic)
+
+# Add compiler warnings
+if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
+  target_compile_options(test_graph PRIVATE -Wall -Wextra -Wpedantic)
+endif()
+
+# ---------------------------------------------------------------------------- #
+
 # Print a message after configuration is done.
 message(STATUS "OmniC project configured. Build with 'make' or your chosen generator.")
 
