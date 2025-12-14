@@ -59,7 +59,8 @@ x64/
 Win32/
 
 # VS Code
-.vscode/
+# We prefer to share the same vscode settings
+# .vscode/
 
 # Vim
 *.swp
