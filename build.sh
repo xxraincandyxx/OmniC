@@ -6,15 +6,15 @@ set -e
 # Treat unset variables as an error.
 set -u
 
-# --- 1. Environment Sanity Check ---
+# --- Environment Sanity Check ---
 # Ensure the script is being run inside an active Conda environment.
-if [[ -z "${CONDA_PREFIX-}" ]]; then
-  echo "ERROR: No Conda environment is active."
-  echo "Please activate your omnic-dev environment with 'conda activate omnic-dev' and try again."
-  exit 1
-fi
+# if [[ -z "${CONDA_PREFIX-}" ]]; then
+#   echo "ERROR: No Conda environment is active."
+#   echo "Please activate your omnic-dev environment with 'conda activate omnic-dev' and try again."
+#   exit 1
+# fi
 
-echo "--- Using Conda environment at: $CONDA_PREFIX"
+# echo "--- Using Conda environment at: $CONDA_PREFIX"
 
 # --- Cleaning the Build Directory ---
 # The most reliable way to clean is to remove the directory entirely.
@@ -36,8 +36,8 @@ fi
 # Hardcoding /usr/bin/gcc defeats the purpose of using Conda for your toolchain.
 echo "--- Configuring project with CMake..."
 cmake -S . -B build \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DCMAKE_PREFIX_PATH="$CONDA_PREFIX"
+      -DCMAKE_BUILD_TYPE=Release
+      # -DCMAKE_PREFIX_PATH="$CONDA_PREFIX" \
       # -DCMAKE_C_COMPILER=/usr/bin/gcc \
       # -DCMAKE_CXX_COMPILER=/usr/bin/g++ \
       # -DCUDAHOSTCXX=/usr/bin/g++
