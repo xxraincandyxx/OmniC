@@ -1,0 +1,513 @@
+\doxysection{include/omnic/graph.h File Reference}
+\hypertarget{graph_8h}{}\label{graph_8h}\index{include/omnic/graph.h@{include/omnic/graph.h}}
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+Include dependency graph for graph.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graph_8h__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structoc__graph__edge}{oc\+\_\+graph\+\_\+edge}}
+\item 
+struct \mbox{\hyperlink{structoc__graph__adj__list}{oc\+\_\+graph\+\_\+adj\+\_\+list}}
+\item 
+struct \mbox{\hyperlink{structoc__graph__adj__matrix}{oc\+\_\+graph\+\_\+adj\+\_\+matrix}}
+\item 
+struct \mbox{\hyperlink{structoc__graph}{oc\+\_\+graph}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}\label{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0} 
+typedef struct \mbox{\hyperlink{structoc__graph}{oc\+\_\+graph}} {\bfseries oc\+\_\+graph\+\_\+t}
+\item 
+typedef void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{graph_8h_aef10e55d1980458d31419d2485fbc2c9}{oc\+\_\+graph\+\_\+visitor\+\_\+t}}) (size\+\_\+t vertex)
+\item 
+typedef void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{graph_8h_a40ed734a48465456a7469177d69d7021}{oc\+\_\+graph\+\_\+edge\+\_\+visitor\+\_\+t}}) (size\+\_\+t from, size\+\_\+t to, double weight)
+\item 
+\Hypertarget{graph_8h_ac534813b2102fc3a32e93cce9c03e7c6}\label{graph_8h_ac534813b2102fc3a32e93cce9c03e7c6} 
+typedef struct \mbox{\hyperlink{structoc__graph__edge}{oc\+\_\+graph\+\_\+edge}} {\bfseries oc\+\_\+graph\+\_\+edge\+\_\+t}
+\item 
+\Hypertarget{graph_8h_aa0d0ad4fb69c12d42b5bbc763bcea027}\label{graph_8h_aa0d0ad4fb69c12d42b5bbc763bcea027} 
+typedef struct \mbox{\hyperlink{structoc__graph__adj__list}{oc\+\_\+graph\+\_\+adj\+\_\+list}} {\bfseries oc\+\_\+graph\+\_\+adj\+\_\+list\+\_\+t}
+\item 
+\Hypertarget{graph_8h_af7ae450dd5c35f9c07383a7519a88d11}\label{graph_8h_af7ae450dd5c35f9c07383a7519a88d11} 
+typedef struct \mbox{\hyperlink{structoc__graph__adj__matrix}{oc\+\_\+graph\+\_\+adj\+\_\+matrix}} {\bfseries oc\+\_\+graph\+\_\+adj\+\_\+matrix\+\_\+t}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2}{oc\+\_\+graph\+\_\+repr\+\_\+t}} \{ \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2a1da2e5647eebd2278aeddfa3d335f776}{OC\+\_\+\+GRAPH\+\_\+\+REPR\+\_\+\+ADJ\+\_\+\+MATRIX}}
+, \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2a6baa4c606286b8ba7340ef1e30066dc7}{OC\+\_\+\+GRAPH\+\_\+\+REPR\+\_\+\+ADJ\+\_\+\+LIST}}
+, \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2ae9fdc1fb0d63c20a25f37588013cd1b3}{OC\+\_\+\+GRAPH\+\_\+\+REPR\+\_\+\+HYBRID}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{graph_8h_a1378dea989f3eb2c3118dad304762377}{oc\+\_\+graph\+\_\+init}} (size\+\_\+t num\+\_\+vertices, bool directed, \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2}{oc\+\_\+graph\+\_\+repr\+\_\+t}} repr\+\_\+type)
+\item 
+void \mbox{\hyperlink{graph_8h_a639c2d41af2c78607bb294ce00b87c8d}{oc\+\_\+graph\+\_\+destroy}} (\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g)
+\item 
+bool \mbox{\hyperlink{graph_8h_a3ecc200382733d1db642c49695c7cf89}{oc\+\_\+graph\+\_\+find\+\_\+edge}} (const \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g, size\+\_\+t from, size\+\_\+t to)
+\item 
+bool \mbox{\hyperlink{graph_8h_af5bcdc226cbfc87dd090ec2d604b9765}{oc\+\_\+graph\+\_\+get\+\_\+edge\+\_\+weight}} (const \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g, size\+\_\+t from, size\+\_\+t to, double \texorpdfstring{$\ast$}{*}weight\+\_\+out)
+\item 
+int \mbox{\hyperlink{graph_8h_a55bc95b0df6baa97c8a77eaba1f64134}{oc\+\_\+graph\+\_\+insert\+\_\+edge}} (\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g, size\+\_\+t from, size\+\_\+t to, double weight)
+\item 
+bool \mbox{\hyperlink{graph_8h_addd595d90bc12a8a24bf8cff9fc7c586}{oc\+\_\+graph\+\_\+rm\+\_\+edge}} (\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g, size\+\_\+t from, size\+\_\+t to)
+\item 
+size\+\_\+t \mbox{\hyperlink{graph_8h_a71690ce227bfa7d67d32c3b3018b35c7}{oc\+\_\+graph\+\_\+insert\+\_\+vertex}} (\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g)
+\item 
+bool \mbox{\hyperlink{graph_8h_aaa115d9b917aebbc71fb1115f969349c}{oc\+\_\+graph\+\_\+rm\+\_\+vertex}} (\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g, size\+\_\+t vertex)
+\item 
+void \mbox{\hyperlink{graph_8h_aeb2ecdb01f28fc88af86737c579930e3}{oc\+\_\+graph\+\_\+dfs}} (const \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g, size\+\_\+t start, \mbox{\hyperlink{graph_8h_aef10e55d1980458d31419d2485fbc2c9}{oc\+\_\+graph\+\_\+visitor\+\_\+t}} visitor)
+\item 
+void \mbox{\hyperlink{graph_8h_af1712cc32993a87f98400a872c80b769}{oc\+\_\+graph\+\_\+bfs}} (const \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g, size\+\_\+t start, \mbox{\hyperlink{graph_8h_aef10e55d1980458d31419d2485fbc2c9}{oc\+\_\+graph\+\_\+visitor\+\_\+t}} visitor)
+\item 
+static size\+\_\+t \mbox{\hyperlink{graph_8h_ac5691dd0247d6eda7ba42ba49873bf24}{oc\+\_\+graph\+\_\+num\+\_\+vertices}} (const \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g)
+\item 
+static size\+\_\+t \mbox{\hyperlink{graph_8h_a359cae6d922863e9028b47e11f6a5061}{oc\+\_\+graph\+\_\+num\+\_\+edges}} (const \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g)
+\item 
+static bool \mbox{\hyperlink{graph_8h_a2d648651ecc3468c1633cfb693bd117b}{oc\+\_\+graph\+\_\+is\+\_\+directed}} (const \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g)
+\item 
+static bool \mbox{\hyperlink{graph_8h_a2876f54f7dbc82dbab86f29a7389b172}{oc\+\_\+graph\+\_\+empty}} (const \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g)
+\item 
+\Hypertarget{graph_8h_a531c0f2e0cc5031e599aff548a488f3b}\label{graph_8h_a531c0f2e0cc5031e599aff548a488f3b} 
+static int {\bfseries \+\_\+oc\+\_\+graph\+\_\+init\+\_\+matrix} (\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g)
+\item 
+\Hypertarget{graph_8h_ac03081192879cc072d361769f884882a}\label{graph_8h_ac03081192879cc072d361769f884882a} 
+static int {\bfseries \+\_\+oc\+\_\+graph\+\_\+init\+\_\+list} (\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g)
+\item 
+\Hypertarget{graph_8h_a6a026b4b214e4a19bf6e153020d697e7}\label{graph_8h_a6a026b4b214e4a19bf6e153020d697e7} 
+static void {\bfseries \+\_\+oc\+\_\+graph\+\_\+destroy\+\_\+matrix} (\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g)
+\item 
+\Hypertarget{graph_8h_a438e56b2d1b8ea45148ddeb4069ae28f}\label{graph_8h_a438e56b2d1b8ea45148ddeb4069ae28f} 
+static void {\bfseries \+\_\+oc\+\_\+graph\+\_\+destroy\+\_\+list} (\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g)
+\item 
+\Hypertarget{graph_8h_a38bab6053b5d36e671a4721e17868987}\label{graph_8h_a38bab6053b5d36e671a4721e17868987} 
+static bool {\bfseries \+\_\+oc\+\_\+graph\+\_\+find\+\_\+edge\+\_\+matrix} (const \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g, size\+\_\+t from, size\+\_\+t to)
+\item 
+\Hypertarget{graph_8h_a00f978a27f1bc0f11e147b8cf2923ba1}\label{graph_8h_a00f978a27f1bc0f11e147b8cf2923ba1} 
+static bool {\bfseries \+\_\+oc\+\_\+graph\+\_\+find\+\_\+edge\+\_\+list} (const \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g, size\+\_\+t from, size\+\_\+t to)
+\item 
+\Hypertarget{graph_8h_a907cb9547ba778cf5184500c64a41f3d}\label{graph_8h_a907cb9547ba778cf5184500c64a41f3d} 
+static bool {\bfseries \+\_\+oc\+\_\+graph\+\_\+get\+\_\+weight\+\_\+matrix} (const \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g, size\+\_\+t from, size\+\_\+t to, double \texorpdfstring{$\ast$}{*}weight\+\_\+out)
+\item 
+\Hypertarget{graph_8h_ace635719c1ae50b5c852d0ac93c28c69}\label{graph_8h_ace635719c1ae50b5c852d0ac93c28c69} 
+static bool {\bfseries \+\_\+oc\+\_\+graph\+\_\+get\+\_\+weight\+\_\+list} (const \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g, size\+\_\+t from, size\+\_\+t to, double \texorpdfstring{$\ast$}{*}weight\+\_\+out)
+\item 
+\Hypertarget{graph_8h_a6c21df2b8a02a48fcb77b46f67636cc0}\label{graph_8h_a6c21df2b8a02a48fcb77b46f67636cc0} 
+static int {\bfseries \+\_\+oc\+\_\+graph\+\_\+insert\+\_\+edge\+\_\+matrix} (\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g, size\+\_\+t from, size\+\_\+t to, double weight)
+\item 
+\Hypertarget{graph_8h_a12d9288628f3ef6055d63fdf81492099}\label{graph_8h_a12d9288628f3ef6055d63fdf81492099} 
+static int {\bfseries \+\_\+oc\+\_\+graph\+\_\+insert\+\_\+edge\+\_\+list} (\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g, size\+\_\+t from, size\+\_\+t to, double weight)
+\item 
+\Hypertarget{graph_8h_a7fdcb1e671d7be3fb6d5fd74444e2764}\label{graph_8h_a7fdcb1e671d7be3fb6d5fd74444e2764} 
+static bool {\bfseries \+\_\+oc\+\_\+graph\+\_\+rm\+\_\+edge\+\_\+matrix} (\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g, size\+\_\+t from, size\+\_\+t to)
+\item 
+\Hypertarget{graph_8h_adda8882791c3899cfd4789d53452d1b2}\label{graph_8h_adda8882791c3899cfd4789d53452d1b2} 
+static bool {\bfseries \+\_\+oc\+\_\+graph\+\_\+rm\+\_\+edge\+\_\+list} (\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g, size\+\_\+t from, size\+\_\+t to)
+\item 
+\Hypertarget{graph_8h_a849209aff80e6a2105edf8054ea6e076}\label{graph_8h_a849209aff80e6a2105edf8054ea6e076} 
+static int {\bfseries \+\_\+oc\+\_\+graph\+\_\+convert\+\_\+to\+\_\+matrix} (\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g)
+\item 
+\Hypertarget{graph_8h_a8bccd03763b8ab6cf12e0414e6f58f30}\label{graph_8h_a8bccd03763b8ab6cf12e0414e6f58f30} 
+static int {\bfseries \+\_\+oc\+\_\+graph\+\_\+convert\+\_\+to\+\_\+list} (\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g)
+\item 
+\Hypertarget{graph_8h_afd3624d0567cac6e1d99b612c6258da6}\label{graph_8h_afd3624d0567cac6e1d99b612c6258da6} 
+static void {\bfseries \+\_\+oc\+\_\+graph\+\_\+check\+\_\+hybrid\+\_\+conversion} (\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g)
+\item 
+\Hypertarget{graph_8h_a0702235e41879606379e96f2b13a441c}\label{graph_8h_a0702235e41879606379e96f2b13a441c} 
+static int {\bfseries \+\_\+oc\+\_\+graph\+\_\+resize\+\_\+matrix\+\_\+add} (\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g)
+\item 
+\Hypertarget{graph_8h_ae444ea4f51392d4fd97e345e9baca20a}\label{graph_8h_ae444ea4f51392d4fd97e345e9baca20a} 
+static void {\bfseries \+\_\+dfs\+\_\+recursive} (const \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}g, size\+\_\+t current, bool \texorpdfstring{$\ast$}{*}visited, \mbox{\hyperlink{graph_8h_aef10e55d1980458d31419d2485fbc2c9}{oc\+\_\+graph\+\_\+visitor\+\_\+t}} visitor)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A generic, efficient graph implementation supporting multiple representations (adjacency matrix, adjacency list, and hybrid). 
+
+This implementation provides three graph representations\+:
+\begin{DoxyItemize}
+\item {\bfseries{Adjacency Matrix}}\+: Efficient for dense graphs, O(1) edge queries
+\item {\bfseries{Adjacency List}}\+: Memory-\/efficient for sparse graphs, O(V+E) space
+\item {\bfseries{Hybrid}}\+: Automatically switches between representations for optimal performance
+\end{DoxyItemize}
+
+{\bfseries{USAGE\+:}} // Create a directed graph with 10 vertices oc\+\_\+graph\+\_\+t\texorpdfstring{$\ast$}{*} g = oc\+\_\+graph\+\_\+init(10, true, OC\+\_\+\+GRAPH\+\_\+\+REPR\+\_\+\+ADJ\+\_\+\+LIST);
+
+// Add edges oc\+\_\+graph\+\_\+insert\+\_\+edge(g, 0, 1, 1.\+0); // Edge from 0 to 1 with weight 1.\+0 oc\+\_\+graph\+\_\+insert\+\_\+edge(g, 1, 2, 2.\+0);
+
+// Check if edge exists if (oc\+\_\+graph\+\_\+find\+\_\+edge(g, 0, 1)) \{ printf("{}\+Edge exists!\textbackslash{}n"{}); \}
+
+// Traverse with DFS void visit\+\_\+vertex(size\+\_\+t v) \{ printf("{}\+Visited\+: \%zu\textbackslash{}n"{}, v); \} oc\+\_\+graph\+\_\+dfs(g, 0, visit\+\_\+vertex);
+
+// Clean up oc\+\_\+graph\+\_\+destroy(g); 
+
+\label{doc-typedef-members}
+\Hypertarget{graph_8h_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{graph_8h_a40ed734a48465456a7469177d69d7021}\index{graph.h@{graph.h}!oc\_graph\_edge\_visitor\_t@{oc\_graph\_edge\_visitor\_t}}
+\index{oc\_graph\_edge\_visitor\_t@{oc\_graph\_edge\_visitor\_t}!graph.h@{graph.h}}
+\doxysubsubsection{\texorpdfstring{oc\_graph\_edge\_visitor\_t}{oc\_graph\_edge\_visitor\_t}}
+{\footnotesize\ttfamily \label{graph_8h_a40ed734a48465456a7469177d69d7021} 
+typedef void(\texorpdfstring{$\ast$}{*} oc\+\_\+graph\+\_\+edge\+\_\+visitor\+\_\+t) (size\+\_\+t from, size\+\_\+t to, double weight)}
+
+
+
+Function pointer for edge visit callback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em from} & The source vertex index. \\
+\hline
+{\em to} & The destination vertex index. \\
+\hline
+{\em weight} & The edge weight. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{graph_8h_aef10e55d1980458d31419d2485fbc2c9}\index{graph.h@{graph.h}!oc\_graph\_visitor\_t@{oc\_graph\_visitor\_t}}
+\index{oc\_graph\_visitor\_t@{oc\_graph\_visitor\_t}!graph.h@{graph.h}}
+\doxysubsubsection{\texorpdfstring{oc\_graph\_visitor\_t}{oc\_graph\_visitor\_t}}
+{\footnotesize\ttfamily \label{graph_8h_aef10e55d1980458d31419d2485fbc2c9} 
+typedef void(\texorpdfstring{$\ast$}{*} oc\+\_\+graph\+\_\+visitor\+\_\+t) (size\+\_\+t vertex)}
+
+
+
+Function pointer for vertex visit callback during traversal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex} & The vertex index being visited. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-enum-members}
+\Hypertarget{graph_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{graph_8h_ad137eb7073af1abc1995db0805ff7eb2}\index{graph.h@{graph.h}!oc\_graph\_repr\_t@{oc\_graph\_repr\_t}}
+\index{oc\_graph\_repr\_t@{oc\_graph\_repr\_t}!graph.h@{graph.h}}
+\doxysubsubsection{\texorpdfstring{oc\_graph\_repr\_t}{oc\_graph\_repr\_t}}
+{\footnotesize\ttfamily \label{graph_8h_ad137eb7073af1abc1995db0805ff7eb2} 
+enum \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2}{oc\+\_\+graph\+\_\+repr\+\_\+t}}}
+
+
+
+Graph representation type enumeration. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OC\_GRAPH\_REPR\_ADJ\_MATRIX@{OC\_GRAPH\_REPR\_ADJ\_MATRIX}!graph.h@{graph.h}}\index{graph.h@{graph.h}!OC\_GRAPH\_REPR\_ADJ\_MATRIX@{OC\_GRAPH\_REPR\_ADJ\_MATRIX}}}\Hypertarget{graph_8h_ad137eb7073af1abc1995db0805ff7eb2a1da2e5647eebd2278aeddfa3d335f776}\label{graph_8h_ad137eb7073af1abc1995db0805ff7eb2a1da2e5647eebd2278aeddfa3d335f776} 
+OC\+\_\+\+GRAPH\+\_\+\+REPR\+\_\+\+ADJ\+\_\+\+MATRIX&Adjacency matrix representation. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OC\_GRAPH\_REPR\_ADJ\_LIST@{OC\_GRAPH\_REPR\_ADJ\_LIST}!graph.h@{graph.h}}\index{graph.h@{graph.h}!OC\_GRAPH\_REPR\_ADJ\_LIST@{OC\_GRAPH\_REPR\_ADJ\_LIST}}}\Hypertarget{graph_8h_ad137eb7073af1abc1995db0805ff7eb2a6baa4c606286b8ba7340ef1e30066dc7}\label{graph_8h_ad137eb7073af1abc1995db0805ff7eb2a6baa4c606286b8ba7340ef1e30066dc7} 
+OC\+\_\+\+GRAPH\+\_\+\+REPR\+\_\+\+ADJ\+\_\+\+LIST&Adjacency list representation. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OC\_GRAPH\_REPR\_HYBRID@{OC\_GRAPH\_REPR\_HYBRID}!graph.h@{graph.h}}\index{graph.h@{graph.h}!OC\_GRAPH\_REPR\_HYBRID@{OC\_GRAPH\_REPR\_HYBRID}}}\Hypertarget{graph_8h_ad137eb7073af1abc1995db0805ff7eb2ae9fdc1fb0d63c20a25f37588013cd1b3}\label{graph_8h_ad137eb7073af1abc1995db0805ff7eb2ae9fdc1fb0d63c20a25f37588013cd1b3} 
+OC\+\_\+\+GRAPH\+\_\+\+REPR\+\_\+\+HYBRID&Hybrid representation (auto-\/switching). \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{doc-func-members}
+\Hypertarget{graph_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{graph_8h_af1712cc32993a87f98400a872c80b769}\index{graph.h@{graph.h}!oc\_graph\_bfs@{oc\_graph\_bfs}}
+\index{oc\_graph\_bfs@{oc\_graph\_bfs}!graph.h@{graph.h}}
+\doxysubsubsection{\texorpdfstring{oc\_graph\_bfs()}{oc\_graph\_bfs()}}
+{\footnotesize\ttfamily \label{graph_8h_af1712cc32993a87f98400a872c80b769} 
+void oc\+\_\+graph\+\_\+bfs (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{size\+\_\+t}]{start}{, }\item[{\mbox{\hyperlink{graph_8h_aef10e55d1980458d31419d2485fbc2c9}{oc\+\_\+graph\+\_\+visitor\+\_\+t}}}]{visitor}{}\end{DoxyParamCaption})}
+
+
+
+Performs breadth-\/first search starting from a given vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph. \\
+\hline
+{\em start} & The starting vertex index. \\
+\hline
+{\em visitor} & Callback function called for each visited vertex. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{graph_8h_a639c2d41af2c78607bb294ce00b87c8d}\index{graph.h@{graph.h}!oc\_graph\_destroy@{oc\_graph\_destroy}}
+\index{oc\_graph\_destroy@{oc\_graph\_destroy}!graph.h@{graph.h}}
+\doxysubsubsection{\texorpdfstring{oc\_graph\_destroy()}{oc\_graph\_destroy()}}
+{\footnotesize\ttfamily \label{graph_8h_a639c2d41af2c78607bb294ce00b87c8d} 
+void oc\+\_\+graph\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{g}{}\end{DoxyParamCaption})}
+
+
+
+Destroys the graph and frees all associated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph to destroy. Can be NULL (no-\/op). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{graph_8h_aeb2ecdb01f28fc88af86737c579930e3}\index{graph.h@{graph.h}!oc\_graph\_dfs@{oc\_graph\_dfs}}
+\index{oc\_graph\_dfs@{oc\_graph\_dfs}!graph.h@{graph.h}}
+\doxysubsubsection{\texorpdfstring{oc\_graph\_dfs()}{oc\_graph\_dfs()}}
+{\footnotesize\ttfamily \label{graph_8h_aeb2ecdb01f28fc88af86737c579930e3} 
+void oc\+\_\+graph\+\_\+dfs (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{size\+\_\+t}]{start}{, }\item[{\mbox{\hyperlink{graph_8h_aef10e55d1980458d31419d2485fbc2c9}{oc\+\_\+graph\+\_\+visitor\+\_\+t}}}]{visitor}{}\end{DoxyParamCaption})}
+
+
+
+Performs depth-\/first search starting from a given vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph. \\
+\hline
+{\em start} & The starting vertex index. \\
+\hline
+{\em visitor} & Callback function called for each visited vertex. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{graph_8h_a2876f54f7dbc82dbab86f29a7389b172}\index{graph.h@{graph.h}!oc\_graph\_empty@{oc\_graph\_empty}}
+\index{oc\_graph\_empty@{oc\_graph\_empty}!graph.h@{graph.h}}
+\doxysubsubsection{\texorpdfstring{oc\_graph\_empty()}{oc\_graph\_empty()}}
+{\footnotesize\ttfamily \label{graph_8h_a2876f54f7dbc82dbab86f29a7389b172} 
+bool oc\+\_\+graph\+\_\+empty (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{g}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Checks if the graph is empty (no vertices). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if empty, false otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{graph_8h_a2876f54f7dbc82dbab86f29a7389b172_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{graph_8h_a3ecc200382733d1db642c49695c7cf89}\index{graph.h@{graph.h}!oc\_graph\_find\_edge@{oc\_graph\_find\_edge}}
+\index{oc\_graph\_find\_edge@{oc\_graph\_find\_edge}!graph.h@{graph.h}}
+\doxysubsubsection{\texorpdfstring{oc\_graph\_find\_edge()}{oc\_graph\_find\_edge()}}
+{\footnotesize\ttfamily \label{graph_8h_a3ecc200382733d1db642c49695c7cf89} 
+bool oc\+\_\+graph\+\_\+find\+\_\+edge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{size\+\_\+t}]{from}{, }\item[{size\+\_\+t}]{to}{}\end{DoxyParamCaption})}
+
+
+
+Checks if an edge exists between two vertices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph. \\
+\hline
+{\em from} & The source vertex index. \\
+\hline
+{\em to} & The destination vertex index. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the edge exists, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{graph_8h_af5bcdc226cbfc87dd090ec2d604b9765}\index{graph.h@{graph.h}!oc\_graph\_get\_edge\_weight@{oc\_graph\_get\_edge\_weight}}
+\index{oc\_graph\_get\_edge\_weight@{oc\_graph\_get\_edge\_weight}!graph.h@{graph.h}}
+\doxysubsubsection{\texorpdfstring{oc\_graph\_get\_edge\_weight()}{oc\_graph\_get\_edge\_weight()}}
+{\footnotesize\ttfamily \label{graph_8h_af5bcdc226cbfc87dd090ec2d604b9765} 
+bool oc\+\_\+graph\+\_\+get\+\_\+edge\+\_\+weight (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{size\+\_\+t}]{from}{, }\item[{size\+\_\+t}]{to}{, }\item[{double \texorpdfstring{$\ast$}{*}}]{weight\+\_\+out}{}\end{DoxyParamCaption})}
+
+
+
+Gets the weight of an edge between two vertices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph. \\
+\hline
+{\em from} & The source vertex index. \\
+\hline
+{\em to} & The destination vertex index. \\
+\hline
+{\em weight\+\_\+out} & Pointer to store the weight (can be NULL). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the edge exists and weight was retrieved, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{graph_8h_a1378dea989f3eb2c3118dad304762377}\index{graph.h@{graph.h}!oc\_graph\_init@{oc\_graph\_init}}
+\index{oc\_graph\_init@{oc\_graph\_init}!graph.h@{graph.h}}
+\doxysubsubsection{\texorpdfstring{oc\_graph\_init()}{oc\_graph\_init()}}
+{\footnotesize\ttfamily \label{graph_8h_a1378dea989f3eb2c3118dad304762377} 
+\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*} oc\+\_\+graph\+\_\+init (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{num\+\_\+vertices}{, }\item[{bool}]{directed}{, }\item[{\mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2}{oc\+\_\+graph\+\_\+repr\+\_\+t}}}]{repr\+\_\+type}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a new graph with the specified number of vertices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num\+\_\+vertices} & The number of vertices in the graph (must be \texorpdfstring{$>$}{>} 0). \\
+\hline
+{\em directed} & Whether the graph is directed (true) or undirected (false). \\
+\hline
+{\em repr\+\_\+type} & The representation type to use. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the newly created graph, or NULL on allocation failure. 
+\end{DoxyReturn}
+\Hypertarget{graph_8h_a55bc95b0df6baa97c8a77eaba1f64134}\index{graph.h@{graph.h}!oc\_graph\_insert\_edge@{oc\_graph\_insert\_edge}}
+\index{oc\_graph\_insert\_edge@{oc\_graph\_insert\_edge}!graph.h@{graph.h}}
+\doxysubsubsection{\texorpdfstring{oc\_graph\_insert\_edge()}{oc\_graph\_insert\_edge()}}
+{\footnotesize\ttfamily \label{graph_8h_a55bc95b0df6baa97c8a77eaba1f64134} 
+int oc\+\_\+graph\+\_\+insert\+\_\+edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{size\+\_\+t}]{from}{, }\item[{size\+\_\+t}]{to}{, }\item[{double}]{weight}{}\end{DoxyParamCaption})}
+
+
+
+Inserts an edge between two vertices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph. \\
+\hline
+{\em from} & The source vertex index. \\
+\hline
+{\em to} & The destination vertex index. \\
+\hline
+{\em weight} & The weight of the edge (defaults to 1.\+0 if not specified). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, -\/1 on failure (invalid indices or allocation error). 
+\end{DoxyReturn}
+\Hypertarget{graph_8h_a71690ce227bfa7d67d32c3b3018b35c7}\index{graph.h@{graph.h}!oc\_graph\_insert\_vertex@{oc\_graph\_insert\_vertex}}
+\index{oc\_graph\_insert\_vertex@{oc\_graph\_insert\_vertex}!graph.h@{graph.h}}
+\doxysubsubsection{\texorpdfstring{oc\_graph\_insert\_vertex()}{oc\_graph\_insert\_vertex()}}
+{\footnotesize\ttfamily \label{graph_8h_a71690ce227bfa7d67d32c3b3018b35c7} 
+size\+\_\+t oc\+\_\+graph\+\_\+insert\+\_\+vertex (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{g}{}\end{DoxyParamCaption})}
+
+
+
+Adds a new vertex to the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The index of the newly added vertex, or (size\+\_\+t)-\/1 on failure. 
+\end{DoxyReturn}
+\Hypertarget{graph_8h_a2d648651ecc3468c1633cfb693bd117b}\index{graph.h@{graph.h}!oc\_graph\_is\_directed@{oc\_graph\_is\_directed}}
+\index{oc\_graph\_is\_directed@{oc\_graph\_is\_directed}!graph.h@{graph.h}}
+\doxysubsubsection{\texorpdfstring{oc\_graph\_is\_directed()}{oc\_graph\_is\_directed()}}
+{\footnotesize\ttfamily \label{graph_8h_a2d648651ecc3468c1633cfb693bd117b} 
+bool oc\+\_\+graph\+\_\+is\+\_\+directed (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{g}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Checks if the graph is directed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if directed, false if undirected. 
+\end{DoxyReturn}
+\Hypertarget{graph_8h_a359cae6d922863e9028b47e11f6a5061}\index{graph.h@{graph.h}!oc\_graph\_num\_edges@{oc\_graph\_num\_edges}}
+\index{oc\_graph\_num\_edges@{oc\_graph\_num\_edges}!graph.h@{graph.h}}
+\doxysubsubsection{\texorpdfstring{oc\_graph\_num\_edges()}{oc\_graph\_num\_edges()}}
+{\footnotesize\ttfamily \label{graph_8h_a359cae6d922863e9028b47e11f6a5061} 
+size\+\_\+t oc\+\_\+graph\+\_\+num\+\_\+edges (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{g}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets the number of edges in the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of edges. 
+\end{DoxyReturn}
+\Hypertarget{graph_8h_ac5691dd0247d6eda7ba42ba49873bf24}\index{graph.h@{graph.h}!oc\_graph\_num\_vertices@{oc\_graph\_num\_vertices}}
+\index{oc\_graph\_num\_vertices@{oc\_graph\_num\_vertices}!graph.h@{graph.h}}
+\doxysubsubsection{\texorpdfstring{oc\_graph\_num\_vertices()}{oc\_graph\_num\_vertices()}}
+{\footnotesize\ttfamily \label{graph_8h_ac5691dd0247d6eda7ba42ba49873bf24} 
+size\+\_\+t oc\+\_\+graph\+\_\+num\+\_\+vertices (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{g}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets the number of vertices in the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of vertices. 
+\end{DoxyReturn}
+\Hypertarget{graph_8h_addd595d90bc12a8a24bf8cff9fc7c586}\index{graph.h@{graph.h}!oc\_graph\_rm\_edge@{oc\_graph\_rm\_edge}}
+\index{oc\_graph\_rm\_edge@{oc\_graph\_rm\_edge}!graph.h@{graph.h}}
+\doxysubsubsection{\texorpdfstring{oc\_graph\_rm\_edge()}{oc\_graph\_rm\_edge()}}
+{\footnotesize\ttfamily \label{graph_8h_addd595d90bc12a8a24bf8cff9fc7c586} 
+bool oc\+\_\+graph\+\_\+rm\+\_\+edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{size\+\_\+t}]{from}{, }\item[{size\+\_\+t}]{to}{}\end{DoxyParamCaption})}
+
+
+
+Removes an edge between two vertices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph. \\
+\hline
+{\em from} & The source vertex index. \\
+\hline
+{\em to} & The destination vertex index. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the edge was removed, false if it didn\textquotesingle{}t exist. 
+\end{DoxyReturn}
+\Hypertarget{graph_8h_aaa115d9b917aebbc71fb1115f969349c}\index{graph.h@{graph.h}!oc\_graph\_rm\_vertex@{oc\_graph\_rm\_vertex}}
+\index{oc\_graph\_rm\_vertex@{oc\_graph\_rm\_vertex}!graph.h@{graph.h}}
+\doxysubsubsection{\texorpdfstring{oc\_graph\_rm\_vertex()}{oc\_graph\_rm\_vertex()}}
+{\footnotesize\ttfamily \label{graph_8h_aaa115d9b917aebbc71fb1115f969349c} 
+bool oc\+\_\+graph\+\_\+rm\+\_\+vertex (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\+\_\+graph\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{size\+\_\+t}]{vertex}{}\end{DoxyParamCaption})}
+
+
+
+Removes a vertex and all its incident edges. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph. \\
+\hline
+{\em vertex} & The vertex index to remove. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the vertex was removed, false if index is invalid. 
+\end{DoxyReturn}

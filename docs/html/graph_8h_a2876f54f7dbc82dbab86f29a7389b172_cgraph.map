@@ -1,0 +1,5 @@
+<map id="oc_graph_empty" name="oc_graph_empty">
+<area shape="rect" id="Node000001" title="Checks if the graph is empty (no vertices)." alt="" coords="5,5,123,31"/>
+<area shape="rect" id="Node000002" href="$graph_8h.html#ac5691dd0247d6eda7ba42ba49873bf24" title="Gets the number of vertices in the graph." alt="" coords="171,5,330,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,16,155,16,155,21,123,21"/>
+</map>

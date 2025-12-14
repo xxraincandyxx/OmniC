@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vector_2eh_0',['vector.h',['../vector_8h.html',1,'']]]
+  ['symbol_0',['symbol',['../structhuffman__node.html#af76afeeba42f62a52931fb06c21aa586',1,'huffman_node']]]
 ];

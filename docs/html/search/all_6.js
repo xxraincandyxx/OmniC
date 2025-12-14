@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['left_0',['left',['../structhuffman__node.html#afe05b200af15234900e503d6355920ff',1,'huffman_node']]],
-  ['list_2eh_1',['list.h',['../list_8h.html',1,'']]]
+  ['huffman_5fcode_0',['huffman_code',['../structhuffman__code.html',1,'']]],
+  ['huffman_5fnode_1',['huffman_node',['../structhuffman__node.html',1,'']]]
 ];
