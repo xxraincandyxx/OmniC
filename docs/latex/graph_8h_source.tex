@@ -479,329 +479,345 @@
 \DoxyCodeLine{00568\ }
 \DoxyCodeLine{00569\ \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}*\ \mbox{\hyperlink{graph_8h_a1378dea989f3eb2c3118dad304762377}{oc\_graph\_init}}(\textcolor{keywordtype}{size\_t}\ num\_vertices,\ \textcolor{keywordtype}{bool}\ directed,}
 \DoxyCodeLine{00570\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2}{oc\_graph\_repr\_t}}\ repr\_type)\ \{}
-\DoxyCodeLine{00571\ \ \ \textcolor{keywordflow}{if}\ (num\_vertices\ ==\ 0)}
+\DoxyCodeLine{00571\ \ \ \textcolor{keywordflow}{if}\ (num\_vertices\ ==\ 0)\ \{}
 \DoxyCodeLine{00572\ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;}
-\DoxyCodeLine{00573\ }
-\DoxyCodeLine{00574\ \ \ \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}*\ g\ =\ (\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}*)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}));}
-\DoxyCodeLine{00575\ \ \ \textcolor{keywordflow}{if}\ (!g)}
-\DoxyCodeLine{00576\ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;}
-\DoxyCodeLine{00577\ }
-\DoxyCodeLine{00578\ \ \ g-\/>num\_vertices\ =\ num\_vertices;}
-\DoxyCodeLine{00579\ \ \ g-\/>num\_edges\ =\ 0;}
-\DoxyCodeLine{00580\ \ \ g-\/>directed\ =\ directed;}
-\DoxyCodeLine{00581\ }
-\DoxyCodeLine{00582\ \ \ \textcolor{comment}{//\ Default\ threshold\ for\ hybrid}}
-\DoxyCodeLine{00583\ \ \ g-\/>density\_threshold\ =\ (repr\_type\ ==\ \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2ae9fdc1fb0d63c20a25f37588013cd1b3}{OC\_GRAPH\_REPR\_HYBRID}})\ ?\ 0.25\ :\ -\/1.0;}
-\DoxyCodeLine{00584\ }
-\DoxyCodeLine{00585\ \ \ \textcolor{comment}{//\ Determine\ initial\ internal\ representation}}
-\DoxyCodeLine{00586\ \ \ \textcolor{keywordflow}{if}\ (repr\_type\ ==\ \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2ae9fdc1fb0d63c20a25f37588013cd1b3}{OC\_GRAPH\_REPR\_HYBRID}})\ \{}
-\DoxyCodeLine{00587\ \ \ \ \ \textcolor{comment}{//\ Start\ with\ list\ for\ sparse,\ usually}}
-\DoxyCodeLine{00588\ \ \ \ \ g-\/>repr\_type\ =\ \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2a6baa4c606286b8ba7340ef1e30066dc7}{OC\_GRAPH\_REPR\_ADJ\_LIST}};}
-\DoxyCodeLine{00589\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00590\ \ \ \ \ g-\/>repr\_type\ =\ repr\_type;}
-\DoxyCodeLine{00591\ \ \ \}}
-\DoxyCodeLine{00592\ }
-\DoxyCodeLine{00593\ \ \ \textcolor{keywordtype}{int}\ ret\ =\ 0;}
-\DoxyCodeLine{00594\ \ \ \textcolor{keywordflow}{if}\ (g-\/>repr\_type\ ==\ \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2a1da2e5647eebd2278aeddfa3d335f776}{OC\_GRAPH\_REPR\_ADJ\_MATRIX}})\ \{}
-\DoxyCodeLine{00595\ \ \ \ \ ret\ =\ \_oc\_graph\_init\_matrix(g);}
-\DoxyCodeLine{00596\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00597\ \ \ \ \ ret\ =\ \_oc\_graph\_init\_list(g);}
-\DoxyCodeLine{00598\ \ \ \}}
-\DoxyCodeLine{00599\ }
-\DoxyCodeLine{00600\ \ \ \textcolor{keywordflow}{if}\ (ret\ !=\ 0)\ \{}
-\DoxyCodeLine{00601\ \ \ \ \ free(g);}
-\DoxyCodeLine{00602\ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;}
-\DoxyCodeLine{00603\ \ \ \}}
-\DoxyCodeLine{00604\ }
-\DoxyCodeLine{00605\ \ \ \textcolor{keywordflow}{return}\ g;}
-\DoxyCodeLine{00606\ \}}
-\DoxyCodeLine{00607\ }
-\DoxyCodeLine{00608\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graph_8h_a639c2d41af2c78607bb294ce00b87c8d}{oc\_graph\_destroy}}(\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}*\ g)\ \{}
-\DoxyCodeLine{00609\ \ \ \textcolor{keywordflow}{if}\ (!g)}
-\DoxyCodeLine{00610\ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00611\ }
-\DoxyCodeLine{00612\ \ \ \textcolor{keywordflow}{if}\ (g-\/>repr\_type\ ==\ \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2a1da2e5647eebd2278aeddfa3d335f776}{OC\_GRAPH\_REPR\_ADJ\_MATRIX}})\ \{}
-\DoxyCodeLine{00613\ \ \ \ \ \_oc\_graph\_destroy\_matrix(g);}
-\DoxyCodeLine{00614\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00615\ \ \ \ \ \_oc\_graph\_destroy\_list(g);}
-\DoxyCodeLine{00616\ \ \ \}}
-\DoxyCodeLine{00617\ \ \ free(g);}
-\DoxyCodeLine{00618\ \}}
-\DoxyCodeLine{00619\ }
-\DoxyCodeLine{00620\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{graph_8h_a3ecc200382733d1db642c49695c7cf89}{oc\_graph\_find\_edge}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}*\ g,\ \textcolor{keywordtype}{size\_t}\ from,\ \textcolor{keywordtype}{size\_t}\ to)\ \{}
-\DoxyCodeLine{00621\ \ \ \textcolor{keywordflow}{if}\ (!g)}
-\DoxyCodeLine{00622\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00623\ }
-\DoxyCodeLine{00624\ \ \ \textcolor{keywordflow}{if}\ (g-\/>repr\_type\ ==\ \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2a1da2e5647eebd2278aeddfa3d335f776}{OC\_GRAPH\_REPR\_ADJ\_MATRIX}})\ \{}
-\DoxyCodeLine{00625\ \ \ \ \ \textcolor{keywordflow}{return}\ \_oc\_graph\_find\_edge\_matrix(g,\ from,\ to);}
+\DoxyCodeLine{00573\ \ \ \}}
+\DoxyCodeLine{00574\ }
+\DoxyCodeLine{00575\ \ \ \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}*\ g\ =\ (\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}*)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}));}
+\DoxyCodeLine{00576\ \ \ \textcolor{keywordflow}{if}\ (!g)\ \{}
+\DoxyCodeLine{00577\ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;}
+\DoxyCodeLine{00578\ \ \ \}}
+\DoxyCodeLine{00579\ }
+\DoxyCodeLine{00580\ \ \ g-\/>num\_vertices\ =\ num\_vertices;}
+\DoxyCodeLine{00581\ \ \ g-\/>num\_edges\ =\ 0;}
+\DoxyCodeLine{00582\ \ \ g-\/>directed\ =\ directed;}
+\DoxyCodeLine{00583\ }
+\DoxyCodeLine{00584\ \ \ \textcolor{comment}{//\ Default\ threshold\ for\ hybrid}}
+\DoxyCodeLine{00585\ \ \ g-\/>density\_threshold\ =\ (repr\_type\ ==\ \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2ae9fdc1fb0d63c20a25f37588013cd1b3}{OC\_GRAPH\_REPR\_HYBRID}})\ ?\ 0.25\ :\ -\/1.0;}
+\DoxyCodeLine{00586\ }
+\DoxyCodeLine{00587\ \ \ \textcolor{comment}{//\ Determine\ initial\ internal\ representation}}
+\DoxyCodeLine{00588\ \ \ \textcolor{keywordflow}{if}\ (repr\_type\ ==\ \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2ae9fdc1fb0d63c20a25f37588013cd1b3}{OC\_GRAPH\_REPR\_HYBRID}})\ \{}
+\DoxyCodeLine{00589\ \ \ \ \ \textcolor{comment}{//\ Start\ with\ list\ for\ sparse,\ usually}}
+\DoxyCodeLine{00590\ \ \ \ \ g-\/>repr\_type\ =\ \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2a6baa4c606286b8ba7340ef1e30066dc7}{OC\_GRAPH\_REPR\_ADJ\_LIST}};}
+\DoxyCodeLine{00591\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00592\ \ \ \ \ g-\/>repr\_type\ =\ repr\_type;}
+\DoxyCodeLine{00593\ \ \ \}}
+\DoxyCodeLine{00594\ }
+\DoxyCodeLine{00595\ \ \ \textcolor{keywordtype}{int}\ ret\ =\ 0;}
+\DoxyCodeLine{00596\ \ \ \textcolor{keywordflow}{if}\ (g-\/>repr\_type\ ==\ \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2a1da2e5647eebd2278aeddfa3d335f776}{OC\_GRAPH\_REPR\_ADJ\_MATRIX}})\ \{}
+\DoxyCodeLine{00597\ \ \ \ \ ret\ =\ \_oc\_graph\_init\_matrix(g);}
+\DoxyCodeLine{00598\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00599\ \ \ \ \ ret\ =\ \_oc\_graph\_init\_list(g);}
+\DoxyCodeLine{00600\ \ \ \}}
+\DoxyCodeLine{00601\ }
+\DoxyCodeLine{00602\ \ \ \textcolor{keywordflow}{if}\ (ret\ !=\ 0)\ \{}
+\DoxyCodeLine{00603\ \ \ \ \ free(g);}
+\DoxyCodeLine{00604\ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;}
+\DoxyCodeLine{00605\ \ \ \}}
+\DoxyCodeLine{00606\ }
+\DoxyCodeLine{00607\ \ \ \textcolor{keywordflow}{return}\ g;}
+\DoxyCodeLine{00608\ \}}
+\DoxyCodeLine{00609\ }
+\DoxyCodeLine{00610\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graph_8h_a639c2d41af2c78607bb294ce00b87c8d}{oc\_graph\_destroy}}(\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}*\ g)\ \{}
+\DoxyCodeLine{00611\ \ \ \textcolor{keywordflow}{if}\ (!g)\ \{}
+\DoxyCodeLine{00612\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00613\ \ \ \}}
+\DoxyCodeLine{00614\ }
+\DoxyCodeLine{00615\ \ \ \textcolor{keywordflow}{if}\ (g-\/>repr\_type\ ==\ \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2a1da2e5647eebd2278aeddfa3d335f776}{OC\_GRAPH\_REPR\_ADJ\_MATRIX}})\ \{}
+\DoxyCodeLine{00616\ \ \ \ \ \_oc\_graph\_destroy\_matrix(g);}
+\DoxyCodeLine{00617\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00618\ \ \ \ \ \_oc\_graph\_destroy\_list(g);}
+\DoxyCodeLine{00619\ \ \ \}}
+\DoxyCodeLine{00620\ \ \ free(g);}
+\DoxyCodeLine{00621\ \}}
+\DoxyCodeLine{00622\ }
+\DoxyCodeLine{00623\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{graph_8h_a3ecc200382733d1db642c49695c7cf89}{oc\_graph\_find\_edge}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}*\ g,\ \textcolor{keywordtype}{size\_t}\ from,\ \textcolor{keywordtype}{size\_t}\ to)\ \{}
+\DoxyCodeLine{00624\ \ \ \textcolor{keywordflow}{if}\ (!g)\ \{}
+\DoxyCodeLine{00625\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
 \DoxyCodeLine{00626\ \ \ \}}
-\DoxyCodeLine{00627\ \ \ \textcolor{keywordflow}{return}\ \_oc\_graph\_find\_edge\_list(g,\ from,\ to);}
-\DoxyCodeLine{00628\ \}}
-\DoxyCodeLine{00629\ }
-\DoxyCodeLine{00630\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{graph_8h_af5bcdc226cbfc87dd090ec2d604b9765}{oc\_graph\_get\_edge\_weight}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}*\ g,\ \textcolor{keywordtype}{size\_t}\ from,\ \textcolor{keywordtype}{size\_t}\ to,}
-\DoxyCodeLine{00631\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}*\ weight\_out)\ \{}
-\DoxyCodeLine{00632\ \ \ \textcolor{keywordflow}{if}\ (!g)}
-\DoxyCodeLine{00633\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00634\ }
-\DoxyCodeLine{00635\ \ \ \textcolor{keywordflow}{if}\ (g-\/>repr\_type\ ==\ \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2a1da2e5647eebd2278aeddfa3d335f776}{OC\_GRAPH\_REPR\_ADJ\_MATRIX}})\ \{}
-\DoxyCodeLine{00636\ \ \ \ \ \textcolor{keywordflow}{return}\ \_oc\_graph\_get\_weight\_matrix(g,\ from,\ to,\ weight\_out);}
-\DoxyCodeLine{00637\ \ \ \}}
-\DoxyCodeLine{00638\ \ \ \textcolor{keywordflow}{return}\ \_oc\_graph\_get\_weight\_list(g,\ from,\ to,\ weight\_out);}
-\DoxyCodeLine{00639\ \}}
-\DoxyCodeLine{00640\ }
-\DoxyCodeLine{00641\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{graph_8h_a55bc95b0df6baa97c8a77eaba1f64134}{oc\_graph\_insert\_edge}}(\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}*\ g,\ \textcolor{keywordtype}{size\_t}\ from,\ \textcolor{keywordtype}{size\_t}\ to,\ \textcolor{keywordtype}{double}\ weight)\ \{}
-\DoxyCodeLine{00642\ \ \ \textcolor{keywordflow}{if}\ (!g)}
-\DoxyCodeLine{00643\ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
-\DoxyCodeLine{00644\ }
-\DoxyCodeLine{00645\ \ \ \textcolor{keywordtype}{int}\ res;}
-\DoxyCodeLine{00646\ \ \ \textcolor{keywordflow}{if}\ (g-\/>repr\_type\ ==\ \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2a1da2e5647eebd2278aeddfa3d335f776}{OC\_GRAPH\_REPR\_ADJ\_MATRIX}})\ \{}
-\DoxyCodeLine{00647\ \ \ \ \ res\ =\ \_oc\_graph\_insert\_edge\_matrix(g,\ from,\ to,\ weight);}
-\DoxyCodeLine{00648\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00649\ \ \ \ \ res\ =\ \_oc\_graph\_insert\_edge\_list(g,\ from,\ to,\ weight);}
-\DoxyCodeLine{00650\ \ \ \}}
-\DoxyCodeLine{00651\ }
-\DoxyCodeLine{00652\ \ \ \textcolor{keywordflow}{if}\ (res\ ==\ 0\ \&\&\ g-\/>density\_threshold\ >\ 0)\ \{}
-\DoxyCodeLine{00653\ \ \ \ \ \_oc\_graph\_check\_hybrid\_conversion(g);}
-\DoxyCodeLine{00654\ \ \ \}}
-\DoxyCodeLine{00655\ \ \ \textcolor{keywordflow}{return}\ res;}
-\DoxyCodeLine{00656\ \}}
+\DoxyCodeLine{00627\ }
+\DoxyCodeLine{00628\ \ \ \textcolor{keywordflow}{if}\ (g-\/>repr\_type\ ==\ \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2a1da2e5647eebd2278aeddfa3d335f776}{OC\_GRAPH\_REPR\_ADJ\_MATRIX}})\ \{}
+\DoxyCodeLine{00629\ \ \ \ \ \textcolor{keywordflow}{return}\ \_oc\_graph\_find\_edge\_matrix(g,\ from,\ to);}
+\DoxyCodeLine{00630\ \ \ \}}
+\DoxyCodeLine{00631\ \ \ \textcolor{keywordflow}{return}\ \_oc\_graph\_find\_edge\_list(g,\ from,\ to);}
+\DoxyCodeLine{00632\ \}}
+\DoxyCodeLine{00633\ }
+\DoxyCodeLine{00634\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{graph_8h_af5bcdc226cbfc87dd090ec2d604b9765}{oc\_graph\_get\_edge\_weight}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}*\ g,\ \textcolor{keywordtype}{size\_t}\ from,\ \textcolor{keywordtype}{size\_t}\ to,}
+\DoxyCodeLine{00635\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}*\ weight\_out)\ \{}
+\DoxyCodeLine{00636\ \ \ \textcolor{keywordflow}{if}\ (!g)\ \{}
+\DoxyCodeLine{00637\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00638\ \ \ \}}
+\DoxyCodeLine{00639\ }
+\DoxyCodeLine{00640\ \ \ \textcolor{keywordflow}{if}\ (g-\/>repr\_type\ ==\ \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2a1da2e5647eebd2278aeddfa3d335f776}{OC\_GRAPH\_REPR\_ADJ\_MATRIX}})\ \{}
+\DoxyCodeLine{00641\ \ \ \ \ \textcolor{keywordflow}{return}\ \_oc\_graph\_get\_weight\_matrix(g,\ from,\ to,\ weight\_out);}
+\DoxyCodeLine{00642\ \ \ \}}
+\DoxyCodeLine{00643\ \ \ \textcolor{keywordflow}{return}\ \_oc\_graph\_get\_weight\_list(g,\ from,\ to,\ weight\_out);}
+\DoxyCodeLine{00644\ \}}
+\DoxyCodeLine{00645\ }
+\DoxyCodeLine{00646\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{graph_8h_a55bc95b0df6baa97c8a77eaba1f64134}{oc\_graph\_insert\_edge}}(\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}*\ g,\ \textcolor{keywordtype}{size\_t}\ from,\ \textcolor{keywordtype}{size\_t}\ to,\ \textcolor{keywordtype}{double}\ weight)\ \{}
+\DoxyCodeLine{00647\ \ \ \textcolor{keywordflow}{if}\ (!g)\ \{}
+\DoxyCodeLine{00648\ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00649\ \ \ \}}
+\DoxyCodeLine{00650\ }
+\DoxyCodeLine{00651\ \ \ \textcolor{keywordtype}{int}\ res\ =\ 0;}
+\DoxyCodeLine{00652\ \ \ \textcolor{keywordflow}{if}\ (g-\/>repr\_type\ ==\ \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2a1da2e5647eebd2278aeddfa3d335f776}{OC\_GRAPH\_REPR\_ADJ\_MATRIX}})\ \{}
+\DoxyCodeLine{00653\ \ \ \ \ res\ =\ \_oc\_graph\_insert\_edge\_matrix(g,\ from,\ to,\ weight);}
+\DoxyCodeLine{00654\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00655\ \ \ \ \ res\ =\ \_oc\_graph\_insert\_edge\_list(g,\ from,\ to,\ weight);}
+\DoxyCodeLine{00656\ \ \ \}}
 \DoxyCodeLine{00657\ }
-\DoxyCodeLine{00658\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{graph_8h_addd595d90bc12a8a24bf8cff9fc7c586}{oc\_graph\_rm\_edge}}(\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}*\ g,\ \textcolor{keywordtype}{size\_t}\ from,\ \textcolor{keywordtype}{size\_t}\ to)\ \{}
-\DoxyCodeLine{00659\ \ \ \textcolor{keywordflow}{if}\ (!g)}
-\DoxyCodeLine{00660\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00661\ }
-\DoxyCodeLine{00662\ \ \ \textcolor{keywordtype}{bool}\ res;}
-\DoxyCodeLine{00663\ \ \ \textcolor{keywordflow}{if}\ (g-\/>repr\_type\ ==\ \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2a1da2e5647eebd2278aeddfa3d335f776}{OC\_GRAPH\_REPR\_ADJ\_MATRIX}})\ \{}
-\DoxyCodeLine{00664\ \ \ \ \ res\ =\ \_oc\_graph\_rm\_edge\_matrix(g,\ from,\ to);}
-\DoxyCodeLine{00665\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00666\ \ \ \ \ res\ =\ \_oc\_graph\_rm\_edge\_list(g,\ from,\ to);}
+\DoxyCodeLine{00658\ \ \ \textcolor{keywordflow}{if}\ (res\ ==\ 0\ \&\&\ g-\/>density\_threshold\ >\ 0)\ \{}
+\DoxyCodeLine{00659\ \ \ \ \ \_oc\_graph\_check\_hybrid\_conversion(g);}
+\DoxyCodeLine{00660\ \ \ \}}
+\DoxyCodeLine{00661\ \ \ \textcolor{keywordflow}{return}\ res;}
+\DoxyCodeLine{00662\ \}}
+\DoxyCodeLine{00663\ }
+\DoxyCodeLine{00664\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{graph_8h_addd595d90bc12a8a24bf8cff9fc7c586}{oc\_graph\_rm\_edge}}(\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}*\ g,\ \textcolor{keywordtype}{size\_t}\ from,\ \textcolor{keywordtype}{size\_t}\ to)\ \{}
+\DoxyCodeLine{00665\ \ \ \textcolor{keywordflow}{if}\ (!g)\ \{}
+\DoxyCodeLine{00666\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
 \DoxyCodeLine{00667\ \ \ \}}
 \DoxyCodeLine{00668\ }
-\DoxyCodeLine{00669\ \ \ \textcolor{keywordflow}{if}\ (res\ \&\&\ g-\/>density\_threshold\ >\ 0)\ \{}
-\DoxyCodeLine{00670\ \ \ \ \ \_oc\_graph\_check\_hybrid\_conversion(g);}
-\DoxyCodeLine{00671\ \ \ \}}
-\DoxyCodeLine{00672\ \ \ \textcolor{keywordflow}{return}\ res;}
-\DoxyCodeLine{00673\ \}}
-\DoxyCodeLine{00674\ }
-\DoxyCodeLine{00675\ \textcolor{comment}{//\ Helper\ to\ resize\ matrix\ for\ new\ vertex}}
-\DoxyCodeLine{00676\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \_oc\_graph\_resize\_matrix\_add(\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}*\ g)\ \{}
-\DoxyCodeLine{00677\ \ \ \textcolor{keywordtype}{size\_t}\ old\_n\ =\ g-\/>num\_vertices;}
-\DoxyCodeLine{00678\ \ \ \textcolor{keywordtype}{size\_t}\ new\_n\ =\ old\_n\ +\ 1;}
-\DoxyCodeLine{00679\ \ \ \textcolor{keywordtype}{double}*\ new\_mat\ =\ (\textcolor{keywordtype}{double}*)calloc(new\_n\ *\ new\_n,\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}));}
-\DoxyCodeLine{00680\ \ \ \textcolor{keywordflow}{if}\ (!new\_mat)}
-\DoxyCodeLine{00681\ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
-\DoxyCodeLine{00682\ }
-\DoxyCodeLine{00683\ \ \ \textcolor{comment}{//\ Copy\ old\ data}}
-\DoxyCodeLine{00684\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ old\_n;\ ++i)\ \{}
-\DoxyCodeLine{00685\ \ \ \ \ memcpy(\&new\_mat[i\ *\ new\_n],\ \&g-\/>repr.matrix.matrix[i\ *\ old\_n],}
-\DoxyCodeLine{00686\ \ \ \ \ \ \ \ \ \ \ \ old\_n\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}));}
-\DoxyCodeLine{00687\ \ \ \}}
-\DoxyCodeLine{00688\ }
-\DoxyCodeLine{00689\ \ \ free(g-\/>repr.matrix.matrix);}
-\DoxyCodeLine{00690\ \ \ g-\/>repr.matrix.matrix\ =\ new\_mat;}
-\DoxyCodeLine{00691\ \ \ g-\/>repr.matrix.capacity\ =\ new\_n;}
-\DoxyCodeLine{00692\ \ \ \textcolor{keywordflow}{return}\ 0;}
-\DoxyCodeLine{00693\ \}}
-\DoxyCodeLine{00694\ }
-\DoxyCodeLine{00695\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{graph_8h_a71690ce227bfa7d67d32c3b3018b35c7}{oc\_graph\_insert\_vertex}}(\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}*\ g)\ \{}
-\DoxyCodeLine{00696\ \ \ \textcolor{keywordflow}{if}\ (!g)}
-\DoxyCodeLine{00697\ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{size\_t})-\/1;}
-\DoxyCodeLine{00698\ }
-\DoxyCodeLine{00699\ \ \ \textcolor{keywordflow}{if}\ (g-\/>repr\_type\ ==\ \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2a1da2e5647eebd2278aeddfa3d335f776}{OC\_GRAPH\_REPR\_ADJ\_MATRIX}})\ \{}
-\DoxyCodeLine{00700\ \ \ \ \ \textcolor{keywordflow}{if}\ (\_oc\_graph\_resize\_matrix\_add(g)\ !=\ 0)}
-\DoxyCodeLine{00701\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{size\_t})-\/1;}
-\DoxyCodeLine{00702\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00703\ \ \ \ \ oc\_graph\_edge\_t**\ new\_lists\ =\ (oc\_graph\_edge\_t**)realloc(}
-\DoxyCodeLine{00704\ \ \ \ \ \ \ \ \ g-\/>repr.list.lists,\ (g-\/>num\_vertices\ +\ 1)\ *\ \textcolor{keyword}{sizeof}(oc\_graph\_edge\_t*));}
-\DoxyCodeLine{00705\ \ \ \ \ \textcolor{keywordflow}{if}\ (!new\_lists)}
-\DoxyCodeLine{00706\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{size\_t})-\/1;}
+\DoxyCodeLine{00669\ \ \ \textcolor{keywordtype}{bool}\ res\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00670\ \ \ \textcolor{keywordflow}{if}\ (g-\/>repr\_type\ ==\ \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2a1da2e5647eebd2278aeddfa3d335f776}{OC\_GRAPH\_REPR\_ADJ\_MATRIX}})\ \{}
+\DoxyCodeLine{00671\ \ \ \ \ res\ =\ \_oc\_graph\_rm\_edge\_matrix(g,\ from,\ to);}
+\DoxyCodeLine{00672\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00673\ \ \ \ \ res\ =\ \_oc\_graph\_rm\_edge\_list(g,\ from,\ to);}
+\DoxyCodeLine{00674\ \ \ \}}
+\DoxyCodeLine{00675\ }
+\DoxyCodeLine{00676\ \ \ \textcolor{keywordflow}{if}\ (res\ \&\&\ g-\/>density\_threshold\ >\ 0)\ \{}
+\DoxyCodeLine{00677\ \ \ \ \ \_oc\_graph\_check\_hybrid\_conversion(g);}
+\DoxyCodeLine{00678\ \ \ \}}
+\DoxyCodeLine{00679\ \ \ \textcolor{keywordflow}{return}\ res;}
+\DoxyCodeLine{00680\ \}}
+\DoxyCodeLine{00681\ }
+\DoxyCodeLine{00682\ \textcolor{comment}{//\ Helper\ to\ resize\ matrix\ for\ new\ vertex}}
+\DoxyCodeLine{00683\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \_oc\_graph\_resize\_matrix\_add(\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}*\ g)\ \{}
+\DoxyCodeLine{00684\ \ \ \textcolor{keywordtype}{size\_t}\ old\_n\ =\ g-\/>num\_vertices;}
+\DoxyCodeLine{00685\ \ \ \textcolor{keywordtype}{size\_t}\ new\_n\ =\ old\_n\ +\ 1;}
+\DoxyCodeLine{00686\ \ \ \textcolor{keywordtype}{double}*\ new\_mat\ =\ (\textcolor{keywordtype}{double}*)calloc(new\_n\ *\ new\_n,\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}));}
+\DoxyCodeLine{00687\ \ \ \textcolor{keywordflow}{if}\ (!new\_mat)\ \{}
+\DoxyCodeLine{00688\ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00689\ \ \ \}}
+\DoxyCodeLine{00690\ }
+\DoxyCodeLine{00691\ \ \ \textcolor{comment}{//\ Copy\ old\ data}}
+\DoxyCodeLine{00692\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ old\_n;\ ++i)\ \{}
+\DoxyCodeLine{00693\ \ \ \ \ memcpy(\&new\_mat[i\ *\ new\_n],\ \&g-\/>repr.matrix.matrix[i\ *\ old\_n],}
+\DoxyCodeLine{00694\ \ \ \ \ \ \ \ \ \ \ \ old\_n\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}));}
+\DoxyCodeLine{00695\ \ \ \}}
+\DoxyCodeLine{00696\ }
+\DoxyCodeLine{00697\ \ \ free(g-\/>repr.matrix.matrix);}
+\DoxyCodeLine{00698\ \ \ g-\/>repr.matrix.matrix\ =\ new\_mat;}
+\DoxyCodeLine{00699\ \ \ g-\/>repr.matrix.capacity\ =\ new\_n;}
+\DoxyCodeLine{00700\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00701\ \}}
+\DoxyCodeLine{00702\ }
+\DoxyCodeLine{00703\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{graph_8h_a71690ce227bfa7d67d32c3b3018b35c7}{oc\_graph\_insert\_vertex}}(\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}*\ g)\ \{}
+\DoxyCodeLine{00704\ \ \ \textcolor{keywordflow}{if}\ (!g)\ \{}
+\DoxyCodeLine{00705\ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{size\_t})-\/1;}
+\DoxyCodeLine{00706\ \ \ \}}
 \DoxyCodeLine{00707\ }
-\DoxyCodeLine{00708\ \ \ \ \ g-\/>repr.list.lists\ =\ new\_lists;}
-\DoxyCodeLine{00709\ \ \ \ \ g-\/>repr.list.lists[g-\/>num\_vertices]\ =\ NULL;\ \ \textcolor{comment}{//\ Init\ new\ list}}
-\DoxyCodeLine{00710\ \ \ \ \ g-\/>repr.list.capacity\ =\ g-\/>num\_vertices\ +\ 1;}
-\DoxyCodeLine{00711\ \ \ \}}
-\DoxyCodeLine{00712\ }
-\DoxyCodeLine{00713\ \ \ \textcolor{keywordflow}{return}\ g-\/>num\_vertices++;}
-\DoxyCodeLine{00714\ \}}
-\DoxyCodeLine{00715\ }
-\DoxyCodeLine{00716\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{graph_8h_aaa115d9b917aebbc71fb1115f969349c}{oc\_graph\_rm\_vertex}}(\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}*\ g,\ \textcolor{keywordtype}{size\_t}\ vertex)\ \{}
-\DoxyCodeLine{00717\ \ \ \textcolor{keywordflow}{if}\ (!g\ ||\ vertex\ >=\ g-\/>num\_vertices)}
-\DoxyCodeLine{00718\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00719\ }
-\DoxyCodeLine{00720\ \ \ \textcolor{keywordtype}{size\_t}\ last\ =\ g-\/>num\_vertices\ -\/\ 1;}
-\DoxyCodeLine{00721\ }
-\DoxyCodeLine{00722\ \ \ \textcolor{keywordflow}{if}\ (g-\/>repr\_type\ ==\ \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2a1da2e5647eebd2278aeddfa3d335f776}{OC\_GRAPH\_REPR\_ADJ\_MATRIX}})\ \{}
-\DoxyCodeLine{00723\ \ \ \ \ \textcolor{comment}{//\ Strategy:\ Swap\ vertex\ with\ last,\ then\ shrink}}
-\DoxyCodeLine{00724\ \ \ \ \ \textcolor{keywordflow}{if}\ (vertex\ !=\ last)\ \{}
-\DoxyCodeLine{00725\ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ cap\ =\ g-\/>repr.matrix.capacity;}
-\DoxyCodeLine{00726\ \ \ \ \ \ \ \textcolor{comment}{//\ 1.\ Copy\ row\ 'last'\ to\ 'vertex'}}
-\DoxyCodeLine{00727\ \ \ \ \ \ \ \textcolor{comment}{//\ 2.\ Copy\ col\ 'last'\ to\ 'vertex'}}
-\DoxyCodeLine{00728\ \ \ \ \ \ \ \textcolor{comment}{//\ 3.\ Move\ self-\/loop\ if\ 'last'\ had\ one}}
-\DoxyCodeLine{00729\ }
-\DoxyCodeLine{00730\ \ \ \ \ \ \ \textcolor{comment}{//\ Since\ it's\ flattened,\ this\ is\ manual:}}
-\DoxyCodeLine{00731\ \ \ \ \ \ \ \textcolor{comment}{//\ Swap\ rows}}
-\DoxyCodeLine{00732\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ k\ =\ 0;\ k\ <\ g-\/>num\_vertices;\ ++k)\ \{}
-\DoxyCodeLine{00733\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Move\ edge\ (last\ -\/>\ k)\ to\ (vertex\ -\/>\ k)}}
-\DoxyCodeLine{00734\ \ \ \ \ \ \ \ \ g-\/>repr.matrix.matrix[vertex\ *\ cap\ +\ k]\ =}
-\DoxyCodeLine{00735\ \ \ \ \ \ \ \ \ \ \ \ \ g-\/>repr.matrix.matrix[last\ *\ cap\ +\ k];}
-\DoxyCodeLine{00736\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Move\ edge\ (k\ -\/>\ last)\ to\ (k\ -\/>\ vertex)}}
-\DoxyCodeLine{00737\ \ \ \ \ \ \ \ \ g-\/>repr.matrix.matrix[k\ *\ cap\ +\ vertex]\ =}
-\DoxyCodeLine{00738\ \ \ \ \ \ \ \ \ \ \ \ \ g-\/>repr.matrix.matrix[k\ *\ cap\ +\ last];}
-\DoxyCodeLine{00739\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00740\ \ \ \ \ \ \ \textcolor{comment}{//\ Set\ self\ loop\ for\ the\ moved\ vertex\ correctly}}
-\DoxyCodeLine{00741\ \ \ \ \ \ \ g-\/>repr.matrix.matrix[vertex\ *\ cap\ +\ vertex]\ =}
-\DoxyCodeLine{00742\ \ \ \ \ \ \ \ \ \ \ g-\/>repr.matrix.matrix[last\ *\ cap\ +\ last];}
-\DoxyCodeLine{00743\ \ \ \ \ \}}
-\DoxyCodeLine{00744\ }
-\DoxyCodeLine{00745\ \ \ \ \ \textcolor{comment}{//\ We\ don't\ actually\ realloc\ down\ for\ matrix\ usually\ to\ avoid\ thrashing,}}
-\DoxyCodeLine{00746\ \ \ \ \ \textcolor{comment}{//\ just\ decrement\ count.\ But\ for\ correctness\ of\ capacity\ we\ should}}
-\DoxyCodeLine{00747\ \ \ \ \ \textcolor{comment}{//\ conceptually\ shrink.\ Here\ we\ just\ decrement\ N.\ The\ capacity\ stays\ high,}}
-\DoxyCodeLine{00748\ \ \ \ \ \textcolor{comment}{//\ which\ is\ fine.\ Zero\ out\ the\ last\ row/col\ to\ be\ clean?\ Not\ strictly}}
-\DoxyCodeLine{00749\ \ \ \ \ \textcolor{comment}{//\ necessary\ if\ we\ respect\ num\_vertices.}}
-\DoxyCodeLine{00750\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00751\ \ \ \ \ \textcolor{comment}{//\ Adjacency\ List\ Removal}}
-\DoxyCodeLine{00752\ \ \ \ \ \textcolor{comment}{//\ 1.\ Free\ the\ list\ of\ the\ removed\ vertex}}
-\DoxyCodeLine{00753\ \ \ \ \ oc\_graph\_edge\_t*\ edge\ =\ g-\/>repr.list.lists[vertex];}
-\DoxyCodeLine{00754\ \ \ \ \ \textcolor{keywordflow}{while}\ (edge)\ \{}
-\DoxyCodeLine{00755\ \ \ \ \ \ \ oc\_graph\_edge\_t*\ next\ =\ edge-\/>next;}
-\DoxyCodeLine{00756\ \ \ \ \ \ \ free(edge);}
-\DoxyCodeLine{00757\ \ \ \ \ \ \ g-\/>num\_edges-\/-\/;\ \ \textcolor{comment}{//\ Approximate\ (if\ directed)}}
-\DoxyCodeLine{00758\ \ \ \ \ \ \ edge\ =\ next;}
-\DoxyCodeLine{00759\ \ \ \ \ \}}
-\DoxyCodeLine{00760\ }
-\DoxyCodeLine{00761\ \ \ \ \ \textcolor{comment}{//\ 2.\ Remove\ all\ edges\ pointing\ TO\ 'vertex'\ from\ other\ lists}}
-\DoxyCodeLine{00762\ \ \ \ \ \textcolor{comment}{//\ \ \ \ AND\ if\ vertex\ !=\ last,\ rename\ 'last'\ to\ 'vertex'\ in\ all\ edges}}
-\DoxyCodeLine{00763\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ g-\/>num\_vertices;\ ++i)\ \{}
-\DoxyCodeLine{00764\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ vertex)}
-\DoxyCodeLine{00765\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};\ \ \textcolor{comment}{//\ Skip\ self\ (already\ freed)}}
-\DoxyCodeLine{00766\ }
-\DoxyCodeLine{00767\ \ \ \ \ \ \ oc\_graph\_edge\_t**\ ptr\ =\ \&g-\/>repr.list.lists[i];}
-\DoxyCodeLine{00768\ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (*ptr)\ \{}
-\DoxyCodeLine{00769\ \ \ \ \ \ \ \ \ oc\_graph\_edge\_t*\ e\ =\ *ptr;}
-\DoxyCodeLine{00770\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (e-\/>to\ ==\ vertex)\ \{}
-\DoxyCodeLine{00771\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Remove\ edge\ to\ deleted\ vertex}}
-\DoxyCodeLine{00772\ \ \ \ \ \ \ \ \ \ \ *ptr\ =\ e-\/>next;}
-\DoxyCodeLine{00773\ \ \ \ \ \ \ \ \ \ \ free(e);}
-\DoxyCodeLine{00774\ \ \ \ \ \ \ \ \ \ \ g-\/>num\_edges-\/-\/;}
-\DoxyCodeLine{00775\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (e-\/>to\ ==\ last\ \&\&\ vertex\ !=\ last)\ \{}
-\DoxyCodeLine{00776\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Update\ edge\ pointing\ to\ the\ vertex\ that\ is\ moving}}
-\DoxyCodeLine{00777\ \ \ \ \ \ \ \ \ \ \ e-\/>to\ =\ vertex;}
-\DoxyCodeLine{00778\ \ \ \ \ \ \ \ \ \ \ ptr\ =\ \&e-\/>next;}
-\DoxyCodeLine{00779\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00780\ \ \ \ \ \ \ \ \ \ \ ptr\ =\ \&e-\/>next;}
-\DoxyCodeLine{00781\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00782\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00783\ \ \ \ \ \}}
-\DoxyCodeLine{00784\ }
-\DoxyCodeLine{00785\ \ \ \ \ \textcolor{comment}{//\ 3.\ Move\ last\ list\ to\ position\ 'vertex'}}
-\DoxyCodeLine{00786\ \ \ \ \ \textcolor{keywordflow}{if}\ (vertex\ !=\ last)\ \{}
-\DoxyCodeLine{00787\ \ \ \ \ \ \ g-\/>repr.list.lists[vertex]\ =\ g-\/>repr.list.lists[last];}
-\DoxyCodeLine{00788\ \ \ \ \ \}}
-\DoxyCodeLine{00789\ \ \ \ \ g-\/>repr.list.lists[last]\ =\ NULL;}
-\DoxyCodeLine{00790\ \ \ \}}
-\DoxyCodeLine{00791\ }
-\DoxyCodeLine{00792\ \ \ g-\/>num\_vertices-\/-\/;}
-\DoxyCodeLine{00793\ }
-\DoxyCodeLine{00794\ \ \ \textcolor{comment}{//\ Recalculate\ edge\ count\ strictly\ if\ desired,\ but\ we\ tried\ to\ keep\ it}}
-\DoxyCodeLine{00795\ \ \ \textcolor{comment}{//\ consistent.}}
-\DoxyCodeLine{00796\ \ \ \textcolor{comment}{//\ Note:\ For\ undirected\ graph,\ num\_edges\ might\ be\ off\ by\ 1\ if\ self-\/loop\ logic}}
-\DoxyCodeLine{00797\ \ \ \textcolor{comment}{//\ isn't\ perfect,\ but\ simpler\ logic\ holds.}}
-\DoxyCodeLine{00798\ }
-\DoxyCodeLine{00799\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00800\ \}}
-\DoxyCodeLine{00801\ }
-\DoxyCodeLine{00802\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
-\DoxyCodeLine{00803\ }
-\DoxyCodeLine{00804\ \textcolor{comment}{//\ -\/-\/-\/\ Traversal\ Algorithms\ -\/-\/-\/}}
-\DoxyCodeLine{00805\ }
-\DoxyCodeLine{00806\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \_dfs\_recursive(\textcolor{keyword}{const}\ \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}*\ g,\ \textcolor{keywordtype}{size\_t}\ current,\ \textcolor{keywordtype}{bool}*\ visited,}
-\DoxyCodeLine{00807\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{graph_8h_aef10e55d1980458d31419d2485fbc2c9}{oc\_graph\_visitor\_t}}\ visitor)\ \{}
-\DoxyCodeLine{00808\ \ \ visited[current]\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00809\ \ \ visitor(current);}
-\DoxyCodeLine{00810\ }
-\DoxyCodeLine{00811\ \ \ \textcolor{keywordflow}{if}\ (g-\/>repr\_type\ ==\ \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2a6baa4c606286b8ba7340ef1e30066dc7}{OC\_GRAPH\_REPR\_ADJ\_LIST}})\ \{}
-\DoxyCodeLine{00812\ \ \ \ \ oc\_graph\_edge\_t*\ edge\ =\ g-\/>repr.list.lists[current];}
-\DoxyCodeLine{00813\ \ \ \ \ \textcolor{keywordflow}{while}\ (edge)\ \{}
-\DoxyCodeLine{00814\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!visited[edge-\/>to])\ \{}
-\DoxyCodeLine{00815\ \ \ \ \ \ \ \ \ \_dfs\_recursive(g,\ edge-\/>to,\ visited,\ visitor);}
-\DoxyCodeLine{00816\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00817\ \ \ \ \ \ \ edge\ =\ edge-\/>next;}
-\DoxyCodeLine{00818\ \ \ \ \ \}}
-\DoxyCodeLine{00819\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00820\ \ \ \ \ \textcolor{comment}{//\ Matrix}}
-\DoxyCodeLine{00821\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ g-\/>num\_vertices;\ ++i)\ \{}
-\DoxyCodeLine{00822\ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ idx\ =\ current\ *\ g-\/>repr.matrix.capacity\ +\ i;}
-\DoxyCodeLine{00823\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (g-\/>repr.matrix.matrix[idx]\ !=\ 0.0\ \&\&\ !visited[i])\ \{}
-\DoxyCodeLine{00824\ \ \ \ \ \ \ \ \ \_dfs\_recursive(g,\ i,\ visited,\ visitor);}
-\DoxyCodeLine{00825\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00826\ \ \ \ \ \}}
-\DoxyCodeLine{00827\ \ \ \}}
-\DoxyCodeLine{00828\ \}}
-\DoxyCodeLine{00829\ }
-\DoxyCodeLine{00830\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graph_8h_aeb2ecdb01f28fc88af86737c579930e3}{oc\_graph\_dfs}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}*\ g,\ \textcolor{keywordtype}{size\_t}\ start,}
-\DoxyCodeLine{00831\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{graph_8h_aef10e55d1980458d31419d2485fbc2c9}{oc\_graph\_visitor\_t}}\ visitor)\ \{}
-\DoxyCodeLine{00832\ \ \ \textcolor{keywordflow}{if}\ (!g\ ||\ start\ >=\ g-\/>num\_vertices\ ||\ !visitor)}
-\DoxyCodeLine{00833\ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00834\ }
-\DoxyCodeLine{00835\ \ \ \textcolor{keywordtype}{bool}*\ visited\ =\ (\textcolor{keywordtype}{bool}*)calloc(g-\/>num\_vertices,\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{bool}));}
-\DoxyCodeLine{00836\ \ \ \textcolor{keywordflow}{if}\ (!visited)}
-\DoxyCodeLine{00837\ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00838\ }
-\DoxyCodeLine{00839\ \ \ \_dfs\_recursive(g,\ start,\ visited,\ visitor);}
-\DoxyCodeLine{00840\ }
-\DoxyCodeLine{00841\ \ \ free(visited);}
-\DoxyCodeLine{00842\ \}}
-\DoxyCodeLine{00843\ }
-\DoxyCodeLine{00844\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graph_8h_af1712cc32993a87f98400a872c80b769}{oc\_graph\_bfs}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}*\ g,\ \textcolor{keywordtype}{size\_t}\ start,}
-\DoxyCodeLine{00845\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{graph_8h_aef10e55d1980458d31419d2485fbc2c9}{oc\_graph\_visitor\_t}}\ visitor)\ \{}
-\DoxyCodeLine{00846\ \ \ \textcolor{keywordflow}{if}\ (!g\ ||\ start\ >=\ g-\/>num\_vertices\ ||\ !visitor)}
-\DoxyCodeLine{00847\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00708\ \ \ \textcolor{keywordflow}{if}\ (g-\/>repr\_type\ ==\ \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2a1da2e5647eebd2278aeddfa3d335f776}{OC\_GRAPH\_REPR\_ADJ\_MATRIX}})\ \{}
+\DoxyCodeLine{00709\ \ \ \ \ \textcolor{keywordflow}{if}\ (\_oc\_graph\_resize\_matrix\_add(g)\ !=\ 0)\ \{}
+\DoxyCodeLine{00710\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{size\_t})-\/1;}
+\DoxyCodeLine{00711\ \ \ \ \ \}}
+\DoxyCodeLine{00712\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00713\ \ \ \ \ oc\_graph\_edge\_t**\ new\_lists\ =\ (oc\_graph\_edge\_t**)realloc(}
+\DoxyCodeLine{00714\ \ \ \ \ \ \ \ \ g-\/>repr.list.lists,\ (g-\/>num\_vertices\ +\ 1)\ *\ \textcolor{keyword}{sizeof}(oc\_graph\_edge\_t*));}
+\DoxyCodeLine{00715\ \ \ \ \ \textcolor{keywordflow}{if}\ (!new\_lists)\ \{}
+\DoxyCodeLine{00716\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{size\_t})-\/1;}
+\DoxyCodeLine{00717\ \ \ \ \ \}}
+\DoxyCodeLine{00718\ }
+\DoxyCodeLine{00719\ \ \ \ \ g-\/>repr.list.lists\ =\ new\_lists;}
+\DoxyCodeLine{00720\ \ \ \ \ g-\/>repr.list.lists[g-\/>num\_vertices]\ =\ NULL;\ \ \textcolor{comment}{//\ Init\ new\ list}}
+\DoxyCodeLine{00721\ \ \ \ \ g-\/>repr.list.capacity\ =\ g-\/>num\_vertices\ +\ 1;}
+\DoxyCodeLine{00722\ \ \ \}}
+\DoxyCodeLine{00723\ }
+\DoxyCodeLine{00724\ \ \ \textcolor{keywordflow}{return}\ g-\/>num\_vertices++;}
+\DoxyCodeLine{00725\ \}}
+\DoxyCodeLine{00726\ }
+\DoxyCodeLine{00727\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{graph_8h_aaa115d9b917aebbc71fb1115f969349c}{oc\_graph\_rm\_vertex}}(\mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}*\ g,\ \textcolor{keywordtype}{size\_t}\ vertex)\ \{}
+\DoxyCodeLine{00728\ \ \ \textcolor{keywordflow}{if}\ (!g\ ||\ vertex\ >=\ g-\/>num\_vertices)\ \{}
+\DoxyCodeLine{00729\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00730\ \ \ \}}
+\DoxyCodeLine{00731\ }
+\DoxyCodeLine{00732\ \ \ \textcolor{keywordtype}{size\_t}\ last\ =\ g-\/>num\_vertices\ -\/\ 1;}
+\DoxyCodeLine{00733\ }
+\DoxyCodeLine{00734\ \ \ \textcolor{keywordflow}{if}\ (g-\/>repr\_type\ ==\ \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2a1da2e5647eebd2278aeddfa3d335f776}{OC\_GRAPH\_REPR\_ADJ\_MATRIX}})\ \{}
+\DoxyCodeLine{00735\ \ \ \ \ \textcolor{comment}{//\ Strategy:\ Swap\ vertex\ with\ last,\ then\ shrink}}
+\DoxyCodeLine{00736\ \ \ \ \ \textcolor{keywordflow}{if}\ (vertex\ !=\ last)\ \{}
+\DoxyCodeLine{00737\ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ cap\ =\ g-\/>repr.matrix.capacity;}
+\DoxyCodeLine{00738\ \ \ \ \ \ \ \textcolor{comment}{//\ 1.\ Copy\ row\ 'last'\ to\ 'vertex'}}
+\DoxyCodeLine{00739\ \ \ \ \ \ \ \textcolor{comment}{//\ 2.\ Copy\ col\ 'last'\ to\ 'vertex'}}
+\DoxyCodeLine{00740\ \ \ \ \ \ \ \textcolor{comment}{//\ 3.\ Move\ self-\/loop\ if\ 'last'\ had\ one}}
+\DoxyCodeLine{00741\ }
+\DoxyCodeLine{00742\ \ \ \ \ \ \ \textcolor{comment}{//\ Since\ it's\ flattened,\ this\ is\ manual:}}
+\DoxyCodeLine{00743\ \ \ \ \ \ \ \textcolor{comment}{//\ Swap\ rows}}
+\DoxyCodeLine{00744\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ k\ =\ 0;\ k\ <\ g-\/>num\_vertices;\ ++k)\ \{}
+\DoxyCodeLine{00745\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Move\ edge\ (last\ -\/>\ k)\ to\ (vertex\ -\/>\ k)}}
+\DoxyCodeLine{00746\ \ \ \ \ \ \ \ \ g-\/>repr.matrix.matrix[(vertex\ *\ cap)\ +\ k]\ =}
+\DoxyCodeLine{00747\ \ \ \ \ \ \ \ \ \ \ \ \ g-\/>repr.matrix.matrix[(last\ *\ cap)\ +\ k];}
+\DoxyCodeLine{00748\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Move\ edge\ (k\ -\/>\ last)\ to\ (k\ -\/>\ vertex)}}
+\DoxyCodeLine{00749\ \ \ \ \ \ \ \ \ g-\/>repr.matrix.matrix[(k\ *\ cap)\ +\ vertex]\ =}
+\DoxyCodeLine{00750\ \ \ \ \ \ \ \ \ \ \ \ \ g-\/>repr.matrix.matrix[(k\ *\ cap)\ +\ last];}
+\DoxyCodeLine{00751\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00752\ \ \ \ \ \ \ \textcolor{comment}{//\ Set\ self\ loop\ for\ the\ moved\ vertex\ correctly}}
+\DoxyCodeLine{00753\ \ \ \ \ \ \ g-\/>repr.matrix.matrix[(vertex\ *\ cap)\ +\ vertex]\ =}
+\DoxyCodeLine{00754\ \ \ \ \ \ \ \ \ \ \ g-\/>repr.matrix.matrix[(last\ *\ cap)\ +\ last];}
+\DoxyCodeLine{00755\ \ \ \ \ \}}
+\DoxyCodeLine{00756\ }
+\DoxyCodeLine{00757\ \ \ \ \ \textcolor{comment}{//\ We\ don't\ actually\ realloc\ down\ for\ matrix\ usually\ to\ avoid\ thrashing,}}
+\DoxyCodeLine{00758\ \ \ \ \ \textcolor{comment}{//\ just\ decrement\ count.\ But\ for\ correctness\ of\ capacity\ we\ should}}
+\DoxyCodeLine{00759\ \ \ \ \ \textcolor{comment}{//\ conceptually\ shrink.\ Here\ we\ just\ decrement\ N.\ The\ capacity\ stays\ high,}}
+\DoxyCodeLine{00760\ \ \ \ \ \textcolor{comment}{//\ which\ is\ fine.\ Zero\ out\ the\ last\ row/col\ to\ be\ clean?\ Not\ strictly}}
+\DoxyCodeLine{00761\ \ \ \ \ \textcolor{comment}{//\ necessary\ if\ we\ respect\ num\_vertices.}}
+\DoxyCodeLine{00762\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00763\ \ \ \ \ \textcolor{comment}{//\ Adjacency\ List\ Removal}}
+\DoxyCodeLine{00764\ \ \ \ \ \textcolor{comment}{//\ 1.\ Free\ the\ list\ of\ the\ removed\ vertex}}
+\DoxyCodeLine{00765\ \ \ \ \ oc\_graph\_edge\_t*\ edge\ =\ g-\/>repr.list.lists[vertex];}
+\DoxyCodeLine{00766\ \ \ \ \ \textcolor{keywordflow}{while}\ (edge)\ \{}
+\DoxyCodeLine{00767\ \ \ \ \ \ \ oc\_graph\_edge\_t*\ next\ =\ edge-\/>next;}
+\DoxyCodeLine{00768\ \ \ \ \ \ \ free(edge);}
+\DoxyCodeLine{00769\ \ \ \ \ \ \ g-\/>num\_edges-\/-\/;\ \ \textcolor{comment}{//\ Approximate\ (if\ directed)}}
+\DoxyCodeLine{00770\ \ \ \ \ \ \ edge\ =\ next;}
+\DoxyCodeLine{00771\ \ \ \ \ \}}
+\DoxyCodeLine{00772\ }
+\DoxyCodeLine{00773\ \ \ \ \ \textcolor{comment}{//\ 2.\ Remove\ all\ edges\ pointing\ TO\ 'vertex'\ from\ other\ lists}}
+\DoxyCodeLine{00774\ \ \ \ \ \textcolor{comment}{//\ \ \ \ AND\ if\ vertex\ !=\ last,\ rename\ 'last'\ to\ 'vertex'\ in\ all\ edges}}
+\DoxyCodeLine{00775\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ g-\/>num\_vertices;\ ++i)\ \{}
+\DoxyCodeLine{00776\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ vertex)\ \{}
+\DoxyCodeLine{00777\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};\ \ \textcolor{comment}{//\ Skip\ self\ (already\ freed)}}
+\DoxyCodeLine{00778\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00779\ }
+\DoxyCodeLine{00780\ \ \ \ \ \ \ oc\_graph\_edge\_t**\ ptr\ =\ \&g-\/>repr.list.lists[i];}
+\DoxyCodeLine{00781\ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (*ptr)\ \{}
+\DoxyCodeLine{00782\ \ \ \ \ \ \ \ \ oc\_graph\_edge\_t*\ e\ =\ *ptr;}
+\DoxyCodeLine{00783\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (e-\/>to\ ==\ vertex)\ \{}
+\DoxyCodeLine{00784\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Remove\ edge\ to\ deleted\ vertex}}
+\DoxyCodeLine{00785\ \ \ \ \ \ \ \ \ \ \ *ptr\ =\ e-\/>next;}
+\DoxyCodeLine{00786\ \ \ \ \ \ \ \ \ \ \ free(e);}
+\DoxyCodeLine{00787\ \ \ \ \ \ \ \ \ \ \ g-\/>num\_edges-\/-\/;}
+\DoxyCodeLine{00788\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (e-\/>to\ ==\ last\ \&\&\ vertex\ !=\ last)\ \{}
+\DoxyCodeLine{00789\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Update\ edge\ pointing\ to\ the\ vertex\ that\ is\ moving}}
+\DoxyCodeLine{00790\ \ \ \ \ \ \ \ \ \ \ e-\/>to\ =\ vertex;}
+\DoxyCodeLine{00791\ \ \ \ \ \ \ \ \ \ \ ptr\ =\ \&e-\/>next;}
+\DoxyCodeLine{00792\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00793\ \ \ \ \ \ \ \ \ \ \ ptr\ =\ \&e-\/>next;}
+\DoxyCodeLine{00794\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00795\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00796\ \ \ \ \ \}}
+\DoxyCodeLine{00797\ }
+\DoxyCodeLine{00798\ \ \ \ \ \textcolor{comment}{//\ 3.\ Move\ last\ list\ to\ position\ 'vertex'}}
+\DoxyCodeLine{00799\ \ \ \ \ \textcolor{keywordflow}{if}\ (vertex\ !=\ last)\ \{}
+\DoxyCodeLine{00800\ \ \ \ \ \ \ g-\/>repr.list.lists[vertex]\ =\ g-\/>repr.list.lists[last];}
+\DoxyCodeLine{00801\ \ \ \ \ \}}
+\DoxyCodeLine{00802\ \ \ \ \ g-\/>repr.list.lists[last]\ =\ NULL;}
+\DoxyCodeLine{00803\ \ \ \}}
+\DoxyCodeLine{00804\ }
+\DoxyCodeLine{00805\ \ \ g-\/>num\_vertices-\/-\/;}
+\DoxyCodeLine{00806\ }
+\DoxyCodeLine{00807\ \ \ \textcolor{comment}{//\ Recalculate\ edge\ count\ strictly\ if\ desired,\ but\ we\ tried\ to\ keep\ it}}
+\DoxyCodeLine{00808\ \ \ \textcolor{comment}{//\ consistent.}}
+\DoxyCodeLine{00809\ \ \ \textcolor{comment}{//\ Note:\ For\ undirected\ graph,\ num\_edges\ might\ be\ off\ by\ 1\ if\ self-\/loop\ logic}}
+\DoxyCodeLine{00810\ \ \ \textcolor{comment}{//\ isn't\ perfect,\ but\ simpler\ logic\ holds.}}
+\DoxyCodeLine{00811\ }
+\DoxyCodeLine{00812\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00813\ \}}
+\DoxyCodeLine{00814\ }
+\DoxyCodeLine{00815\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00816\ }
+\DoxyCodeLine{00817\ \textcolor{comment}{//\ -\/-\/-\/\ Traversal\ Algorithms\ -\/-\/-\/}}
+\DoxyCodeLine{00818\ }
+\DoxyCodeLine{00819\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \_dfs\_recursive(\textcolor{keyword}{const}\ \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}*\ g,\ \textcolor{keywordtype}{size\_t}\ current,\ \textcolor{keywordtype}{bool}*\ visited,}
+\DoxyCodeLine{00820\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{graph_8h_aef10e55d1980458d31419d2485fbc2c9}{oc\_graph\_visitor\_t}}\ visitor)\ \{}
+\DoxyCodeLine{00821\ \ \ visited[current]\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00822\ \ \ visitor(current);}
+\DoxyCodeLine{00823\ }
+\DoxyCodeLine{00824\ \ \ \textcolor{keywordflow}{if}\ (g-\/>repr\_type\ ==\ \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2a6baa4c606286b8ba7340ef1e30066dc7}{OC\_GRAPH\_REPR\_ADJ\_LIST}})\ \{}
+\DoxyCodeLine{00825\ \ \ \ \ oc\_graph\_edge\_t*\ edge\ =\ g-\/>repr.list.lists[current];}
+\DoxyCodeLine{00826\ \ \ \ \ \textcolor{keywordflow}{while}\ (edge)\ \{}
+\DoxyCodeLine{00827\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!visited[edge-\/>to])\ \{}
+\DoxyCodeLine{00828\ \ \ \ \ \ \ \ \ \_dfs\_recursive(g,\ edge-\/>to,\ visited,\ visitor);}
+\DoxyCodeLine{00829\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00830\ \ \ \ \ \ \ edge\ =\ edge-\/>next;}
+\DoxyCodeLine{00831\ \ \ \ \ \}}
+\DoxyCodeLine{00832\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00833\ \ \ \ \ \textcolor{comment}{//\ Matrix}}
+\DoxyCodeLine{00834\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ g-\/>num\_vertices;\ ++i)\ \{}
+\DoxyCodeLine{00835\ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ idx\ =\ (current\ *\ g-\/>repr.matrix.capacity)\ +\ i;}
+\DoxyCodeLine{00836\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (g-\/>repr.matrix.matrix[idx]\ !=\ 0.0\ \&\&\ !visited[i])\ \{}
+\DoxyCodeLine{00837\ \ \ \ \ \ \ \ \ \_dfs\_recursive(g,\ i,\ visited,\ visitor);}
+\DoxyCodeLine{00838\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00839\ \ \ \ \ \}}
+\DoxyCodeLine{00840\ \ \ \}}
+\DoxyCodeLine{00841\ \}}
+\DoxyCodeLine{00842\ }
+\DoxyCodeLine{00843\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graph_8h_aeb2ecdb01f28fc88af86737c579930e3}{oc\_graph\_dfs}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}*\ g,\ \textcolor{keywordtype}{size\_t}\ start,}
+\DoxyCodeLine{00844\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{graph_8h_aef10e55d1980458d31419d2485fbc2c9}{oc\_graph\_visitor\_t}}\ visitor)\ \{}
+\DoxyCodeLine{00845\ \ \ \textcolor{keywordflow}{if}\ (!g\ ||\ start\ >=\ g-\/>num\_vertices\ ||\ !visitor)\ \{}
+\DoxyCodeLine{00846\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00847\ \ \ \}}
 \DoxyCodeLine{00848\ }
 \DoxyCodeLine{00849\ \ \ \textcolor{keywordtype}{bool}*\ visited\ =\ (\textcolor{keywordtype}{bool}*)calloc(g-\/>num\_vertices,\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{bool}));}
-\DoxyCodeLine{00850\ \ \ \textcolor{keywordtype}{size\_t}*\ queue\ =\ (\textcolor{keywordtype}{size\_t}*)malloc(g-\/>num\_vertices\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{size\_t}));}
-\DoxyCodeLine{00851\ }
-\DoxyCodeLine{00852\ \ \ \textcolor{keywordflow}{if}\ (!visited\ ||\ !queue)\ \{}
-\DoxyCodeLine{00853\ \ \ \ \ free(visited);}
-\DoxyCodeLine{00854\ \ \ \ \ free(queue);}
-\DoxyCodeLine{00855\ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00856\ \ \ \}}
-\DoxyCodeLine{00857\ }
-\DoxyCodeLine{00858\ \ \ \textcolor{keywordtype}{size\_t}\ q\_head\ =\ 0;}
-\DoxyCodeLine{00859\ \ \ \textcolor{keywordtype}{size\_t}\ q\_tail\ =\ 0;}
-\DoxyCodeLine{00860\ }
-\DoxyCodeLine{00861\ \ \ \textcolor{comment}{//\ Enqueue\ start}}
-\DoxyCodeLine{00862\ \ \ visited[start]\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00863\ \ \ queue[q\_tail++]\ =\ start;}
+\DoxyCodeLine{00850\ \ \ \textcolor{keywordflow}{if}\ (!visited)\ \{}
+\DoxyCodeLine{00851\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00852\ \ \ \}}
+\DoxyCodeLine{00853\ }
+\DoxyCodeLine{00854\ \ \ \_dfs\_recursive(g,\ start,\ visited,\ visitor);}
+\DoxyCodeLine{00855\ }
+\DoxyCodeLine{00856\ \ \ free(visited);}
+\DoxyCodeLine{00857\ \}}
+\DoxyCodeLine{00858\ }
+\DoxyCodeLine{00859\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graph_8h_af1712cc32993a87f98400a872c80b769}{oc\_graph\_bfs}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{graph_8h_a6e2a9200c5bc3ddb9a6dd4370b2c13b0}{oc\_graph\_t}}*\ g,\ \textcolor{keywordtype}{size\_t}\ start,}
+\DoxyCodeLine{00860\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{graph_8h_aef10e55d1980458d31419d2485fbc2c9}{oc\_graph\_visitor\_t}}\ visitor)\ \{}
+\DoxyCodeLine{00861\ \ \ \textcolor{keywordflow}{if}\ (!g\ ||\ start\ >=\ g-\/>num\_vertices\ ||\ !visitor)\ \{}
+\DoxyCodeLine{00862\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00863\ \ \ \}}
 \DoxyCodeLine{00864\ }
-\DoxyCodeLine{00865\ \ \ \textcolor{keywordflow}{while}\ (q\_head\ !=\ q\_tail)\ \{}
-\DoxyCodeLine{00866\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ current\ =\ queue[q\_head++];}
-\DoxyCodeLine{00867\ \ \ \ \ visitor(current);}
-\DoxyCodeLine{00868\ }
-\DoxyCodeLine{00869\ \ \ \ \ \textcolor{keywordflow}{if}\ (g-\/>repr\_type\ ==\ \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2a6baa4c606286b8ba7340ef1e30066dc7}{OC\_GRAPH\_REPR\_ADJ\_LIST}})\ \{}
-\DoxyCodeLine{00870\ \ \ \ \ \ \ oc\_graph\_edge\_t*\ edge\ =\ g-\/>repr.list.lists[current];}
-\DoxyCodeLine{00871\ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (edge)\ \{}
-\DoxyCodeLine{00872\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!visited[edge-\/>to])\ \{}
-\DoxyCodeLine{00873\ \ \ \ \ \ \ \ \ \ \ visited[edge-\/>to]\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00874\ \ \ \ \ \ \ \ \ \ \ queue[q\_tail++]\ =\ edge-\/>to;}
-\DoxyCodeLine{00875\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00876\ \ \ \ \ \ \ \ \ edge\ =\ edge-\/>next;}
-\DoxyCodeLine{00877\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00878\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00879\ \ \ \ \ \ \ \textcolor{comment}{//\ Matrix}}
-\DoxyCodeLine{00880\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ g-\/>num\_vertices;\ ++i)\ \{}
-\DoxyCodeLine{00881\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ idx\ =\ current\ *\ g-\/>repr.matrix.capacity\ +\ i;}
-\DoxyCodeLine{00882\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (g-\/>repr.matrix.matrix[idx]\ !=\ 0.0\ \&\&\ !visited[i])\ \{}
-\DoxyCodeLine{00883\ \ \ \ \ \ \ \ \ \ \ visited[i]\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00884\ \ \ \ \ \ \ \ \ \ \ queue[q\_tail++]\ =\ i;}
-\DoxyCodeLine{00885\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00886\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00887\ \ \ \ \ \}}
-\DoxyCodeLine{00888\ \ \ \}}
-\DoxyCodeLine{00889\ }
-\DoxyCodeLine{00890\ \ \ free(visited);}
-\DoxyCodeLine{00891\ \ \ free(queue);}
-\DoxyCodeLine{00892\ \}}
-\DoxyCodeLine{00893\ }
-\DoxyCodeLine{00894\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ OMNIC\_GRAPH\_H\_}}
+\DoxyCodeLine{00865\ \ \ \textcolor{keywordtype}{bool}*\ visited\ =\ (\textcolor{keywordtype}{bool}*)calloc(g-\/>num\_vertices,\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{bool}));}
+\DoxyCodeLine{00866\ \ \ \textcolor{keywordtype}{size\_t}*\ queue\ =\ (\textcolor{keywordtype}{size\_t}*)malloc(g-\/>num\_vertices\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{size\_t}));}
+\DoxyCodeLine{00867\ }
+\DoxyCodeLine{00868\ \ \ \textcolor{keywordflow}{if}\ (!visited\ ||\ !queue)\ \{}
+\DoxyCodeLine{00869\ \ \ \ \ free(visited);}
+\DoxyCodeLine{00870\ \ \ \ \ free(queue);}
+\DoxyCodeLine{00871\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00872\ \ \ \}}
+\DoxyCodeLine{00873\ }
+\DoxyCodeLine{00874\ \ \ \textcolor{keywordtype}{size\_t}\ q\_head\ =\ 0;}
+\DoxyCodeLine{00875\ \ \ \textcolor{keywordtype}{size\_t}\ q\_tail\ =\ 0;}
+\DoxyCodeLine{00876\ }
+\DoxyCodeLine{00877\ \ \ \textcolor{comment}{//\ Enqueue\ start}}
+\DoxyCodeLine{00878\ \ \ visited[start]\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00879\ \ \ queue[q\_tail++]\ =\ start;}
+\DoxyCodeLine{00880\ }
+\DoxyCodeLine{00881\ \ \ \textcolor{keywordflow}{while}\ (q\_head\ !=\ q\_tail)\ \{}
+\DoxyCodeLine{00882\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ current\ =\ queue[q\_head++];}
+\DoxyCodeLine{00883\ \ \ \ \ visitor(current);}
+\DoxyCodeLine{00884\ }
+\DoxyCodeLine{00885\ \ \ \ \ \textcolor{keywordflow}{if}\ (g-\/>repr\_type\ ==\ \mbox{\hyperlink{graph_8h_ad137eb7073af1abc1995db0805ff7eb2a6baa4c606286b8ba7340ef1e30066dc7}{OC\_GRAPH\_REPR\_ADJ\_LIST}})\ \{}
+\DoxyCodeLine{00886\ \ \ \ \ \ \ oc\_graph\_edge\_t*\ edge\ =\ g-\/>repr.list.lists[current];}
+\DoxyCodeLine{00887\ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (edge)\ \{}
+\DoxyCodeLine{00888\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!visited[edge-\/>to])\ \{}
+\DoxyCodeLine{00889\ \ \ \ \ \ \ \ \ \ \ visited[edge-\/>to]\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00890\ \ \ \ \ \ \ \ \ \ \ queue[q\_tail++]\ =\ edge-\/>to;}
+\DoxyCodeLine{00891\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00892\ \ \ \ \ \ \ \ \ edge\ =\ edge-\/>next;}
+\DoxyCodeLine{00893\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00894\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00895\ \ \ \ \ \ \ \textcolor{comment}{//\ Matrix}}
+\DoxyCodeLine{00896\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ g-\/>num\_vertices;\ ++i)\ \{}
+\DoxyCodeLine{00897\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ idx\ =\ (current\ *\ g-\/>repr.matrix.capacity)\ +\ i;}
+\DoxyCodeLine{00898\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (g-\/>repr.matrix.matrix[idx]\ !=\ 0.0\ \&\&\ !visited[i])\ \{}
+\DoxyCodeLine{00899\ \ \ \ \ \ \ \ \ \ \ visited[i]\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00900\ \ \ \ \ \ \ \ \ \ \ queue[q\_tail++]\ =\ i;}
+\DoxyCodeLine{00901\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00902\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00903\ \ \ \ \ \}}
+\DoxyCodeLine{00904\ \ \ \}}
+\DoxyCodeLine{00905\ }
+\DoxyCodeLine{00906\ \ \ free(visited);}
+\DoxyCodeLine{00907\ \ \ free(queue);}
+\DoxyCodeLine{00908\ \}}
+\DoxyCodeLine{00909\ }
+\DoxyCodeLine{00910\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ OMNIC\_GRAPH\_H\_}}
 
 \end{DoxyCode}
