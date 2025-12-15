@@ -67,6 +67,7 @@
     "pyproject",
     // OmniC Project Specifications
     "OmniC",
+    "repr",
     // -- Dynarray --
     "dalen",
     "dacap",
