@@ -46,8 +46,8 @@ target_link_libraries(test_vector PRIVATE omnic)
 
 # --- Compiler Warnings ---
 if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
-  target_compile_options(omnic PRIVATE -Wall -Wextra -Wpedantic)
-  target_compile_options(test_vector PRIVATE -Wall -Wextra -Wpedantic)
+  target_compile_options(omnic PRIVATE -Wall -O2 -Wextra -Wpedantic)
+  target_compile_options(test_vector PRIVATE -Wall -O2 -Wextra -Wpedantic)
 endif()
 
 # ---------------------------------------------------------------------------- #
@@ -61,7 +61,7 @@ target_link_libraries(test_dynarray PRIVATE omnic)
 
 # Add compiler warnings
 if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
-  target_compile_options(test_dynarray PRIVATE -Wall -Wextra -Wpedantic)
+  target_compile_options(test_dynarray PRIVATE -Wall -O2 -Wextra -Wpedantic)
 endif()
 
 # ---------------------------------------------------------------------------- #
@@ -75,7 +75,7 @@ target_link_libraries(test_list PRIVATE omnic)
 
 # Add compiler warnings
 if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
-  target_compile_options(test_list PRIVATE -Wall -Wextra -Wpedantic)
+  target_compile_options(test_list PRIVATE -Wall -O2 -Wextra -Wpedantic)
 endif()
 
 # ---------------------------------------------------------------------------- #
@@ -89,7 +89,7 @@ target_link_libraries(test_poly PRIVATE omnic)
 
 # Add compiler warnings
 if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
-  target_compile_options(test_poly PRIVATE -Wall -Wextra -Wpedantic)
+  target_compile_options(test_poly PRIVATE -Wall -O2 -Wextra -Wpedantic)
 endif()
 
 # ---------------------------------------------------------------------------- #
@@ -103,7 +103,7 @@ target_link_libraries(test_btree PRIVATE omnic)
 
 # Add compiler warnings
 if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
-  target_compile_options(test_btree PRIVATE -Wall -Wextra -Wpedantic)
+  target_compile_options(test_btree PRIVATE -Wall -O2 -Wextra -Wpedantic)
 endif()
 
 # ---------------------------------------------------------------------------- #
@@ -117,7 +117,7 @@ target_link_libraries(test_htree PRIVATE omnic)
 
 # Add compiler warnings
 if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
-  target_compile_options(test_htree PRIVATE -Wall -Wextra -Wpedantic)
+  target_compile_options(test_htree PRIVATE -Wall -O2 -Wextra -Wpedantic)
 endif()
 
 # ---------------------------------------------------------------------------- #
@@ -131,7 +131,7 @@ target_link_libraries(test_graph PRIVATE omnic)
 
 # Add compiler warnings
 if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
-  target_compile_options(test_graph PRIVATE -Wall -Wextra -Wpedantic)
+  target_compile_options(test_graph PRIVATE -Wall -O2 -Wextra -Wpedantic)
 endif()
 
 # ---------------------------------------------------------------------------- #
@@ -145,7 +145,7 @@ target_link_libraries(demo_graph PRIVATE omnic)
 
 # Add compiler warnings
 if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
-  target_compile_options(demo_graph PRIVATE -Wall -Wextra -Wpedantic)
+  target_compile_options(demo_graph PRIVATE -Wall -O2 -Wextra -Wpedantic)
 endif()
 
 # ---------------------------------------------------------------------------- #
