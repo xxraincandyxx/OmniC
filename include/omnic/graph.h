@@ -832,7 +832,7 @@ static void _dfs_recursive(const oc_graph_t* g, size_t current, bool* visited,
   } else {
     // Matrix
     for (size_t i = 0; i < g->num_vertices; ++i) {
-      size_t idx = current * g->repr.matrix.capacity + i;
+      size_t idx = (current * g->repr.matrix.capacity) + i;
       if (g->repr.matrix.matrix[idx] != 0.0 && !visited[i]) {
         _dfs_recursive(g, i, visited, visitor);
       }
