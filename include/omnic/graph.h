@@ -568,12 +568,14 @@ static void _oc_graph_check_hybrid_conversion(oc_graph_t* g) {
 
 oc_graph_t* oc_graph_init(size_t num_vertices, bool directed,
                           oc_graph_repr_t repr_type) {
-  if (num_vertices == 0)
+  if (num_vertices == 0) {
     return NULL;
+  }
 
   oc_graph_t* g = (oc_graph_t*)malloc(sizeof(oc_graph_t));
-  if (!g)
+  if (!g) {
     return NULL;
+  }
 
   g->num_vertices = num_vertices;
   g->num_edges = 0;
@@ -606,8 +608,9 @@ oc_graph_t* oc_graph_init(size_t num_vertices, bool directed,
 }
 
 void oc_graph_destroy(oc_graph_t* g) {
-  if (!g)
+  if (!g) {
     return;
+  }
 
   if (g->repr_type == OC_GRAPH_REPR_ADJ_MATRIX) {
     _oc_graph_destroy_matrix(g);
@@ -618,8 +621,9 @@ void oc_graph_destroy(oc_graph_t* g) {
 }
 
 bool oc_graph_find_edge(const oc_graph_t* g, size_t from, size_t to) {
-  if (!g)
+  if (!g) {
     return false;
+  }
 
   if (g->repr_type == OC_GRAPH_REPR_ADJ_MATRIX) {
     return _oc_graph_find_edge_matrix(g, from, to);
@@ -629,8 +633,9 @@ bool oc_graph_find_edge(const oc_graph_t* g, size_t from, size_t to) {
 
 bool oc_graph_get_edge_weight(const oc_graph_t* g, size_t from, size_t to,
                               double* weight_out) {
-  if (!g)
+  if (!g) {
     return false;
+  }
 
   if (g->repr_type == OC_GRAPH_REPR_ADJ_MATRIX) {
     return _oc_graph_get_weight_matrix(g, from, to, weight_out);
@@ -639,10 +644,11 @@ bool oc_graph_get_edge_weight(const oc_graph_t* g, size_t from, size_t to,
 }
 
 int oc_graph_insert_edge(oc_graph_t* g, size_t from, size_t to, double weight) {
-  if (!g)
+  if (!g) {
     return -1;
+  }
 
-  int res;
+  int res = 0;
   if (g->repr_type == OC_GRAPH_REPR_ADJ_MATRIX) {
     res = _oc_graph_insert_edge_matrix(g, from, to, weight);
   } else {
@@ -656,10 +662,11 @@ int oc_graph_insert_edge(oc_graph_t* g, size_t from, size_t to, double weight) {
 }
 
 bool oc_graph_rm_edge(oc_graph_t* g, size_t from, size_t to) {
-  if (!g)
+  if (!g) {
     return false;
+  }
 
-  bool res;
+  bool res = false;
   if (g->repr_type == OC_GRAPH_REPR_ADJ_MATRIX) {
     res = _oc_graph_rm_edge_matrix(g, from, to);
   } else {
@@ -677,8 +684,9 @@ static int _oc_graph_resize_matrix_add(oc_graph_t* g) {
   size_t old_n = g->num_vertices;
   size_t new_n = old_n + 1;
   double* new_mat = (double*)calloc(new_n * new_n, sizeof(double));
-  if (!new_mat)
+  if (!new_mat) {
     return -1;
+  }
 
   // Copy old data
   for (size_t i = 0; i < old_n; ++i) {
@@ -693,17 +701,20 @@ static int _oc_graph_resize_matrix_add(oc_graph_t* g) {
 }
 
 size_t oc_graph_insert_vertex(oc_graph_t* g) {
-  if (!g)
+  if (!g) {
     return (size_t)-1;
+  }
 
   if (g->repr_type == OC_GRAPH_REPR_ADJ_MATRIX) {
-    if (_oc_graph_resize_matrix_add(g) != 0)
+    if (_oc_graph_resize_matrix_add(g) != 0) {
       return (size_t)-1;
+    }
   } else {
     oc_graph_edge_t** new_lists = (oc_graph_edge_t**)realloc(
         g->repr.list.lists, (g->num_vertices + 1) * sizeof(oc_graph_edge_t*));
-    if (!new_lists)
+    if (!new_lists) {
       return (size_t)-1;
+    }
 
     g->repr.list.lists = new_lists;
     g->repr.list.lists[g->num_vertices] = NULL;  // Init new list
@@ -714,8 +725,9 @@ size_t oc_graph_insert_vertex(oc_graph_t* g) {
 }
 
 bool oc_graph_rm_vertex(oc_graph_t* g, size_t vertex) {
-  if (!g || vertex >= g->num_vertices)
+  if (!g || vertex >= g->num_vertices) {
     return false;
+  }
 
   size_t last = g->num_vertices - 1;
 
@@ -731,15 +743,15 @@ bool oc_graph_rm_vertex(oc_graph_t* g, size_t vertex) {
       // Swap rows
       for (size_t k = 0; k < g->num_vertices; ++k) {
         // Move edge (last -> k) to (vertex -> k)
-        g->repr.matrix.matrix[vertex * cap + k] =
-            g->repr.matrix.matrix[last * cap + k];
+        g->repr.matrix.matrix[(vertex * cap) + k] =
+            g->repr.matrix.matrix[(last * cap) + k];
         // Move edge (k -> last) to (k -> vertex)
-        g->repr.matrix.matrix[k * cap + vertex] =
-            g->repr.matrix.matrix[k * cap + last];
+        g->repr.matrix.matrix[(k * cap) + vertex] =
+            g->repr.matrix.matrix[(k * cap) + last];
       }
       // Set self loop for the moved vertex correctly
-      g->repr.matrix.matrix[vertex * cap + vertex] =
-          g->repr.matrix.matrix[last * cap + last];
+      g->repr.matrix.matrix[(vertex * cap) + vertex] =
+          g->repr.matrix.matrix[(last * cap) + last];
     }
 
     // We don't actually realloc down for matrix usually to avoid thrashing,
@@ -761,8 +773,9 @@ bool oc_graph_rm_vertex(oc_graph_t* g, size_t vertex) {
     // 2. Remove all edges pointing TO 'vertex' from other lists
     //    AND if vertex != last, rename 'last' to 'vertex' in all edges
     for (size_t i = 0; i < g->num_vertices; ++i) {
-      if (i == vertex)
+      if (i == vertex) {
         continue;  // Skip self (already freed)
+      }
 
       oc_graph_edge_t** ptr = &g->repr.list.lists[i];
       while (*ptr) {
@@ -829,12 +842,14 @@ static void _dfs_recursive(const oc_graph_t* g, size_t current, bool* visited,
 
 void oc_graph_dfs(const oc_graph_t* g, size_t start,
                   oc_graph_visitor_t visitor) {
-  if (!g || start >= g->num_vertices || !visitor)
+  if (!g || start >= g->num_vertices || !visitor) {
     return;
+  }
 
   bool* visited = (bool*)calloc(g->num_vertices, sizeof(bool));
-  if (!visited)
+  if (!visited) {
     return;
+  }
 
   _dfs_recursive(g, start, visited, visitor);
 
@@ -843,8 +858,9 @@ void oc_graph_dfs(const oc_graph_t* g, size_t start,
 
 void oc_graph_bfs(const oc_graph_t* g, size_t start,
                   oc_graph_visitor_t visitor) {
-  if (!g || start >= g->num_vertices || !visitor)
+  if (!g || start >= g->num_vertices || !visitor) {
     return;
+  }
 
   bool* visited = (bool*)calloc(g->num_vertices, sizeof(bool));
   size_t* queue = (size_t*)malloc(g->num_vertices * sizeof(size_t));
@@ -878,7 +894,7 @@ void oc_graph_bfs(const oc_graph_t* g, size_t start,
     } else {
       // Matrix
       for (size_t i = 0; i < g->num_vertices; ++i) {
-        size_t idx = current * g->repr.matrix.capacity + i;
+        size_t idx = (current * g->repr.matrix.capacity) + i;
         if (g->repr.matrix.matrix[idx] != 0.0 && !visited[i]) {
           visited[i] = true;
           queue[q_tail++] = i;
