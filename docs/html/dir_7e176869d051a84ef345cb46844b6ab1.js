@@ -7,5 +7,6 @@ var dir_7e176869d051a84ef345cb46844b6ab1 =
     [ "huffmantree.h", "huffmantree_8h_source.html", null ],
     [ "list.h", "list_8h.html", "list_8h" ],
     [ "macros.h", "macros_8h.html", null ],
+    [ "sorting.h", "sorting_8h.html", "sorting_8h" ],
     [ "vector.h", "vector_8h.html", "vector_8h" ]
 ];

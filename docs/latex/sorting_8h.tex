@@ -1,0 +1,196 @@
+\doxysection{include/omnic/sorting.h File Reference}
+\hypertarget{sorting_8h}{}\label{sorting_8h}\index{include/omnic/sorting.h@{include/omnic/sorting.h}}
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+Include dependency graph for sorting.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{sorting_8h__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structoc__sort__entry__t}{oc\+\_\+sort\+\_\+entry\+\_\+t}}
+\item 
+struct \mbox{\hyperlink{structoc__sort__list__t}{oc\+\_\+sort\+\_\+list\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{sorting_8h_a9d3156d64c2d1754ac5f116eef017c5f}\label{sorting_8h_a9d3156d64c2d1754ac5f116eef017c5f} 
+\#define {\bfseries OC\+\_\+\+SORT\+\_\+\+MAX\+\_\+\+SIZE}~100005
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{sorting_8h_ac77d0fd8d785182f4381843d9ee8ba8f}\label{sorting_8h_ac77d0fd8d785182f4381843d9ee8ba8f} 
+typedef int {\bfseries oc\+\_\+key\+\_\+type\+\_\+t}
+\item 
+\Hypertarget{sorting_8h_a038d71eb9c8aca2695eea5bdf8540202}\label{sorting_8h_a038d71eb9c8aca2695eea5bdf8540202} 
+typedef int {\bfseries oc\+\_\+data\+\_\+type\+\_\+t}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{sorting_8h_a9ed631930c9a5ee0b5de150788d76435}{oc\+\_\+sort\+\_\+selection}} (\mbox{\hyperlink{structoc__sort__list__t}{oc\+\_\+sort\+\_\+list\+\_\+t}} \texorpdfstring{$\ast$}{*}list)
+\item 
+void \mbox{\hyperlink{sorting_8h_a46921148e407d51648e2f901c1e0ac9c}{oc\+\_\+sort\+\_\+insertion}} (\mbox{\hyperlink{structoc__sort__list__t}{oc\+\_\+sort\+\_\+list\+\_\+t}} \texorpdfstring{$\ast$}{*}list)
+\item 
+void \mbox{\hyperlink{sorting_8h_a71906419caaf5565e5cfc6c562ec3eb1}{oc\+\_\+sort\+\_\+bubble}} (\mbox{\hyperlink{structoc__sort__list__t}{oc\+\_\+sort\+\_\+list\+\_\+t}} \texorpdfstring{$\ast$}{*}list)
+\item 
+void \mbox{\hyperlink{sorting_8h_ae6eb87958cc6e282d9ee7d309eb10be2}{oc\+\_\+sort\+\_\+quick}} (\mbox{\hyperlink{structoc__sort__list__t}{oc\+\_\+sort\+\_\+list\+\_\+t}} \texorpdfstring{$\ast$}{*}list)
+\item 
+void \mbox{\hyperlink{sorting_8h_ac9c2a72336284cbc0eecdead045f7745}{oc\+\_\+sort\+\_\+merge}} (\mbox{\hyperlink{structoc__sort__list__t}{oc\+\_\+sort\+\_\+list\+\_\+t}} \texorpdfstring{$\ast$}{*}list)
+\item 
+void \mbox{\hyperlink{sorting_8h_a222e737f0399162ec198727d26d543d5}{oc\+\_\+sort\+\_\+heap}} (\mbox{\hyperlink{structoc__sort__list__t}{oc\+\_\+sort\+\_\+list\+\_\+t}} \texorpdfstring{$\ast$}{*}list)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Internal sorting algorithms for the OmniC library. 
+
+Implements various sorting algorithms on a sequential list structure. Based on standard data structure textbook algorithms (Programs 10.\+1\texorpdfstring{$\sim$}{\string~}10.7). 
+
+\label{doc-func-members}
+\Hypertarget{sorting_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{sorting_8h_a71906419caaf5565e5cfc6c562ec3eb1}\index{sorting.h@{sorting.h}!oc\_sort\_bubble@{oc\_sort\_bubble}}
+\index{oc\_sort\_bubble@{oc\_sort\_bubble}!sorting.h@{sorting.h}}
+\doxysubsubsection{\texorpdfstring{oc\_sort\_bubble()}{oc\_sort\_bubble()}}
+{\footnotesize\ttfamily \label{sorting_8h_a71906419caaf5565e5cfc6c562ec3eb1} 
+void oc\+\_\+sort\+\_\+bubble (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structoc__sort__list__t}{oc\+\_\+sort\+\_\+list\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{list}{}\end{DoxyParamCaption})}
+
+
+
+Bubble Sort. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Pointer to the list to sort. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=162pt]{sorting_8h_a71906419caaf5565e5cfc6c562ec3eb1_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sorting_8h_a222e737f0399162ec198727d26d543d5}\index{sorting.h@{sorting.h}!oc\_sort\_heap@{oc\_sort\_heap}}
+\index{oc\_sort\_heap@{oc\_sort\_heap}!sorting.h@{sorting.h}}
+\doxysubsubsection{\texorpdfstring{oc\_sort\_heap()}{oc\_sort\_heap()}}
+{\footnotesize\ttfamily \label{sorting_8h_a222e737f0399162ec198727d26d543d5} 
+void oc\+\_\+sort\+\_\+heap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structoc__sort__list__t}{oc\+\_\+sort\+\_\+list\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{list}{}\end{DoxyParamCaption})}
+
+
+
+Heap Sort. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Pointer to the list to sort. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=155pt]{sorting_8h_a222e737f0399162ec198727d26d543d5_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sorting_8h_a46921148e407d51648e2f901c1e0ac9c}\index{sorting.h@{sorting.h}!oc\_sort\_insertion@{oc\_sort\_insertion}}
+\index{oc\_sort\_insertion@{oc\_sort\_insertion}!sorting.h@{sorting.h}}
+\doxysubsubsection{\texorpdfstring{oc\_sort\_insertion()}{oc\_sort\_insertion()}}
+{\footnotesize\ttfamily \label{sorting_8h_a46921148e407d51648e2f901c1e0ac9c} 
+void oc\+\_\+sort\+\_\+insertion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structoc__sort__list__t}{oc\+\_\+sort\+\_\+list\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{list}{}\end{DoxyParamCaption})}
+
+
+
+Direct Insertion Sort. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Pointer to the list to sort. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=170pt]{sorting_8h_a46921148e407d51648e2f901c1e0ac9c_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sorting_8h_ac9c2a72336284cbc0eecdead045f7745}\index{sorting.h@{sorting.h}!oc\_sort\_merge@{oc\_sort\_merge}}
+\index{oc\_sort\_merge@{oc\_sort\_merge}!sorting.h@{sorting.h}}
+\doxysubsubsection{\texorpdfstring{oc\_sort\_merge()}{oc\_sort\_merge()}}
+{\footnotesize\ttfamily \label{sorting_8h_ac9c2a72336284cbc0eecdead045f7745} 
+void oc\+\_\+sort\+\_\+merge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structoc__sort__list__t}{oc\+\_\+sort\+\_\+list\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{list}{}\end{DoxyParamCaption})}
+
+
+
+Two-\/way Merge Sort. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Pointer to the list to sort. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=161pt]{sorting_8h_ac9c2a72336284cbc0eecdead045f7745_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sorting_8h_ae6eb87958cc6e282d9ee7d309eb10be2}\index{sorting.h@{sorting.h}!oc\_sort\_quick@{oc\_sort\_quick}}
+\index{oc\_sort\_quick@{oc\_sort\_quick}!sorting.h@{sorting.h}}
+\doxysubsubsection{\texorpdfstring{oc\_sort\_quick()}{oc\_sort\_quick()}}
+{\footnotesize\ttfamily \label{sorting_8h_ae6eb87958cc6e282d9ee7d309eb10be2} 
+void oc\+\_\+sort\+\_\+quick (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structoc__sort__list__t}{oc\+\_\+sort\+\_\+list\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{list}{}\end{DoxyParamCaption})}
+
+
+
+Quick Sort. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Pointer to the list to sort. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=157pt]{sorting_8h_ae6eb87958cc6e282d9ee7d309eb10be2_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sorting_8h_a9ed631930c9a5ee0b5de150788d76435}\index{sorting.h@{sorting.h}!oc\_sort\_selection@{oc\_sort\_selection}}
+\index{oc\_sort\_selection@{oc\_sort\_selection}!sorting.h@{sorting.h}}
+\doxysubsubsection{\texorpdfstring{oc\_sort\_selection()}{oc\_sort\_selection()}}
+{\footnotesize\ttfamily \label{sorting_8h_a9ed631930c9a5ee0b5de150788d76435} 
+void oc\+\_\+sort\+\_\+selection (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structoc__sort__list__t}{oc\+\_\+sort\+\_\+list\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{list}{}\end{DoxyParamCaption})}
+
+
+
+Simple Selection Sort. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Pointer to the list to sort. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=173pt]{sorting_8h_a9ed631930c9a5ee0b5de150788d76435_cgraph}
+\end{center}
+\end{figure}

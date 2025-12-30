@@ -8,5 +8,7 @@ var searchData=
   ['oc_5fgraph_5fedge_5',['oc_graph_edge',['../structoc__graph__edge.html',1,'']]],
   ['oc_5flist_5fnode_5ft_6',['oc_list_node_t',['../structoc__list__node__t.html',1,'']]],
   ['oc_5flist_5ft_7',['oc_list_t',['../structoc__list__t.html',1,'']]],
-  ['oc_5fvector_8',['oc_vector',['../structoc__vector.html',1,'']]]
+  ['oc_5fsort_5fentry_5ft_8',['oc_sort_entry_t',['../structoc__sort__entry__t.html',1,'']]],
+  ['oc_5fsort_5flist_5ft_9',['oc_sort_list_t',['../structoc__sort__list__t.html',1,'']]],
+  ['oc_5fvector_10',['oc_vector',['../structoc__vector.html',1,'']]]
 ];

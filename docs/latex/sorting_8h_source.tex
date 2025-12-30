@@ -1,0 +1,50 @@
+\doxysection{sorting.\+h}
+\hypertarget{sorting_8h_source}{}\label{sorting_8h_source}\index{include/omnic/sorting.h@{include/omnic/sorting.h}}
+\mbox{\hyperlink{sorting_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ -\/*-\/\ mode:\ C;\ indent-\/tabs-\/mode:\ nil;\ c-\/basic-\/offset:\ 2;\ tab-\/width:\ 2;\ -\/*-\/}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ OMNIC\_SORTING\_H}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ OMNIC\_SORTING\_H}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stddef.h>}\ \ \textcolor{comment}{//\ For\ size\_t}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ Maximum\ size\ for\ the\ static\ array.}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ User\ requested\ up\ to\ 100,000\ elements\ for\ benchmarking.}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ OC\_SORT\_MAX\_SIZE\ 100005}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sorting_8h_ac77d0fd8d785182f4381843d9ee8ba8f}{oc\_key\_type\_t}};\ \ \ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sorting_8h_a038d71eb9c8aca2695eea5bdf8540202}{oc\_data\_type\_t}};\ \ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00025\ \ \ \mbox{\hyperlink{sorting_8h_ac77d0fd8d785182f4381843d9ee8ba8f}{oc\_key\_type\_t}}\ \mbox{\hyperlink{structoc__sort__entry__t_ada3b750dd4d80fa126d575f62adaca98}{key}};\ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \mbox{\hyperlink{sorting_8h_a038d71eb9c8aca2695eea5bdf8540202}{oc\_data\_type\_t}}\ \mbox{\hyperlink{structoc__sort__entry__t_a00e16427e496164fb0ebd956e020db69}{data}};\ \ }
+\DoxyCodeLine{00027\ \}\ \mbox{\hyperlink{structoc__sort__entry__t}{oc\_sort\_entry\_t}};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structoc__sort__list__t_a9b28e356c5973c2ab1378fe7b3e2f59a}{n}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \mbox{\hyperlink{structoc__sort__entry__t}{oc\_sort\_entry\_t}}\ \mbox{\hyperlink{structoc__sort__list__t_abcd54f2bd8d0e01ba86bd5451ce01694}{d}}[OC\_SORT\_MAX\_SIZE];\ \ }
+\DoxyCodeLine{00036\ \}\ \mbox{\hyperlink{structoc__sort__list__t}{oc\_sort\_list\_t}};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{comment}{//\ -\/-\/-\/\ Sorting\ Algorithms\ -\/-\/-\/}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00044\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sorting_8h_a9ed631930c9a5ee0b5de150788d76435}{oc\_sort\_selection}}(\mbox{\hyperlink{structoc__sort__list__t}{oc\_sort\_list\_t}}*\ list);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sorting_8h_a46921148e407d51648e2f901c1e0ac9c}{oc\_sort\_insertion}}(\mbox{\hyperlink{structoc__sort__list__t}{oc\_sort\_list\_t}}*\ list);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sorting_8h_a71906419caaf5565e5cfc6c562ec3eb1}{oc\_sort\_bubble}}(\mbox{\hyperlink{structoc__sort__list__t}{oc\_sort\_list\_t}}*\ list);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00056\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sorting_8h_ae6eb87958cc6e282d9ee7d309eb10be2}{oc\_sort\_quick}}(\mbox{\hyperlink{structoc__sort__list__t}{oc\_sort\_list\_t}}*\ list);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00060\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sorting_8h_ac9c2a72336284cbc0eecdead045f7745}{oc\_sort\_merge}}(\mbox{\hyperlink{structoc__sort__list__t}{oc\_sort\_list\_t}}*\ list);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00064\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sorting_8h_a222e737f0399162ec198727d26d543d5}{oc\_sort\_heap}}(\mbox{\hyperlink{structoc__sort__list__t}{oc\_sort\_list\_t}}*\ list);}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ OMNIC\_SORTING\_H}}
+
+\end{DoxyCode}

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['right_0',['right',['../structhuffman__node.html#a5814d9054c14706feca20d6d187b5bb6',1,'huffman_node']]]
+  ['key_0',['key',['../structoc__sort__entry__t.html#ada3b750dd4d80fa126d575f62adaca98',1,'oc_sort_entry_t']]]
 ];
