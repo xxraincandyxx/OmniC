@@ -24,6 +24,7 @@ add_library(omnic STATIC
   src/vector.c
   src/binarytree.c
   src/huffmantree.c
+  src/sorting.c
 )
 
 # Tell CMake that the "omnic" target needs to look for headers in the "include"
@@ -171,4 +172,18 @@ if(DOXYGEN_FOUND)
     "Doxygen found. You can build the 'doc' target to generate documentation.")
 else()
   message(WARNING "Doxygen not found. The 'doc' target will not be available.")
+endif()
+
+# ---------------------------------------------------------------------------- #
+
+# --- Define the Sorting Benchmark Executable ---
+add_executable(benchmark_sorting
+  examples/benchmark_sorting.c
+)
+
+target_link_libraries(benchmark_sorting PRIVATE omnic)
+
+# Add compiler warnings
+if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
+  target_compile_options(benchmark_sorting PRIVATE -Wall -O2 -Wextra -Wpedantic)
 endif()
