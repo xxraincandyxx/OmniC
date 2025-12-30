@@ -67,7 +67,10 @@ int main(void) {
     return 1;
   }
 
-  printf("Algorithm,N,Time(ms)\n");
+  // Print table header
+  printf("+---------------------+------------+-----------+\n");
+  printf("| %-19s | %-10s | %-9s |\n", "Algorithm", "Data Size", "Time (ms)");
+  printf("+---------------------+------------+-----------+\n");
 
   for (int s = 0; s < NUM_SIZES; ++s) {
     int n = TEST_SIZES[s];
@@ -90,11 +93,13 @@ int main(void) {
                 ALGORITHMS[a].name, n);
       }
 
-      printf("%s,%d,%.2f\n", ALGORITHMS[a].name, n, elapsed_ms);
+      printf("| %-19s | %10d | %9.2f |\n", ALGORITHMS[a].name, n, elapsed_ms);
 
       // Flush to ensure output is seen immediately
       fflush(stdout);
     }
+    // Separator between different sizes
+    printf("+---------------------+------------+-----------+\n");
   }
 
   free(original);
