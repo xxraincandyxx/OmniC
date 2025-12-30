@@ -1,3 +1,6 @@
+# Trae IDE
+.trae/
+
 # OS specific files
 .DS_Store
 
@@ -75,3 +78,17 @@ Win32/
 # Other temporary files
 *.log
 *.bak
+
+# LaTeX intermediate files
+*.aux
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.toc
+*.xdv
+*.pdf
+!reports/**/*.pdf
+
+# Custom binaries
+reports/DataStructureExp4/benchmark
+
